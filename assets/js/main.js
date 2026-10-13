@@ -238,3 +238,122 @@
     });
   });
 })();
+
+/* DEMO paleta azul: anillos gráficos alrededor de las cifras.
+   Cada gráfico representa la cifra oficial tal cual (no inventa datos); los números siguen escritos en el HTML. */
+(function () {
+  var figs = document.querySelector('.figs');
+  var cells = document.querySelectorAll('[data-ring]');
+  if (!figs || !cells.length) return;
+  var NS = 'http://www.w3.org/2000/svg', C = 100;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function pt(r, deg) { var a = (deg - 90) * Math.PI / 180; return [C + r * Math.cos(a), C + r * Math.sin(a)]; }
+  function arc(r, a0, a1) {
+    var p0 = pt(r, a0), p1 = pt(r, a1);
+    return 'M' + p0[0].toFixed(2) + ' ' + p0[1].toFixed(2) + 'A' + r + ' ' + r + ' 0 ' + (a1 - a0 > 180 ? 1 : 0) + ' 1 ' + p1[0].toFixed(2) + ' ' + p1[1].toFixed(2);
+  }
+  function el(name, attrs, parent) {
+    var n = document.createElementNS(NS, name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function label(g, r, deg, txt, i) {
+    var p = pt(r, deg);
+    el('text', { x: p[0], y: p[1] + 3.5, 'text-anchor': 'middle', 'class': 'r-txt', style: '--d:' + (i || 0) }, g).textContent = txt;
+  }
+  function segments(g, n, gap) {
+    for (var i = 0; i < n; i++) {
+      el('path', { d: arc(84, i * 360 / n + gap / 2, (i + 1) * 360 / n - gap / 2), 'class': 'r-seg', pathLength: 1, style: '--d:' + i }, g);
+    }
+  }
+  function ticks(g, n, major, r0, r1) {
+    for (var i = 0; i < n; i++) {
+      var big = major && i % major === 0, a = i * 360 / n;
+      var p0 = pt(big ? r0 - 6 : r0, a), p1 = pt(r1, a);
+      el('line', { x1: p0[0], y1: p0[1], x2: p1[0], y2: p1[1], 'class': 'r-tick' + (big ? ' r-tick--major' : ''), style: '--d:' + i }, g);
+    }
+  }
+  function orbit(g, rev) {
+    var o = el('g', { 'class': reduced ? '' : 'r-spin' + (rev ? ' r-spin--rev' : '') }, g);
+    el('circle', { cx: C, cy: C, r: 100, 'class': 'r-dash' }, o);
+    var s = pt(100, 0);
+    el('circle', { cx: s[0], cy: s[1], r: 3.5, 'class': 'r-sat' }, o);
+  }
+
+  var builders = {
+    seg: function (g) { // 12.000 = 12 tramos de 1.000
+      el('circle', { cx: C, cy: C, r: 84, 'class': 'r-track' }, g);
+      segments(g, 12, 4);
+      el('circle', { cx: C, cy: C, r: 68, 'class': 'r-hair' }, g);
+      orbit(g);
+    },
+    months: function (g) { // 2 años = 24 meses
+      el('circle', { cx: C, cy: C, r: 92, 'class': 'r-hair' }, g);
+      ticks(g, 24, 12, 76, 90);
+      el('circle', { cx: C, cy: C, r: 68, 'class': 'r-hair' }, g);
+      label(g, 54, 0, 'AÑO 1', 0);
+      label(g, 54, 180, 'AÑO 2', 12);
+      orbit(g, true);
+    },
+    dots: function (g) { // 25 grúas = 25 puntos
+      el('circle', { cx: C, cy: C, r: 86, 'class': 'r-hair' }, g);
+      for (var i = 0; i < 25; i++) {
+        var p = pt(86, i * 360 / 25);
+        el('circle', { cx: p[0], cy: p[1], r: 5, 'class': 'r-dot', style: '--d:' + i }, g);
+      }
+      orbit(g);
+    },
+    clock: function (g) { // 24 h = esfera de 24 horas con barrido continuo
+      el('circle', { cx: C, cy: C, r: 92, 'class': 'r-hair' }, g);
+      ticks(g, 24, 6, 80, 92);
+      [['00', 0], ['06', 90], ['12', 180], ['18', 270]].forEach(function (h, i) { label(g, 106, h[1], h[0], i * 6); });
+      var sw = el('g', { 'class': reduced ? '' : 'r-sweep' }, g);
+      var tip = pt(88, 0);
+      el('line', { x1: C, y1: C - 66, x2: tip[0], y2: tip[1], 'class': 'r-hand' }, sw);
+      el('circle', { cx: tip[0], cy: tip[1], r: 4, 'class': 'r-hub' }, sw);
+    },
+    full: function (g) { // 100 % = anillo completo
+      el('circle', { cx: C, cy: C, r: 84, 'class': 'r-track' }, g);
+      el('path', { d: arc(84, 0, 359.99), 'class': 'r-glow', pathLength: 1 }, g);
+      el('path', { d: arc(84, 0, 359.99), 'class': 'r-seg', pathLength: 1 }, g);
+      el('circle', { cx: C, cy: C, r: 68, 'class': 'r-dash' }, el('g', { 'class': reduced ? '' : 'r-spin r-spin--rev' }, g));
+      orbit(g);
+    },
+    week: function (g) { // Diario = los 7 días de la semana
+      el('circle', { cx: C, cy: C, r: 84, 'class': 'r-track' }, g);
+      segments(g, 7, 6);
+      'LMMJVSD'.split('').forEach(function (d, i) { label(g, 104, (i + .5) * 360 / 7, d, i); });
+    }
+  };
+
+  Array.prototype.forEach.call(cells, function (dt, row) {
+    var svg = el('svg', { 'class': 'ring', viewBox: '0 0 200 200', 'aria-hidden': 'true', focusable: 'false' });
+    var g = el('g', { style: '--row:' + row }, svg);
+    builders[dt.getAttribute('data-ring')](g);
+    dt.insertBefore(svg, dt.firstChild);
+  });
+
+  var root = document.documentElement, seen = false;
+  function play() {
+    if (reduced || root.getAttribute('data-palette') !== 'azul') return;
+    figs.classList.remove('rings-in');
+    figs.classList.add('rings-armed');
+    void figs.offsetWidth;
+    requestAnimationFrame(function () { requestAnimationFrame(function () { figs.classList.add('rings-in'); }); });
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) {
+      seen = en[0].isIntersecting;
+      if (seen && !figs.classList.contains('rings-in')) play();
+    }, { threshold: .25 }).observe(figs);
+  }
+  new MutationObserver(function () {
+    if (root.getAttribute('data-palette') === 'azul') {
+      if (seen) play(); else figs.classList.remove('rings-in');
+    } else {
+      figs.classList.remove('rings-armed', 'rings-in');
+    }
+  }).observe(root, { attributes: true, attributeFilter: ['data-palette'] });
+})();
