@@ -398,6 +398,17 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .field input:hover, .field select:hover, .field textarea:hover { border-color: var(--ink); }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--amber); }
 .field input[aria-invalid="true"] { border-color: #A3261B; box-shadow: 0 0 0 1px #A3261B; }
+.field input[aria-invalid="true"]:focus { box-shadow: 0 0 0 1px #A3261B, 0 0 0 4px var(--amber); }
+.field input::placeholder { color: #8C8578; opacity: 1; }
+/* Mensaje bajo cada campo: error en rojo, aviso de tecleo en gris; vacío no ocupa alto */
+.field__msg { font-size: 13px; font-weight: 500; line-height: 1.35; color: #7A1B12; }
+.field__msg:empty { display: none; }
+.field__msg.is-hint { color: var(--muted); font-weight: 400; }
+.field__msg button {
+  padding: 0; border: 0; background: none; font: inherit; color: var(--ink);
+  text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+}
+.field__msg button:hover { color: var(--amber-ink); }
 .field select.is-set { animation: flash 1s var(--ease); }
 @keyframes flash { 0% { background-color: var(--accent-tint); } }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

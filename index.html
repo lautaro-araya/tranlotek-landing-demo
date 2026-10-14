@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tranlotek | Traslado seguro de vehículos con grúa en el Biobío</title>
 <meta name="description" content="Modelo de traslado de vehículos probado en 12.000 servicios. 25 grúas, central 24 h, GPS, actas y reportes diarios. Conversemos sobre tu operación.">
-<link rel="canonical" href="https://tranlotek.cl/">
+<link rel="canonical" href="https://tranlotek.com/">
 <meta name="theme-color" content="#14181F">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
 <meta property="og:title" content="Tranlotek | Traslado seguro de vehículos con grúa en el Biobío">
 <meta property="og:description" content="Modelo de traslado de vehículos probado en 12.000 servicios. 25 grúas, central 24 h, GPS, actas y reportes diarios.">
-<meta property="og:url" content="https://tranlotek.cl/">
-<meta property="og:image" content="https://tranlotek.cl/assets/img/hero-1200.webp">
+<meta property="og:url" content="https://tranlotek.com/">
+<meta property="og:image" content="https://tranlotek.com/assets/img/hero-1200.webp">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=9">
+<link rel="stylesheet" href="assets/css/styles.css?v=10">
 <!-- DEMO: aplica la paleta guardada antes de pintar. Eliminar junto al selector al publicar. -->
 <script>try { if (localStorage.getItem('tk-paleta') === 'azul') document.documentElement.setAttribute('data-palette', 'azul'); } catch (e) {}</script>
 
@@ -29,14 +29,14 @@
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://tranlotek.cl/#empresa",
+  "@id": "https://tranlotek.com/#empresa",
   "name": "Tranlotek",
   "legalName": "Tranlotek SpA",
   "taxID": "77.123.456-7",
   "description": "Retiro y traslado de vehículos con grúa en la Región del Biobío. No presta servicios de custodia.",
-  "url": "https://tranlotek.cl/",
-  "logo": "https://tranlotek.cl/assets/img/logo-tranlotek.png",
-  "image": "https://tranlotek.cl/assets/img/hero-1200.webp",
+  "url": "https://tranlotek.com/",
+  "logo": "https://tranlotek.com/assets/img/logo-tranlotek.png",
+  "image": "https://tranlotek.com/assets/img/hero-1200.webp",
   "telephone": "+56412964800",
   "email": "contacto@tranlotek.cl",
   "address": {
@@ -332,7 +332,7 @@
     </div>
 
     <div class="form-sheet">
-      <div class="form-sheet__head"><strong>Solicitud de conversación</strong><span class="mono">tranlotek.cl</span></div>
+      <div class="form-sheet__head"><strong>Solicitud de conversación</strong><span class="mono">tranlotek.com</span></div>
 
       <div class="form-ok" id="form-ok" role="status" tabindex="-1" hidden>
         <p class="form-ok__h">Gracias. Te llamamos pronto.</p>
@@ -341,19 +341,27 @@
 
       <form id="form" action="#" method="post" novalidate data-demo>
         <div class="fields">
-          <label class="field">
-            <span>Nombre</span>
-            <input name="nombre" autocomplete="name" required maxlength="120">
-          </label>
-          <label class="field">
-            <span>Empresa</span>
-            <input name="empresa" autocomplete="organization" required maxlength="160">
-          </label>
-          <label class="field">
-            <span>Teléfono o correo</span>
-            <input name="contacto" autocomplete="email" inputmode="email" required maxlength="160">
-          </label>
-          <label class="field">
+          <div class="field">
+            <label for="f-nombre">Nombre</label>
+            <input id="f-nombre" name="nombre" autocomplete="name" autocapitalize="words" spellcheck="false" required maxlength="80" aria-describedby="e-nombre">
+            <small class="field__msg" id="e-nombre" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="f-empresa">Empresa</label>
+            <input id="f-empresa" name="empresa" autocomplete="organization" required maxlength="160" aria-describedby="e-empresa">
+            <small class="field__msg" id="e-empresa" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="f-telefono">Teléfono <em>(o correo)</em></label>
+            <input id="f-telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" maxlength="15" placeholder="+56 9 1234 5678" aria-describedby="e-telefono">
+            <small class="field__msg" id="e-telefono" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="f-correo">Correo <em>(o teléfono)</em></label>
+            <input id="f-correo" name="correo" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="254" placeholder="nombre@empresa.cl" aria-describedby="e-correo">
+            <small class="field__msg" id="e-correo" aria-live="polite"></small>
+          </div>
+          <label class="field field--wide">
             <span>Sector</span>
             <select name="sector" id="sector">
               <option>Transporte y logística</option>
@@ -414,6 +422,6 @@
   <span>WhatsApp</span>
 </a>
 
-<script src="assets/js/main.js?v=7" defer></script>
+<script src="assets/js/main.js?v=8" defer></script>
 </body>
 </html>

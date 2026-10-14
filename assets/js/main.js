@@ -171,27 +171,210 @@
   var stamp = document.getElementById('form-t');
   if (stamp) stamp.value = String(Date.now());
 
-  function showError(msg, field) {
-    err.textContent = msg;
-    err.hidden = false;
-    if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
+  var f = {
+    nombre: form.elements.nombre,
+    empresa: form.elements.empresa,
+    telefono: form.elements.telefono,
+    correo: form.elements.correo
+  };
+
+  /* Mensaje bajo el campo: kind 'error' marca el campo; 'hint' es un aviso gris que se borra solo */
+  var hintTimers = {};
+  function msg(input, text, kind) {
+    var box = document.getElementById(input.getAttribute('aria-describedby'));
+    clearTimeout(hintTimers[input.name]);
+    box.classList.toggle('is-hint', kind === 'hint');
+    box.textContent = text || '';
+    if (kind === 'error' && text) input.setAttribute('aria-invalid', 'true');
+    else input.removeAttribute('aria-invalid');
+    if (kind === 'hint' && text) {
+      hintTimers[input.name] = setTimeout(function () { if (box.classList.contains('is-hint')) box.textContent = ''; }, 2600);
+    }
+    return box;
   }
 
-  form.addEventListener('input', function (e) {
-    if (e.target.getAttribute('aria-invalid')) e.target.removeAttribute('aria-invalid');
+  /* Reemplaza el valor sin mover el cursor de donde el usuario lo dejó */
+  function rewrite(input, clean) {
+    var v = input.value, pos = input.selectionStart == null ? v.length : input.selectionStart;
+    var next = clean(v);
+    if (next === v) return false;
+    var before = clean(v.slice(0, pos));
+    input.value = next;
+    var p = Math.min(before.length, next.length);
+    try { input.setSelectionRange(p, p); } catch (e) {}
+    return true;
+  }
+
+  /* Nombre: solo letras (con tildes, ñ y ü) y un espacio entre palabras */
+  var NOT_LETTER = /[^\p{L}\s]/u;
+  function cleanNombre(v) { return v.replace(/[^\p{L}\s]/gu, '').replace(/\s+/g, ' ').replace(/^ /, ''); }
+  function checkNombre() {
+    var v = f.nombre.value.trim();
+    if (!v) return 'Escribe tu nombre.';
+    if (v.replace(/\s/g, '').length < 2) return 'Escribe tu nombre completo.';
+    return '';
+  }
+
+  /* Empresa: se permite todo, pero sin espacios dobles ni al inicio */
+  function cleanEmpresa(v) { return v.replace(/[\u0000-\u001F\u007F]/g, '').replace(/\s+/g, ' ').replace(/^ /, ''); }
+  function checkEmpresa() {
+    var v = f.empresa.value.trim();
+    if (!v) return 'Escribe el nombre de tu empresa.';
+    if (!/[\p{L}\d]/u.test(v)) return 'Escribe el nombre de tu empresa.';
+    return '';
+  }
+
+  /* Teléfono chileno: 9 dígitos. Celulares y Santiago: +56 9 1234 5678 / +56 2 1234 5678;
+     regiones: +56 41 123 4567. Acepta que peguen el número con +56, espacios o guiones. */
+  function phoneDigits(v) {
+    var d = v.replace(/\D/g, '');
+    if (d.indexOf('56') === 0) d = d.slice(2);   // 56 no es código de área, es el país
+    d = d.replace(/^0+/, '');                     // prefijo antiguo de larga distancia
+    return d.slice(0, 9);
+  }
+  function formatPhone(d) {
+    if (!d) return '';
+    var a = (d[0] === '9' || d[0] === '2') ? 1 : 2, b = a === 1 ? 4 : 3;
+    var parts = [d.slice(0, a), d.slice(a, a + b), d.slice(a + b)].filter(Boolean);
+    return '+56 ' + parts.join(' ');
+  }
+  function placeAfterDigit(input, n) {
+    var v = input.value, i = 4, seen = 0;
+    if (n <= 0) i = v ? 4 : 0;
+    else for (; i < v.length && seen < n; i++) if (/\d/.test(v[i])) seen++;
+    try { input.setSelectionRange(i, i); } catch (e) {}
+  }
+  function checkTelefono() {
+    var d = phoneDigits(f.telefono.value);
+    if (!d) return '';
+    if (d.length < 9) return 'Faltan dígitos: el teléfono lleva 9, por ejemplo +56 9 1234 5678.';
+    if (!/^[2-9]/.test(d)) return 'Revisa el teléfono: no parece un número de Chile.';
+    return '';
+  }
+
+  /* Correo: forma nombre@dominio.tld y aviso si el dominio parece mal escrito */
+  var EMAIL = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,24}$/i;
+  var TYPOS = {
+    'gmial.com': 'gmail.com', 'gmal.com': 'gmail.com', 'gamil.com': 'gmail.com', 'gmai.com': 'gmail.com',
+    'gmail.co': 'gmail.com', 'gmail.cl': 'gmail.com', 'gmail.con': 'gmail.com', 'gnail.com': 'gmail.com',
+    'hotmial.com': 'hotmail.com', 'hotmal.com': 'hotmail.com', 'hotmai.com': 'hotmail.com', 'hotmail.co': 'hotmail.com', 'hotmail.con': 'hotmail.com',
+    'outlok.com': 'outlook.com', 'outlook.co': 'outlook.com', 'outlook.con': 'outlook.com',
+    'yaho.com': 'yahoo.com', 'yahoo.co': 'yahoo.com', 'yahoo.con': 'yahoo.com'
+  };
+  function cleanCorreo(v) { return v.replace(/\s+/g, ''); }
+  function checkCorreo() {
+    var v = f.correo.value.trim();
+    if (!v) return '';
+    if (v.indexOf('@') < 1) return 'Al correo le falta la @, por ejemplo nombre@empresa.cl.';
+    if (v.length > 254 || !EMAIL.test(v)) return 'Revisa el correo: debe tener la forma nombre@empresa.cl.';
+    return '';
+  }
+  function suggestCorreo() {
+    var v = f.correo.value.trim().toLowerCase(), at = v.lastIndexOf('@');
+    if (at < 1) return;
+    var dom = v.slice(at + 1), fix = TYPOS[dom] || (/\.con$/.test(dom) ? dom.replace(/\.con$/, '.com') : '');
+    if (!fix) return;
+    var sug = v.slice(0, at + 1) + fix;
+    var box = msg(f.correo, '', 'hint');
+    clearTimeout(hintTimers.correo);
+    box.textContent = '¿Quisiste decir ';
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = sug;
+    b.addEventListener('click', function () { f.correo.value = sug; msg(f.correo, ''); f.correo.focus(); });
+    box.appendChild(b);
+    box.appendChild(document.createTextNode('?'));
+  }
+
+  function checkContacto() {
+    if (!f.telefono.value.trim() && !f.correo.value.trim()) return 'Déjanos un teléfono o un correo para contactarte.';
+    return '';
+  }
+
+  var checks = { nombre: checkNombre, empresa: checkEmpresa, telefono: checkTelefono, correo: checkCorreo };
+  var touched = {};
+  function validate(name) {
+    var m = checks[name]();
+    if (!m && (name === 'telefono' || name === 'correo') && touched.submit) {
+      m = checkContacto();
+      if (m && name === 'correo') m = '';             // el aviso de "uno de los dos" va solo bajo teléfono
+    }
+    msg(f[name], m, m ? 'error' : null);
+    return !m;
+  }
+
+  /* Al escribir: limpia lo que no corresponde y avisa por qué desapareció */
+  f.nombre.addEventListener('input', function () {
+    var had = f.nombre.value;
+    rewrite(f.nombre, cleanNombre);
+    if (NOT_LETTER.test(had)) msg(f.nombre, 'Solo letras: sin números ni símbolos.', 'hint');
+    else if (/\s\s/.test(had)) msg(f.nombre, 'Un solo espacio entre palabras.', 'hint');
+    else if (touched.nombre) validate('nombre');
   });
+  f.empresa.addEventListener('input', function () {
+    rewrite(f.empresa, cleanEmpresa);
+    if (touched.empresa) validate('empresa');
+  });
+  f.telefono.addEventListener('keydown', function (e) {
+    // Borrar sobre un espacio o sobre el +56 salta al dígito anterior en vez de quedarse pegado
+    if (e.key !== 'Backspace' || f.telefono.selectionStart !== f.telefono.selectionEnd) return;
+    var v = f.telefono.value, pos = f.telefono.selectionStart;
+    if (pos > 4 && !/\d/.test(v[pos - 1])) {
+      while (pos > 4 && !/\d/.test(v[pos - 1])) pos--;
+      f.telefono.setSelectionRange(pos, pos);
+    } else if (pos <= 4 && v.length > 4) {
+      e.preventDefault();
+    }
+  });
+  f.telefono.addEventListener('input', function () {
+    var v = f.telefono.value, pos = f.telefono.selectionStart == null ? v.length : f.telefono.selectionStart;
+    var letters = /[^\d\s+\-().]/.test(v);
+    var all = v.replace(/\D/g, ''), head = v.slice(0, pos).replace(/\D/g, '');
+    var d = phoneDigits(v);
+    var strip = all.length - all.replace(/^56/, '').replace(/^0+/, '').length;
+    var n = Math.max(0, Math.min(head.length - strip, d.length));
+    f.telefono.value = formatPhone(d);
+    placeAfterDigit(f.telefono, n);
+    if (letters) msg(f.telefono, 'Solo números.', 'hint');
+    else if (touched.telefono) validate('telefono');
+    if (touched.submit && f.correo.getAttribute('aria-invalid') && !checkCorreo()) validate('correo');
+  });
+  f.correo.addEventListener('input', function () {
+    var had = /\s/.test(f.correo.value);
+    rewrite(f.correo, cleanCorreo);
+    if (had) msg(f.correo, 'El correo no lleva espacios.', 'hint');
+    else if (touched.correo) validate('correo');
+    if (touched.submit && f.telefono.getAttribute('aria-invalid')) validate('telefono');
+  });
+
+  /* Al salir del campo: ordena el texto y valida */
+  Object.keys(f).forEach(function (name) {
+    f[name].addEventListener('blur', function () {
+      var input = f[name];
+      if (name === 'correo') input.value = input.value.trim().toLowerCase();
+      else input.value = input.value.trim();
+      if (!input.value && !touched.submit) { msg(input, ''); return; }
+      touched[name] = true;
+      if (validate(name) && name === 'correo') suggestCorreo();
+    });
+  });
+
+  function showError(text) {
+    err.textContent = text;
+    err.hidden = false;
+  }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     err.hidden = true;
+    touched.submit = true;
 
-    var nombre = form.elements.nombre, empresa = form.elements.empresa, contacto = form.elements.contacto;
-    if (!nombre.value.trim()) return showError('Falta tu nombre.', nombre);
-    if (!empresa.value.trim()) return showError('Falta el nombre de tu empresa.', empresa);
-    var c = contacto.value.trim();
-    var esCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c);
-    var esFono = c.replace(/[^\d]/g, '').length >= 8;
-    if (!esCorreo && !esFono) return showError('Escribe un teléfono (con al menos 8 dígitos) o un correo válido para poder contactarte.', contacto);
+    var firstBad = null;
+    ['nombre', 'empresa', 'telefono', 'correo'].forEach(function (name) {
+      f[name].value = name === 'correo' ? f[name].value.trim().toLowerCase() : f[name].value.trim();
+      touched[name] = true;
+      if (!validate(name) && !firstBad) firstBad = f[name];
+    });
+    if (firstBad) { firstBad.focus(); return; }
 
     var btn = form.querySelector('[type="submit"]');
     var label = btn.textContent;
@@ -213,29 +396,35 @@
     })
       .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
       .then(function (res) {
-        if (!res.ok) throw new Error(res.error || 'envio');
+        if (!res.ok) {
+          if (res.campo && f[res.campo]) { msg(f[res.campo], res.error, 'error'); f[res.campo].focus(); throw new Error('campo'); }
+          throw new Error(res.error || 'envio');
+        }
         track('envio_formulario', { sector: form.elements.sector.value });
         form.hidden = true;
         ok.hidden = false;
         ok.focus();
       })
       .catch(function (ex) {
-        var msg = ex && ex.message && ex.message !== 'envio' && ex.message !== 'Failed to fetch'
+        if (ex && ex.message === 'campo') return;
+        var text = ex && ex.message && ex.message !== 'envio' && ex.message !== 'Failed to fetch'
           ? ex.message
           : 'No pudimos enviar tu solicitud. Intenta de nuevo o llámanos al +56 41 296 4800.';
-        showError(msg);
+        showError(text);
       })
       .then(function () { btn.disabled = false; btn.textContent = label; });
   });
 
   document.getElementById('form-reset').addEventListener('click', function () {
     form.reset();
+    touched = {};
+    Object.keys(f).forEach(function (name) { msg(f[name], ''); });
     if (stamp) stamp.value = String(Date.now());
     var cur = document.querySelector('[role="tab"][aria-selected="true"]');
     if (cur && select) select.value = cur.getAttribute('data-sector');
     ok.hidden = true;
     form.hidden = false;
-    form.elements.nombre.focus();
+    f.nombre.focus();
   });
 })();
 
