@@ -271,8 +271,10 @@
   });
 })();
 
-/* DEMO paleta azul: anillos gráficos alrededor de las cifras.
-   Cada gráfico representa la cifra oficial tal cual (no inventa datos); los números siguen escritos en el HTML. */
+/* DEMO paleta azul: gráficos de las cifras.
+   24 h y Diario van en círculo (esfera y semana); el resto usa una forma que
+   representa la cantidad tal cual: conteo, línea de tiempo, pictogramas y medidor.
+   No inventan datos; los números siguen escritos en el HTML. */
 (function () {
   var figs = document.querySelector('.figs');
   var cells = document.querySelectorAll('[data-ring]');
@@ -291,9 +293,12 @@
     if (parent) parent.appendChild(n);
     return n;
   }
+  function text(g, x, y, txt, anchor, cls, d) {
+    el('text', { x: x, y: y, 'text-anchor': anchor || 'middle', 'class': 'r-txt' + (cls ? ' ' + cls : ''), style: '--d:' + (d || 0) }, g).textContent = txt;
+  }
   function label(g, r, deg, txt, i) {
     var p = pt(r, deg);
-    el('text', { x: p[0], y: p[1] + 3.5, 'text-anchor': 'middle', 'class': 'r-txt', style: '--d:' + (i || 0) }, g).textContent = txt;
+    text(g, p[0], p[1] + 3.5, txt, 'middle', '', i);
   }
   function segments(g, n, gap) {
     for (var i = 0; i < n; i++) {
@@ -307,36 +312,61 @@
       el('line', { x1: p0[0], y1: p0[1], x2: p1[0], y2: p1[1], 'class': 'r-tick' + (big ? ' r-tick--major' : ''), style: '--d:' + i }, g);
     }
   }
-  function orbit(g, rev) {
-    var o = el('g', { 'class': reduced ? '' : 'r-spin' + (rev ? ' r-spin--rev' : '') }, g);
-    el('circle', { cx: C, cy: C, r: 100, 'class': 'r-dash' }, o);
-    var s = pt(100, 0);
-    el('circle', { cx: s[0], cy: s[1], r: 3.5, 'class': 'r-sat' }, o);
-  }
 
-  var builders = {
-    seg: function (g) { // 12.000 = 12 tramos de 1.000
-      el('circle', { cx: C, cy: C, r: 84, 'class': 'r-track' }, g);
-      segments(g, 12, 4);
-      el('circle', { cx: C, cy: C, r: 68, 'class': 'r-hair' }, g);
-      orbit(g);
-    },
-    months: function (g) { // 2 años = 24 meses
-      el('circle', { cx: C, cy: C, r: 92, 'class': 'r-hair' }, g);
-      ticks(g, 24, 12, 76, 90);
-      el('circle', { cx: C, cy: C, r: 68, 'class': 'r-hair' }, g);
-      label(g, 54, 0, 'AÑO 1', 0);
-      label(g, 54, 180, 'AÑO 2', 12);
-      orbit(g, true);
-    },
-    dots: function (g) { // 25 grúas = 25 puntos
-      el('circle', { cx: C, cy: C, r: 86, 'class': 'r-hair' }, g);
-      for (var i = 0; i < 25; i++) {
-        var p = pt(86, i * 360 / 25);
-        el('circle', { cx: p[0], cy: p[1], r: 5, 'class': 'r-dot', style: '--d:' + i }, g);
+  /* Gráficos lineales: lienzo de 240 × 150 bajo la cifra */
+  var charts = {
+    tally: function (g) { // 12.000 = 12 columnas de 1.000; cada celda, 100 traslados
+      for (var c = 0; c < 12; c++) {
+        for (var r = 0; r < 10; r++) {
+          el('rect', { x: c * 20 + 3, y: 108 - r * 11, width: 14, height: 8, rx: 1, 'class': 'c-cell', style: '--d:' + (c * 4 + r * .4).toFixed(1) }, g);
+        }
       }
-      orbit(g);
+      el('line', { x1: 0, y1: 122.5, x2: 240, y2: 122.5, 'class': 'c-axis' }, g);
+      el('rect', { x: 62, y: 134, width: 14, height: 8, rx: 1, 'class': 'c-cell c-key' }, g);
+      text(g, 84, 141.5, '= 100 TRASLADOS', 'start', 'c-key', 48);
     },
+    timeline: function (g) { // 2 años = 24 meses
+      var x0 = 6, x1 = 226, y = 100, step = (x1 - x0) / 24;
+      el('line', { x1: x0, y1: y, x2: x1, y2: y, 'class': 'c-axis' }, g);
+      for (var i = 0; i <= 24; i++) {
+        var x = x0 + i * step, big = i % 12 === 0;
+        el('line', { x1: x, y1: y - (big ? 40 : 20), x2: x, y2: y - 8, 'class': 'r-tick' + (big ? ' r-tick--major' : ''), style: '--d:' + i }, g);
+      }
+      el('path', { d: 'M' + x0 + ' ' + y + 'H' + x1, 'class': 'c-bar', pathLength: 1 }, g);
+      el('circle', { cx: x1, cy: y, r: 7, 'class': 'r-hub c-pop', style: '--d:26' }, g);
+      [['INICIO', 0], ['AÑO 1', 12], ['AÑO 2', 24]].forEach(function (m) {
+        text(g, x0 + m[1] * step, y + 26, m[0], m[1] === 0 ? 'start' : 'middle', 'c-key', m[1]);
+      });
+      text(g, x0 + 6 * step, y - 50, '12 MESES', 'middle', 'c-faint', 6);
+      text(g, x0 + 18 * step, y - 50, '12 MESES', 'middle', 'c-faint', 18);
+    },
+    fleet: function (g) { // 25 grúas = 25 pictogramas, uno por grúa
+      for (var i = 0; i < 25; i++) {
+        var t = el('g', { transform: 'translate(' + ((i % 5) * 48 + 2) + ' ' + (Math.floor(i / 5) * 29 + 3) + ')' }, g);
+        var u = el('g', { 'class': 'c-truck c-pop', style: '--d:' + i }, t);
+        // plataforma, chasis y cabina con ventana calada
+        el('path', { d: 'M0 11h27v4H0zM0 15h40v3H0zM27 15V4h8l5 6.5V15zM29 6v4.5h8.6L34.2 6z', 'fill-rule': 'evenodd' }, u);
+        el('path', { d: 'M3 11 15 2.5v5', 'class': 'c-boom' }, u);   // pluma y gancho
+        el('circle', { cx: 8, cy: 19.5, r: 3.6, 'class': 'c-wheel' }, u);
+        el('circle', { cx: 32, cy: 19.5, r: 3.6, 'class': 'c-wheel' }, u);
+      }
+    },
+    gauge: function (g) { // 100 % = medidor completo
+      for (var i = 0; i < 10; i++) {
+        el('rect', { x: i * 24 + 1.5, y: 44, width: 21, height: 34, rx: 1, 'class': 'c-cell', style: '--d:' + i * 3 }, g);
+      }
+      [0, 50, 100].forEach(function (v, i) {
+        var x = Math.min(Math.max(v * 2.4, .5), 239.5);
+        el('line', { x1: x, y1: 86, x2: x, y2: 94, 'class': 'r-tick' + (v === 100 ? ' r-tick--major' : '') }, g);
+        text(g, v * 2.4, 112, v + ' %', v === 0 ? 'start' : v === 100 ? 'end' : 'middle', '', i * 12);
+      });
+      text(g, 0, 30, 'FLOTA', 'start', 'c-faint', 0);
+      text(g, 240, 30, 'CON GPS', 'end', 'c-faint', 0);
+    }
+  };
+
+  /* Círculos: esfera de 200 × 200 detrás de la cifra */
+  var rings = {
     clock: function (g) { // 24 h = esfera de 24 horas con barrido continuo
       el('circle', { cx: C, cy: C, r: 92, 'class': 'r-hair' }, g);
       ticks(g, 24, 6, 80, 92);
@@ -346,13 +376,6 @@
       el('line', { x1: C, y1: C - 66, x2: tip[0], y2: tip[1], 'class': 'r-hand' }, sw);
       el('circle', { cx: tip[0], cy: tip[1], r: 4, 'class': 'r-hub' }, sw);
     },
-    full: function (g) { // 100 % = anillo completo
-      el('circle', { cx: C, cy: C, r: 84, 'class': 'r-track' }, g);
-      el('path', { d: arc(84, 0, 359.99), 'class': 'r-glow', pathLength: 1 }, g);
-      el('path', { d: arc(84, 0, 359.99), 'class': 'r-seg', pathLength: 1 }, g);
-      el('circle', { cx: C, cy: C, r: 68, 'class': 'r-dash' }, el('g', { 'class': reduced ? '' : 'r-spin r-spin--rev' }, g));
-      orbit(g);
-    },
     week: function (g) { // Diario = los 7 días de la semana
       el('circle', { cx: C, cy: C, r: 84, 'class': 'r-track' }, g);
       segments(g, 7, 6);
@@ -361,10 +384,19 @@
   };
 
   Array.prototype.forEach.call(cells, function (dt, row) {
-    var svg = el('svg', { 'class': 'ring', viewBox: '0 0 200 200', 'aria-hidden': 'true', focusable: 'false' });
-    var g = el('g', { style: '--row:' + row }, svg);
-    builders[dt.getAttribute('data-ring')](g);
-    dt.insertBefore(svg, dt.firstChild);
+    var kind = dt.getAttribute('data-ring'), svg, g;
+    if (rings[kind]) {
+      svg = el('svg', { 'class': 'ring', viewBox: '0 0 200 200', 'aria-hidden': 'true', focusable: 'false' });
+      g = el('g', { style: '--row:' + row }, svg);
+      rings[kind](g);
+      dt.insertBefore(svg, dt.firstChild);
+    } else if (charts[kind]) {
+      svg = el('svg', { 'class': 'ring ring--chart', viewBox: '0 0 240 150', 'aria-hidden': 'true', focusable: 'false' });
+      g = el('g', { style: '--row:' + row }, svg);
+      charts[kind](g);
+      dt.classList.add('fig--chart');
+      dt.appendChild(svg);
+    }
   });
 
   var root = document.documentElement, seen = false;

@@ -539,7 +539,7 @@ html.palette-anim, html.palette-anim *, html.palette-anim *::before, html.palett
   .palette__sw { width: 20px; height: 20px; }
 }
 
-/* ---------- DEMO paleta azul: cifras en círculos (pedido del cliente) ---------- */
+/* ---------- DEMO paleta azul: gráficos de las cifras (pedido del cliente) ---------- */
 .ring { display: none; }
 :root[data-palette="azul"] .figs {
   position: relative; overflow: hidden;
@@ -566,39 +566,49 @@ html.palette-anim, html.palette-anim *, html.palette-anim *::before, html.palett
   text-shadow: 0 0 24px color-mix(in srgb, var(--amber) 55%, transparent);
 }
 :root[data-palette="azul"] .ledger dd { max-width: 24ch; margin-inline: auto; }
+/* Las seis cifras ocupan la misma caja cuadrada: en 24 h y Diario el círculo va detrás del número;
+   en las demás, el número arriba y el gráfico debajo */
+:root[data-palette="azul"] .ledger .fig--chart { display: flex; flex-direction: column; justify-content: center; align-items: stretch; gap: 18px; }
 :root[data-palette="azul"] .ring {
   display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; z-index: -1;
 }
+:root[data-palette="azul"] .ring--chart { position: static; height: auto; z-index: auto; }
 .ring .r-track { fill: none; stroke: var(--ink-line); stroke-width: 10; }
 .ring .r-seg { fill: none; stroke: var(--amber); stroke-width: 10; stroke-linecap: butt; }
 .ring .r-tick { stroke: var(--amber); stroke-width: 2; stroke-linecap: round; }
 .ring .r-tick--major { stroke: var(--on-ink); stroke-width: 3; }
-.ring .r-dot { fill: var(--amber); }
 .ring .r-hair { fill: none; stroke: color-mix(in srgb, var(--on-ink) 22%, transparent); stroke-width: 1; }
-.ring .r-dash { fill: none; stroke: color-mix(in srgb, var(--amber) 55%, transparent); stroke-width: 1.5; stroke-dasharray: 2 6; }
 .ring .r-txt { fill: var(--on-ink-3); font: 500 10px var(--f-mono); letter-spacing: .06em; text-shadow: none; }
 .ring .r-hand { stroke: var(--amber); stroke-width: 2.5; stroke-linecap: round; }
 .ring .r-hub { fill: var(--amber); }
-.ring .r-sat { fill: var(--on-ink); }
-.ring .r-glow { fill: none; stroke: var(--amber); stroke-width: 10; filter: blur(8px); opacity: .45; }
+.ring .c-cell { fill: var(--amber); }
+.ring .c-axis { stroke: color-mix(in srgb, var(--on-ink) 28%, transparent); stroke-width: 1; }
+.ring .c-bar { fill: none; stroke: var(--amber); stroke-width: 8; }
+.ring .c-faint { fill: color-mix(in srgb, var(--on-ink-3) 80%, transparent); }
+.ring .c-truck { fill: var(--amber); }
+.ring .c-boom { fill: none; stroke: var(--amber); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.ring .c-wheel { fill: var(--ink); stroke: var(--on-ink); stroke-width: 1.8; }
+.ring text.c-key { fill: var(--on-ink-2); }
 
-/* Animación: los trazos se dibujan; los números nunca cambian */
+/* Animación: los trazos se dibujan y las piezas se encienden; los números nunca cambian */
 :root[data-palette="azul"] .figs.rings-armed .r-seg,
-:root[data-palette="azul"] .figs.rings-armed .r-glow { stroke-dasharray: 1 1; stroke-dashoffset: 1; }
+:root[data-palette="azul"] .figs.rings-armed .c-bar { stroke-dasharray: 1 1; stroke-dashoffset: 1; }
 :root[data-palette="azul"] .figs.rings-armed .r-tick,
-:root[data-palette="azul"] .figs.rings-armed .r-dot,
-:root[data-palette="azul"] .figs.rings-armed .r-txt { opacity: 0; }
+:root[data-palette="azul"] .figs.rings-armed .r-txt,
+:root[data-palette="azul"] .figs.rings-armed .c-cell,
+:root[data-palette="azul"] .figs.rings-armed .c-pop { opacity: 0; }
+:root[data-palette="azul"] .figs.rings-armed .c-pop { transform: translateY(5px); transform-box: fill-box; }
 :root[data-palette="azul"] .figs.rings-in .r-seg,
-:root[data-palette="azul"] .figs.rings-in .r-glow {
+:root[data-palette="azul"] .figs.rings-in .c-bar {
   stroke-dashoffset: 0; transition: stroke-dashoffset 1.1s var(--ease); transition-delay: calc(var(--d, 0) * 45ms + var(--row, 0) * 120ms);
 }
 :root[data-palette="azul"] .figs.rings-in .r-tick,
-:root[data-palette="azul"] .figs.rings-in .r-dot,
-:root[data-palette="azul"] .figs.rings-in .r-txt {
-  opacity: 1; transition: opacity .5s var(--ease); transition-delay: calc(var(--d, 0) * 30ms + var(--row, 0) * 120ms);
+:root[data-palette="azul"] .figs.rings-in .r-txt,
+:root[data-palette="azul"] .figs.rings-in .c-cell,
+:root[data-palette="azul"] .figs.rings-in .c-pop {
+  opacity: 1; transform: none;
+  transition: opacity .5s var(--ease), transform .6s var(--ease); transition-delay: calc(var(--d, 0) * 30ms + var(--row, 0) * 120ms);
 }
-.ring .r-spin { transform-origin: 100px 100px; animation: ring-spin 28s linear infinite; }
-.ring .r-spin--rev { animation-direction: reverse; animation-duration: 40s; }
 .ring .r-sweep { transform-origin: 100px 100px; animation: ring-spin 12s linear infinite; }
 @keyframes ring-spin { to { transform: rotate(360deg); } }
 
@@ -612,4 +622,5 @@ html.palette-anim, html.palette-anim *, html.palette-anim *::before, html.palett
   :root[data-palette="azul"] .ledger__row .fig { width: min(100%, 164px); font-size: 23px; }
   :root[data-palette="azul"] .ledger dd { font-size: 14px; }
   :root[data-palette="azul"] .ledger small { font-size: 10px; }
+  :root[data-palette="azul"] .ledger .fig--chart { gap: 12px; }
 }
