@@ -170,7 +170,9 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 8px; }
 
 /* Registro de servicio (interacción firma) */
+/* En escritorio el panel baja a la línea del botón Conversemos para despejar la foto */
 .log {
+  align-self: end;
   background: color-mix(in srgb, var(--ink) 86%, transparent);
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
   border: 1px solid var(--ink-line); border-radius: 2px;
