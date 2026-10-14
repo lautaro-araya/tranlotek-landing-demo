@@ -13,28 +13,60 @@
     if (el) track(el.getAttribute('data-ga'), { ubicacion: el.getAttribute('data-ga-lugar') || '' });
   });
 
-  /* Portada: registro de servicio que avanza retiro → ruta → entrega */
+  /* Portada: registro de servicio que avanza retiro → ruta → entrega.
+     Cada tramo dura STEP ms; la barra se llena de forma continua y la hora
+     de cada fila solo aparece cuando la etapa se cierra. */
   var log = document.querySelector('[data-log]');
   if (log && !reduced) {
+    var panel = log.closest('.log');
     var rows = log.querySelectorAll('li');
+    var times = Array.prototype.map.call(rows, function (li) { return li.querySelector('time'); });
+    var stamps = times.map(function (t) { return t ? t.textContent : ''; });
     var bar = document.querySelector('.log__track span');
-    var step = 0, timer = null;
+    var STEP = 1800, HOLD = 2600, FADE = 500;
+    var n = rows.length, step = 0, timer = null;
+
+    var setBar = function (p, ms) {
+      if (!bar) return;
+      bar.style.setProperty('--dur', ms + 'ms');
+      bar.style.setProperty('--p', p);
+    };
     var render = function () {
       rows.forEach(function (li, i) {
-        li.classList.toggle('is-done', i < step);
+        var done = i < step;
+        li.classList.toggle('is-done', done);
         li.classList.toggle('is-now', i === step);
+        if (times[i]) times[i].textContent = done ? stamps[i] : '--:--';
       });
-      if (bar) bar.style.setProperty('--p', Math.min(step / rows.length, 1));
     };
-    var tick = function () {
-      step = step >= rows.length ? 0 : step + 1;
+    var advance = function () {
       render();
-      timer = setTimeout(tick, step === rows.length ? 3200 : 1700);
+      if (step < n) {
+        setBar((step + 1) / n, STEP);
+        step++;
+        timer = setTimeout(advance, STEP);
+      } else {
+        timer = setTimeout(reset, HOLD);
+      }
     };
-    step = 0; render();
-    timer = setTimeout(tick, 1400);
+    var reset = function () {
+      panel.classList.add('is-reset');
+      step = 0;
+      rows.forEach(function (li) { li.classList.remove('is-done', 'is-now'); });
+      timer = setTimeout(function () {
+        setBar(0, 0);
+        render();
+        if (bar) void bar.offsetWidth;
+        panel.classList.remove('is-reset');
+        timer = setTimeout(advance, 400);
+      }, FADE);
+    };
+
+    step = 0; setBar(0, 0); render();
+    timer = setTimeout(advance, 700);
     document.addEventListener('visibilitychange', function () {
-      if (document.hidden) { clearTimeout(timer); } else { clearTimeout(timer); timer = setTimeout(tick, 900); }
+      clearTimeout(timer);
+      if (!document.hidden) reset();
     });
   }
 
