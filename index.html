@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=7">
+<link rel="stylesheet" href="assets/css/styles.css?v=8">
 <!-- DEMO: aplica la paleta guardada antes de pintar. Eliminar junto al selector al publicar. -->
 <script>try { if (localStorage.getItem('tk-paleta') === 'azul') document.documentElement.setAttribute('data-palette', 'azul'); } catch (e) {}</script>
 
@@ -395,14 +395,18 @@
 </footer>
 
 <!-- DEMO: selector de paleta para presentar al cliente. Eliminar al publicar. -->
-<div class="palette" role="radiogroup" aria-label="Paleta de colores (demo)">
-  <span class="palette__label" aria-hidden="true">Paleta</span>
-  <button type="button" role="radio" aria-checked="true" data-palette-opt="ambar" title="Ámbar (brief)">
-    <i class="palette__sw" style="--a:#E8A317;--b:#14181F" aria-hidden="true"></i><span>Ámbar</span>
-  </button>
-  <button type="button" role="radio" aria-checked="false" data-palette-opt="azul" title="Azul (marca)">
-    <i class="palette__sw" style="--a:#0A64AB;--b:#0B1A2C" aria-hidden="true"></i><span>Azul</span>
-  </button>
+<div class="palette">
+  <button type="button" class="palette__info" aria-label="Aviso sobre el selector de paleta" aria-describedby="palette-note" aria-expanded="false">!</button>
+  <span class="palette__note" id="palette-note" role="tooltip">Selector solo disponible en el demo. No aparece en el sitio publicado.</span>
+  <div class="palette__opts" role="radiogroup" aria-label="Paleta de colores (demo)">
+    <span class="palette__label" aria-hidden="true">Paleta</span>
+    <button type="button" role="radio" aria-checked="true" data-palette-opt="ambar" title="Ámbar (brief)">
+      <i class="palette__sw" style="--a:#E8A317;--b:#14181F" aria-hidden="true"></i><span>Ámbar</span>
+    </button>
+    <button type="button" role="radio" aria-checked="false" data-palette-opt="azul" title="Azul (marca)">
+      <i class="palette__sw" style="--a:#0A64AB;--b:#0B1A2C" aria-hidden="true"></i><span>Azul</span>
+    </button>
+  </div>
 </div>
 
 <a class="wa" href="https://wa.me/56961234567?text=Hola%20Tranlotek%2C%20quiero%20conversar%20sobre%20un%20traslado" target="_blank" rel="noopener" data-ga="clic_whatsapp" data-ga-lugar="flotante" aria-label="Escríbenos por WhatsApp">
@@ -410,6 +414,6 @@
   <span>WhatsApp</span>
 </a>
 
-<script src="assets/js/main.js?v=6" defer></script>
+<script src="assets/js/main.js?v=7" defer></script>
 </body>
 </html>

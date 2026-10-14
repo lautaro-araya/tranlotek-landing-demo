@@ -221,6 +221,8 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .ledger dd { font-size: 17px; line-height: 1.4; color: var(--on-ink-2); max-width: 26ch; }
 .ledger small { display: block; margin-top: 6px; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--on-ink-3); }
 
+/* DEMO paleta azul: sin la franja de peligro antes de Conversemos */
+:root[data-palette="azul"] .chevron { display: none; }
 .chevron { height: 16px; background: repeating-linear-gradient(-45deg, var(--amber) 0 12px, var(--ink) 12px 24px); }
 
 /* ---------- 4 · Respaldo ---------- */
@@ -520,23 +522,51 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   background: var(--ink); border-radius: 4px;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--paper) 14%, transparent), 0 10px 24px -8px color-mix(in srgb, var(--black) 55%, transparent);
 }
+.palette__opts { display: flex; align-items: center; gap: 2px; }
 .palette__label { padding: 0 10px 0 8px; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--on-ink-3); }
-.palette button {
+.palette__opts button {
   display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px;
   background: none; border: 0; border-radius: 2px; color: var(--on-ink-2);
   font-size: 14px; font-weight: 500; cursor: pointer;
   transition: background-color .2s var(--ease), color .2s var(--ease);
 }
-.palette button:hover { color: var(--on-ink); background: var(--ink-hover); }
-.palette button[aria-checked="true"] { color: var(--on-ink); background: var(--ink-hover); box-shadow: inset 0 -2px 0 var(--amber); }
+.palette__opts button:hover { color: var(--on-ink); background: var(--ink-hover); }
+.palette__opts button[aria-checked="true"] { color: var(--on-ink); background: var(--ink-hover); box-shadow: inset 0 -2px 0 var(--amber); }
+/* Aviso "!" sobre el selector: al pasar o enfocar muestra que es solo del demo */
+.palette__info {
+  position: absolute; left: 0; bottom: calc(100% + 8px);
+  display: grid; place-items: center; width: 28px; height: 28px; padding: 0;
+  background: var(--amber); color: var(--ink); border: 0; border-radius: 50%;
+  font: 700 16px/1 var(--f-display); cursor: help;
+  box-shadow: 0 0 0 3px var(--ink);
+}
+.palette__info::after { content: ""; position: absolute; inset: -8px; }
+.palette__note {
+  position: absolute; left: 0; bottom: calc(100% + 44px);
+  width: max-content; max-width: min(260px, calc(100vw - 32px)); padding: 10px 12px;
+  background: var(--paper); color: var(--ink); border-radius: 2px;
+  font-size: 14px; line-height: 1.4;
+  box-shadow: 0 10px 24px -8px color-mix(in srgb, var(--black) 55%, transparent);
+  opacity: 0; visibility: hidden; transform: translateY(4px);
+  transition: opacity .2s var(--ease), transform .2s var(--ease), visibility 0s .2s;
+}
+.palette__info:hover + .palette__note,
+.palette__info:focus-visible + .palette__note,
+.palette__info[aria-expanded="true"] + .palette__note {
+  opacity: 1; visibility: visible; transform: none; transition-delay: 0s;
+}
+.palette__info[data-hide] + .palette__note { opacity: 0; visibility: hidden; }
 .palette__sw { width: 16px; height: 16px; border-radius: 2px; background: linear-gradient(135deg, var(--a) 50%, var(--b) 50%); box-shadow: 0 0 0 1px color-mix(in srgb, var(--paper) 30%, transparent); }
 html.palette-anim, html.palette-anim *, html.palette-anim *::before, html.palette-anim *::after {
   transition: background-color .45s var(--ease), color .45s var(--ease), border-color .45s var(--ease), fill .45s var(--ease) !important;
 }
 @media (max-width: 680px) {
-  .palette__label, .palette button span { display: none; }
-  .palette button { width: 44px; padding: 0; justify-content: center; }
+  .palette__label, .palette__opts button span { display: none; }
+  .palette__opts button { width: 44px; padding: 0; justify-content: center; }
   .palette__sw { width: 20px; height: 20px; }
+  .palette__info { position: relative; bottom: auto; flex: none; width: 24px; height: 24px; margin: 0 6px 0 8px; font-size: 14px; box-shadow: none; }
+  .palette__info::after { inset: -10px; }
+  .palette__note { bottom: calc(100% + 10px); }
 }
 
 /* ---------- DEMO paleta azul: gráficos de las cifras (pedido del cliente) ---------- */

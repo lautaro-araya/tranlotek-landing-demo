@@ -259,6 +259,18 @@
     try { localStorage.setItem('tk-paleta', name); } catch (e) {}
   }
   apply(root.getAttribute('data-palette') === 'azul' ? 'azul' : 'ambar', false);
+
+  /* Aviso "!": en pantallas táctiles se abre y cierra con un toque; Escape o un toque fuera lo cierran */
+  var info = document.querySelector('.palette__info');
+  if (info) {
+    var setOpen = function (v) { info.setAttribute('aria-expanded', v ? 'true' : 'false'); };
+    info.addEventListener('click', function () { info.removeAttribute('data-hide'); setOpen(info.getAttribute('aria-expanded') !== 'true'); });
+    info.addEventListener('blur', function () { setOpen(false); info.removeAttribute('data-hide'); });
+    info.addEventListener('mouseleave', function () { info.removeAttribute('data-hide'); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { setOpen(false); info.setAttribute('data-hide', ''); }
+    });
+  }
   Array.prototype.forEach.call(opts, function (b, i) {
     b.addEventListener('click', function () { apply(b.getAttribute('data-palette-opt'), true); });
     b.addEventListener('keydown', function (e) {
