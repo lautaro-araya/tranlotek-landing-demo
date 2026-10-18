@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=13">
+<link rel="stylesheet" href="assets/css/styles.css?v=15">
 
 <script type="application/ld+json">
 {
@@ -77,6 +77,7 @@
     <nav class="bar__nav" aria-label="Secciones">
       <a href="#respaldo">Respaldo</a>
       <a href="#sectores">Sectores</a>
+      <a href="#conversemos">Contacto</a>
     </nav>
     <nav class="bar__act" aria-label="Contacto">
       <a class="bar__tel" href="tel:+56412964800" data-ga="clic_telefono" data-ga-lugar="barra">
@@ -106,9 +107,9 @@
     <div class="hero__grid">
       <div class="hero__copy">
         <h1 id="hero-h">Un modelo de traslado probado en <span class="nowrap">12.000 servicios.</span></h1>
-        <p class="hero__sub">Cuéntanos tu problema de traslado. Te mostramos cómo nuestro modelo ya lo resuelve.</p>
+        <p class="hero__sub">2 años trasladando activos críticos para el sector público. Ese mismo estándar, ahora para tu empresa.</p>
         <div class="hero__cta">
-          <a class="btn btn--accent btn--lg" href="#conversemos" data-ga="clic_conversemos" data-ga-lugar="portada">Conversemos</a>
+          <a class="btn btn--accent btn--lg" href="#conversemos" data-ga="clic_conversemos" data-ga-lugar="portada">Solicitar reunión comercial</a>
         </div>
       </div>
 
@@ -163,12 +164,16 @@
 <!-- 4 · Respaldo -->
 <section id="respaldo" class="resp" aria-labelledby="resp-h" data-reveal>
   <div class="wrap resp__grid">
-    <div class="resp__copy">
-      <h2 id="resp-h" class="h2">Operamos con el estándar del sector público.</h2>
-      <p class="lead">2 años trasladando activos críticos para el sector público. Ese mismo estándar es el que aplicamos a tu operación.</p>
+    <figure class="resp__photo">
+      <img src="assets/img/central-1600.webp" srcset="assets/img/central-800.webp 800w, assets/img/central-1600.webp 1600w"
+           sizes="(min-width: 900px) 66vw, 100vw" width="1600" height="900" loading="lazy" decoding="async"
+           alt="Sala de monitoreo con pantallas encendidas">
+      <figcaption><span class="mono">Central 24 h</span> Atención telefónica todos los días.</figcaption>
+    </figure>
 
+    <div class="resp__copy">
       <table class="checks">
-        <caption>Mecanismos de verificación</caption>
+        <caption id="resp-h">Mecanismos de verificación</caption>
         <tbody>
           <tr>
             <th scope="row"><span class="checks__k"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>Documentación al día de flota y conductores</span></th>
@@ -189,13 +194,6 @@
         </tbody>
       </table>
     </div>
-
-    <figure class="resp__photo">
-      <img src="assets/img/central-1600.webp" srcset="assets/img/central-800.webp 800w, assets/img/central-1600.webp 1600w"
-           sizes="(min-width: 960px) 52vw, 100vw" width="1600" height="900" loading="lazy" decoding="async"
-           alt="Sala de monitoreo con pantallas encendidas">
-      <figcaption><span class="mono">Central 24 h</span> Atención telefónica todos los días.</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -251,7 +249,7 @@
     </div>
 
     <div class="form-sheet">
-      <div class="form-sheet__head"><strong>Solicitud de conversación</strong><span class="mono">tranlotek.com</span></div>
+      <div class="form-sheet__head"><strong>Solicitud de reunión comercial</strong><span class="mono">tranlotek.com</span></div>
 
       <div class="form-ok" id="form-ok" role="status" tabindex="-1" hidden>
         <p class="form-ok__h">Gracias. Te llamamos pronto.</p>
@@ -297,7 +295,7 @@
           <input type="hidden" name="t" id="form-t" value="">
         </div>
         <p class="form-err" id="form-err" role="alert" hidden></p>
-        <button class="btn btn--accent btn--block" type="submit">Quiero conversar</button>
+        <button class="btn btn--accent btn--block" type="submit">Solicitar reunión</button>
         <p class="form-legal">Usamos tus datos solo para contactarte. <a href="privacidad.html">Política de privacidad</a>.</p>
       </form>
     </div>
