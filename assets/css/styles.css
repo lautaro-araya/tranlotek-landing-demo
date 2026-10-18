@@ -210,27 +210,7 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   -webkit-mask-image: linear-gradient(90deg, #000 58%, rgba(0, 0, 0, .55) 80%, transparent 100%);
           mask-image: linear-gradient(90deg, #000 58%, rgba(0, 0, 0, .55) 80%, transparent 100%);
 }
-/* Un tinte de marca sobre la foto, más presente hacia el lado del texto */
-.resp__photo::before {
-  content: ""; position: absolute; inset: 0 0 auto; aspect-ratio: 3 / 2; z-index: 1; pointer-events: none;
-  background: linear-gradient(90deg, transparent 30%, color-mix(in srgb, var(--accent-bg) 22%, transparent) 75%, transparent 100%);
-  mix-blend-mode: multiply;
-}
 /* En desktop la sección ocupa una pantalla completa: la foto llena el alto disponible */
-@media (min-width: 901px) {
-  .resp {
-    --resp-pad: clamp(40px, 6vh, 72px);
-    --resp-img-h: clamp(460px, calc(100svh - var(--bar-total) - 2 * var(--resp-pad) - 40px), 900px);
-    min-height: calc(100svh - var(--bar-total)); padding-block: var(--resp-pad);
-    display: grid; align-items: center;
-  }
-  .resp__photo img { aspect-ratio: auto; height: var(--resp-img-h); object-position: 38% 50%; }
-  .resp__photo::before { aspect-ratio: auto; height: var(--resp-img-h); }
-  .checks caption { font-size: 14px; padding-bottom: 14px; }
-  .checks th, .checks td { padding-block: 20px; }
-  .checks th { font-size: 19px; }
-  .checks td { font-size: 14px; }
-}
 @media (min-width: 901px) and (max-width: 1180px) {
   .resp__photo { grid-column: 1 / span 7; }
   .resp__copy { grid-column: 8 / -1; }
@@ -250,6 +230,34 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .resp__photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 2px 0 0 2px; }
 .resp__photo figcaption { display: flex; gap: 12px; align-items: baseline; padding-top: 12px; font-size: 14px; color: var(--muted); }
 .resp__photo figcaption .mono { white-space: nowrap; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+/* Desktop: la sección ocupa una pantalla. La tabla mide lo mismo que la foto y sus renglones
+   cruzan el espacio entre ambas y entran en la parte difuminada de la imagen. */
+@media (min-width: 901px) {
+  .resp {
+    --resp-pad: clamp(40px, 6vh, 72px);
+    --resp-img-h: clamp(460px, calc(100svh - var(--bar-total) - 2 * var(--resp-pad) - 40px), 900px);
+    --resp-cap: 34px;
+    --resp-reach: clamp(140px, 15vw, 260px);
+    min-height: calc(100svh - var(--bar-total)); padding-block: var(--resp-pad);
+    display: grid; align-items: center;
+  }
+  .resp__grid { align-items: start; }
+  .resp__photo img { aspect-ratio: auto; height: var(--resp-img-h); object-position: 38% 50%; }
+  .checks { height: calc(var(--resp-img-h) - var(--resp-cap)); }
+  .checks caption { height: var(--resp-cap); padding-bottom: 0; font-size: 14px; line-height: 1; }
+  .checks th, .checks td { vertical-align: bottom; padding-block: 0 20px; }
+  .checks tr { height: 25%; }
+  .checks th { position: relative; font-size: 19px; line-height: 1.3; }
+  .checks th .ico { width: 24px; height: 24px; }
+  .checks td { font-size: 14px; }
+  .checks th::before {
+    content: ""; position: absolute; right: 100%; bottom: -1px; width: var(--resp-reach); height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rule-strong) 70%, var(--rule));
+    pointer-events: none;
+  }
+  .rv .checks th::before { transform: scaleX(0); transform-origin: right; }
+  .rv-in .checks th::before { transform: none; transition: transform 1.1s var(--ease); transition-delay: calc(var(--i, 0) * 90ms + 500ms); }
+}
 
 /* Entrada de la sección Respaldo (se arma solo con JS y sin reduced-motion) */
 .rv [data-rv] { opacity: 0; transform: translateY(22px); }
@@ -404,7 +412,6 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   .resp__photo, .resp__copy { grid-column: 1 / -1; grid-row: auto; }
   .resp__grid { row-gap: clamp(40px, 5vw, 72px); }
   .resp__photo img { -webkit-mask-image: none; mask-image: none; }
-  .resp__photo::before { content: none; }
   .resp__photo img { aspect-ratio: 16 / 10; border-radius: 2px; }
   .panel { grid-template-columns: 1fr 1fr; }
   .plate--main { grid-row: auto; grid-column: 1 / -1; }
