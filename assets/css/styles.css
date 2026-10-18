@@ -216,9 +216,25 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   background: linear-gradient(90deg, transparent 30%, color-mix(in srgb, var(--accent-bg) 22%, transparent) 75%, transparent 100%);
   mix-blend-mode: multiply;
 }
+/* En desktop la sección ocupa una pantalla completa: la foto llena el alto disponible */
+@media (min-width: 901px) {
+  .resp {
+    --resp-pad: clamp(40px, 6vh, 72px);
+    --resp-img-h: clamp(460px, calc(100svh - var(--bar-total) - 2 * var(--resp-pad) - 40px), 900px);
+    min-height: calc(100svh - var(--bar-total)); padding-block: var(--resp-pad);
+    display: grid; align-items: center;
+  }
+  .resp__photo img { aspect-ratio: auto; height: var(--resp-img-h); object-position: 38% 50%; }
+  .resp__photo::before { aspect-ratio: auto; height: var(--resp-img-h); }
+  .checks caption { font-size: 14px; padding-bottom: 14px; }
+  .checks th, .checks td { padding-block: 20px; }
+  .checks th { font-size: 19px; }
+  .checks td { font-size: 14px; }
+}
 @media (min-width: 901px) and (max-width: 1180px) {
   .resp__photo { grid-column: 1 / span 7; }
   .resp__copy { grid-column: 8 / -1; }
+  .checks th { font-size: 17px; }
 }
 .checks { width: 100%; border-collapse: collapse; }
 .checks caption {
