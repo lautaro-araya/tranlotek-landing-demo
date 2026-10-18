@@ -428,51 +428,7 @@
   });
 })();
 
-/* DEMO: selector de paleta (ámbar del brief / azul de marca). Eliminar al publicar. */
-(function () {
-  var root = document.documentElement;
-  var opts = document.querySelectorAll('[data-palette-opt]');
-  if (!opts.length) return;
-  var meta = document.querySelector('meta[name="theme-color"]');
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function apply(name, animate) {
-    if (animate && !reduced) {
-      root.classList.add('palette-anim');
-      setTimeout(function () { root.classList.remove('palette-anim'); }, 500);
-    }
-    if (name === 'azul') root.setAttribute('data-palette', 'azul'); else root.removeAttribute('data-palette');
-    Array.prototype.forEach.call(opts, function (b) {
-      b.setAttribute('aria-checked', b.getAttribute('data-palette-opt') === name ? 'true' : 'false');
-    });
-    if (meta) meta.setAttribute('content', name === 'azul' ? '#0B1A2C' : '#14181F');
-    try { localStorage.setItem('tk-paleta', name); } catch (e) {}
-  }
-  apply(root.getAttribute('data-palette') === 'azul' ? 'azul' : 'ambar', false);
-
-  /* Aviso "!": en pantallas táctiles se abre y cierra con un toque; Escape o un toque fuera lo cierran */
-  var info = document.querySelector('.palette__info');
-  if (info) {
-    var setOpen = function (v) { info.setAttribute('aria-expanded', v ? 'true' : 'false'); };
-    info.addEventListener('click', function () { info.removeAttribute('data-hide'); setOpen(info.getAttribute('aria-expanded') !== 'true'); });
-    info.addEventListener('blur', function () { setOpen(false); info.removeAttribute('data-hide'); });
-    info.addEventListener('mouseleave', function () { info.removeAttribute('data-hide'); });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') { setOpen(false); info.setAttribute('data-hide', ''); }
-    });
-  }
-  Array.prototype.forEach.call(opts, function (b, i) {
-    b.addEventListener('click', function () { apply(b.getAttribute('data-palette-opt'), true); });
-    b.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft' || e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-        e.preventDefault();
-        var n = opts[(i + 1) % opts.length];
-        apply(n.getAttribute('data-palette-opt'), true); n.focus();
-      }
-    });
-  });
-})();
-
-/* DEMO paleta azul: gráficos de las cifras.
+/* Gráficos de las cifras.
    24 h y Diario van en círculo (esfera y semana); el resto usa una forma que
    representa la cantidad tal cual: conteo, línea de tiempo, pictogramas y medidor.
    No inventan datos; los números siguen escritos en el HTML. */
@@ -600,9 +556,8 @@
     }
   });
 
-  var root = document.documentElement, seen = false;
   function play() {
-    if (reduced || root.getAttribute('data-palette') !== 'azul') return;
+    if (reduced) return;
     figs.classList.remove('rings-in');
     figs.classList.add('rings-armed');
     void figs.offsetWidth;
@@ -610,15 +565,7 @@
   }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (en) {
-      seen = en[0].isIntersecting;
-      if (seen && !figs.classList.contains('rings-in')) play();
+      if (en[0].isIntersecting && !figs.classList.contains('rings-in')) play();
     }, { threshold: .25 }).observe(figs);
   }
-  new MutationObserver(function () {
-    if (root.getAttribute('data-palette') === 'azul') {
-      if (seen) play(); else figs.classList.remove('rings-in');
-    } else {
-      figs.classList.remove('rings-armed', 'rings-in');
-    }
-  }).observe(root, { attributes: true, attributeFilter: ['data-palette'] });
 })();
