@@ -202,9 +202,24 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 
 /* ---------- 4 · Respaldo ---------- */
 .resp { padding-block: var(--sec); }
-.resp__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(40px, 5vw, 72px); align-items: center; }
-/* La foto es la protagonista: sale del margen y llega al borde izquierdo de la pantalla */
-.resp__photo { --bleed: calc(max(0px, (100vw - var(--max)) / 2) + var(--gutter)); margin-left: calc(-1 * var(--bleed)); }
+.resp__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(16px, 2vw, 28px); align-items: center; }
+/* La foto es la protagonista (8 de 12 columnas) y se disuelve en el papel a medida que se acerca a la tabla */
+.resp__photo { grid-column: 1 / span 8; grid-row: 1; }
+.resp__copy { grid-column: 9 / -1; grid-row: 1; position: relative; }
+.resp__photo img {
+  -webkit-mask-image: linear-gradient(90deg, #000 58%, rgba(0, 0, 0, .55) 80%, transparent 100%);
+          mask-image: linear-gradient(90deg, #000 58%, rgba(0, 0, 0, .55) 80%, transparent 100%);
+}
+/* Un tinte de marca sobre la foto, más presente hacia el lado del texto */
+.resp__photo::before {
+  content: ""; position: absolute; inset: 0 0 auto; aspect-ratio: 3 / 2; z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg, transparent 30%, color-mix(in srgb, var(--accent-bg) 22%, transparent) 75%, transparent 100%);
+  mix-blend-mode: multiply;
+}
+@media (min-width: 901px) and (max-width: 1180px) {
+  .resp__photo { grid-column: 1 / span 7; }
+  .resp__copy { grid-column: 8 / -1; }
+}
 .checks { width: 100%; border-collapse: collapse; }
 .checks caption {
   text-align: left; padding-bottom: 12px; border-bottom: 2px solid var(--ink);
@@ -216,8 +231,8 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .checks th .ico { color: var(--accent-ink); }
 .checks td { text-align: right; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
 .resp__photo { position: relative; }
-.resp__photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 0 2px 2px 0; }
-.resp__photo figcaption { padding-left: var(--bleed); display: flex; gap: 12px; align-items: baseline; padding-top: 12px; font-size: 14px; color: var(--muted); }
+.resp__photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 2px 0 0 2px; }
+.resp__photo figcaption { display: flex; gap: 12px; align-items: baseline; padding-top: 12px; font-size: 14px; color: var(--muted); }
 .resp__photo figcaption .mono { white-space: nowrap; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
 
 /* Entrada de la sección Respaldo (se arma solo con JS y sin reduced-motion) */
@@ -370,8 +385,10 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   .ledger__row:not(:nth-child(3n + 1)) { padding-left: 0; border-left: 0; }
   .ledger__row:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--ink-line); }
   .resp__grid, .talk__grid { grid-template-columns: 1fr; }
-  .resp__photo { margin-left: 0; }
-  .resp__photo figcaption { padding-left: 0; }
+  .resp__photo, .resp__copy { grid-column: 1 / -1; grid-row: auto; }
+  .resp__grid { row-gap: clamp(40px, 5vw, 72px); }
+  .resp__photo img { -webkit-mask-image: none; mask-image: none; }
+  .resp__photo::before { content: none; }
   .resp__photo img { aspect-ratio: 16 / 10; border-radius: 2px; }
   .panel { grid-template-columns: 1fr 1fr; }
   .plate--main { grid-row: auto; grid-column: 1 / -1; }
