@@ -285,7 +285,7 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .sec-head p { color: var(--on-ink-3); font-size: 17px; max-width: 36ch; }
 .sec-head--paper p { color: var(--muted); }
 
-/* ---------- 6 · Cobertura ---------- */
+/* ---------- 6 · Seguridad ---------- */
 .cob { background: var(--paper-2); padding-block: var(--sec); }
 .cob__grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 24px; }
 /* Foto y título comparten filas entre columnas: las dos fotos terminan a la misma altura */
@@ -296,6 +296,10 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .plate figcaption { padding-top: 12px; border-top: 0; color: var(--ink); }
 .plate h3 { font: 700 clamp(20px, 1.8vw, 24px)/1.15 var(--f-display); letter-spacing: -.01em; }
 .plate--main h3 { font-size: clamp(26px, 3vw, 40px); font-weight: 800; }
+/* La foto del GPS queda en el código pero oculta; la de seguridad ocupa todo el ancho */
+.plate[hidden] { display: none; }
+.cob__grid--solo { grid-template-columns: minmax(0, 1fr); }
+.cob__grid--solo .plate img { aspect-ratio: 1584 / 672; }
 
 /* ---------- 8 · Conversemos ---------- */
 .talk { background: var(--ink); color: var(--on-ink); }
@@ -417,6 +421,7 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   .cob__grid { grid-template-columns: 1fr; grid-template-rows: none; row-gap: 20px; }
   .plate { grid-row: auto; grid-template-rows: auto auto; }
   .plate--tall img { height: auto; min-height: 0; aspect-ratio: 4 / 5; }
+  .cob__grid--solo .plate img { aspect-ratio: 16 / 10; }
 
   .fields { grid-template-columns: 1fr; }
   .contact > div { grid-template-columns: 1fr; gap: 4px; }
@@ -531,8 +536,14 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   .ledger .fig--chart { gap: 12px; }
 }
 
-/* ---------- 3b · Cobertura (mapa del Gran Concepción) ---------- */
-.cov { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: clamp(32px, 5vw, 80px); padding-block: clamp(40px, 5vw, 72px) clamp(56px, 7vw, 104px); border-top: 1px solid var(--ink-line); }
+/* ---------- 5 · Cobertura (mapa del Gran Concepción) ---------- */
+.covsec {
+  background:
+    radial-gradient(55% 60% at 70% 50%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%),
+    var(--ink);
+  color: var(--on-ink); padding-block: var(--sec);
+}
+.cov { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: clamp(32px, 5vw, 80px); }
 .cov__copy { display: flex; flex-direction: column; gap: 18px; max-width: 46ch; }
 .cov__k { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 .cov__h { font: 800 clamp(38px, 4.8vw, 68px)/.95 var(--f-display); letter-spacing: -.03em; }
