@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=18">
+<link rel="stylesheet" href="assets/css/styles.css?v=19">
 
 <script type="application/ld+json">
 {
@@ -36,7 +36,7 @@
   "logo": "https://tranlotek.com/assets/img/logo-tranlotek.png",
   "image": "https://tranlotek.com/assets/img/hero-1200.webp",
   "telephone": "+56412964800",
-  "email": "contacto@tranlotek.cl",
+  "email": "contacto@tranlotek.com",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Concepción",
@@ -76,7 +76,7 @@
     </a>
     <nav class="bar__nav" aria-label="Secciones">
       <a href="#respaldo">Respaldo</a>
-      <a href="#sectores">Sectores</a>
+      <a href="#cobertura">Cobertura</a>
       <a href="#conversemos">Contacto</a>
     </nav>
     <nav class="bar__act" aria-label="Contacto">
@@ -197,40 +197,13 @@
   </div>
 </section>
 
-<!-- 6 · Sectores -->
-<section id="sectores" class="sect" aria-labelledby="sect-h">
+<!-- 6 · Cobertura -->
+<section id="cobertura" class="cob" aria-label="Cobertura">
   <div class="wrap">
-    <header class="sec-head sec-head--paper">
-      <h2 id="sect-h" class="h2">Un solo modelo, para cada sector</h2>
-      <p>Las mismas actas, fotos, GPS y reportes. Elige tu sector.</p>
-    </header>
-
-    <div class="tabs" role="tablist" aria-label="Sector">
-      <button class="tab" role="tab" id="tab-log" aria-controls="panel-log" aria-selected="true" data-sector="Transporte y logística">Transporte y logística</button>
-      <button class="tab" role="tab" id="tab-seg" aria-controls="panel-seg" aria-selected="false" tabindex="-1" data-sector="Aseguradoras">Aseguradoras</button>
-      <button class="tab" role="tab" id="tab-flota" aria-controls="panel-flota" aria-selected="false" tabindex="-1" data-sector="Flotas de empresa">Flotas de empresa</button>
-      <button class="tab" role="tab" id="tab-conc" aria-controls="panel-conc" aria-selected="false" tabindex="-1" data-sector="Concesionarias y talleres">Concesionarias y talleres</button>
-    </div>
-
-    <div class="panel" role="tabpanel" id="panel-log" aria-labelledby="tab-log" tabindex="0">
+    <div class="cob__grid">
       <figure class="plate plate--main"><img src="assets/img/log-punto-1600.webp" srcset="assets/img/log-punto-800.webp 800w, assets/img/log-punto-1600.webp 1600w" sizes="(min-width: 960px) 62vw, 100vw" width="1600" height="1000" loading="lazy" decoding="async" alt="Grúa en ruta con un vehículo cargado sobre la plataforma"><figcaption><h3>Punto a punto</h3></figcaption></figure>
       <figure class="plate"><img src="assets/img/log-seguridad-800.webp" srcset="assets/img/log-seguridad-800.webp 800w, assets/img/log-seguridad-1600.webp 1600w" sizes="(min-width: 960px) 30vw, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Vehículo asegurado sobre la plataforma de la grúa"><figcaption><h3>Máxima seguridad</h3></figcaption></figure>
-      <figure class="plate"><img src="assets/img/log-gps-800.webp" srcset="assets/img/log-gps-800.webp 800w, assets/img/log-gps-1600.webp 1600w" sizes="(min-width: 960px) 30vw, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Pantalla del sistema GPS con la flota de grúas sobre el mapa"><figcaption><h3>Seguimiento GPS</h3></figcaption></figure>
-    </div>
-    <div class="panel" role="tabpanel" id="panel-seg" aria-labelledby="tab-seg" tabindex="0" hidden>
-      <figure class="plate plate--main"><img src="assets/img/seg-trazabilidad-1600.webp" srcset="assets/img/seg-trazabilidad-800.webp 800w, assets/img/seg-trazabilidad-1600.webp 1600w" sizes="(min-width: 960px) 62vw, 100vw" width="1600" height="1000" loading="lazy" decoding="async" alt="Mapa con la ruta GPS de un traslado y la hora de cada punto"><figcaption><h3>Trazabilidad</h3></figcaption></figure>
-      <figure class="plate"><img src="assets/img/seg-documentacion-800.webp" srcset="assets/img/seg-documentacion-800.webp 800w, assets/img/seg-documentacion-1024.webp 1024w" sizes="(min-width: 960px) 30vw, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Firma del acta de retiro y entrega"><figcaption><h3>Documentación completa</h3></figcaption></figure>
-      <figure class="plate"><img src="assets/img/seg-fotos-800.webp" srcset="assets/img/seg-fotos-800.webp 800w, assets/img/seg-fotos-1600.webp 1600w" sizes="(min-width: 960px) 30vw, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Registro fotográfico del vehículo antes del carguío"><figcaption><h3>Set fotográfico</h3></figcaption></figure>
-    </div>
-    <div class="panel" role="tabpanel" id="panel-flota" aria-labelledby="tab-flota" tabindex="0" hidden>
-      <figure class="plate plate--main"><img src="assets/img/flota-convenio-1024.webp" srcset="assets/img/flota-convenio-800.webp 800w, assets/img/flota-convenio-1024.webp 1024w" sizes="(min-width: 960px) 62vw, 100vw" width="1024" height="640" loading="lazy" decoding="async" alt="Firma de convenio con una empresa cliente"><figcaption><h3>Convenio mensual</h3></figcaption></figure>
-      <figure class="plate"><img src="assets/img/flota-pesados-800.webp" srcset="assets/img/flota-pesados-800.webp 800w, assets/img/flota-pesados-921.webp 921w" sizes="(min-width: 960px) 30vw, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Grúa pesada junto a un bus para su traslado"><figcaption><h3>Livianos y pesados</h3></figcaption></figure>
-      <figure class="plate"><img src="assets/img/flota-contacto-800.webp" srcset="assets/img/flota-contacto-800.webp 800w, assets/img/flota-contacto-1024.webp 1024w" sizes="(min-width: 960px) 30vw, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Coordinadora de la central atendiendo el teléfono"><figcaption><h3>Un solo contacto</h3></figcaption></figure>
-    </div>
-    <div class="panel" role="tabpanel" id="panel-conc" aria-labelledby="tab-conc" tabindex="0" hidden>
-      <figure class="plate plate--main"><img src="assets/img/conc-ventana-1600.webp" srcset="assets/img/conc-ventana-800.webp 800w, assets/img/conc-ventana-1600.webp 1600w" sizes="(min-width: 960px) 62vw, 100vw" width="1600" height="1000" loading="lazy" decoding="async" alt="Vehículo entregado en la concesionaria a la hora pactada"><figcaption><h3>Ventana horaria</h3></figcaption></figure>
-      <figure class="plate"><img src="assets/img/conc-registro-800.webp" srcset="assets/img/conc-registro-800.webp 800w, assets/img/conc-registro-1600.webp 1600w" sizes="(min-width: 960px) 30vw, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Inspección del estado del vehículo antes del traslado"><figcaption><h3>Registro de estado</h3></figcaption></figure>
-      <figure class="plate"><img src="assets/img/conc-programados-800.webp" srcset="assets/img/conc-programados-800.webp 800w, assets/img/conc-programados-1600.webp 1600w" sizes="(min-width: 960px) 30vw, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Grúas listas al inicio de la jornada de traslados programados"><figcaption><h3>Traslados programados</h3></figcaption></figure>
+      <figure class="plate"><img src="assets/img/log-gps-800.webp?v=2" srcset="assets/img/log-gps-800.webp?v=2 800w, assets/img/log-gps-1600.webp?v=2 1600w" sizes="(min-width: 960px) 30vw, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Pantalla del sistema GPS con la flota de grúas sobre el mapa"><figcaption><h3>Seguimiento GPS</h3></figcaption></figure>
     </div>
   </div>
 </section>
@@ -243,7 +216,7 @@
       <p class="lead lead--dark">Te contactamos para conocer tu operación.</p>
       <dl class="contact">
         <div><dt>Central 24 h</dt><dd><a class="contact__tel mono" href="tel:+56412964800" data-ga="clic_telefono" data-ga-lugar="cierre">+56 41 296 4800</a></dd></div>
-        <div><dt>Correo</dt><dd><a href="mailto:contacto@tranlotek.cl">contacto@tranlotek.cl</a></dd></div>
+        <div><dt>Correo</dt><dd><a href="mailto:contacto@tranlotek.com">contacto@tranlotek.com</a></dd></div>
         <div><dt>WhatsApp</dt><dd><a href="https://wa.me/56961234567?text=Hola%20Tranlotek%2C%20quiero%20conversar%20sobre%20un%20traslado" target="_blank" rel="noopener" data-ga="clic_whatsapp" data-ga-lugar="cierre"><span class="mono">+56 9 6123 4567</span></a></dd></div>
       </dl>
     </div>
@@ -320,6 +293,6 @@
   <span>WhatsApp</span>
 </a>
 
-<script src="assets/js/main.js?v=9" defer></script>
+<script src="assets/js/main.js?v=10" defer></script>
 </body>
 </html>

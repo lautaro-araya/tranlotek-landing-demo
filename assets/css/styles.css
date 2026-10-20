@@ -283,23 +283,9 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .sec-head p { color: var(--on-ink-3); font-size: 17px; max-width: 36ch; }
 .sec-head--paper p { color: var(--muted); }
 
-/* ---------- 6 · Sectores ---------- */
-.sect { background: var(--paper-2); padding-block: var(--sec); }
-.tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; margin-bottom: -1px; position: relative; z-index: 1; }
-.tabs::-webkit-scrollbar { display: none; }
-.tabs { border-bottom: 1px solid var(--rule-strong); margin-bottom: 24px; gap: 0; }
-.tab {
-  flex: none; min-height: 52px; padding: 14px 22px 12px 0; margin-right: 28px;
-  background: none; color: var(--muted);
-  border: 0; border-bottom: 3px solid transparent; margin-bottom: -1px; border-radius: 0;
-  font-weight: 500; font-size: 17px; cursor: pointer;
-  transition: color .2s var(--ease), border-color .2s var(--ease);
-}
-.tab:hover { color: var(--ink); border-bottom-color: var(--rule-strong); }
-.tab[aria-selected="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--accent); }
-.panel { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); grid-template-rows: auto auto; gap: 24px 24px; }
-.panel[hidden] { display: none; }
-.panel:focus-visible { outline-offset: 6px; }
+/* ---------- 6 · Cobertura ---------- */
+.cob { background: var(--paper-2); padding-block: var(--sec); }
+.cob__grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); grid-template-rows: auto auto; gap: 24px 24px; }
 .plate { display: flex; flex-direction: column; min-width: 0; }
 .plate img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 2px; background: var(--paper-3); }
 .plate--main { grid-row: span 2; }
@@ -307,10 +293,6 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .plate figcaption { padding-top: 12px; border-top: 0; color: var(--ink); }
 .plate h3 { font: 700 clamp(20px, 1.8vw, 24px)/1.15 var(--f-display); letter-spacing: -.01em; }
 .plate--main h3 { font-size: clamp(26px, 3vw, 40px); font-weight: 800; }
-.panel.is-in .plate { animation: plate-in .6s var(--ease) both; }
-.panel.is-in .plate:nth-child(2) { animation-delay: .06s; }
-.panel.is-in .plate:nth-child(3) { animation-delay: .12s; }
-@keyframes plate-in { from { opacity: 0; transform: translateY(10px); } }
 
 /* ---------- 8 · Conversemos ---------- */
 .talk { background: var(--ink); color: var(--on-ink); }
@@ -354,8 +336,6 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
 }
 .field__msg button:hover { color: var(--accent-ink); }
-.field select.is-set { animation: flash 1s var(--ease); }
-@keyframes flash { 0% { background-color: var(--accent-tint); } }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-err { margin: 16px 0 0; padding: 12px 14px; background: #F7E1DD; color: #7A1B12; font-size: 15px; border-radius: 2px; }
 #form .btn--block { margin-top: 22px; }
@@ -413,7 +393,7 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   .resp__grid { row-gap: clamp(40px, 5vw, 72px); }
   .resp__photo img { -webkit-mask-image: none; mask-image: none; }
   .resp__photo img { aspect-ratio: 16 / 10; border-radius: 2px; }
-  .panel { grid-template-columns: 1fr 1fr; }
+  .cob__grid { grid-template-columns: 1fr 1fr; }
   .plate--main { grid-row: auto; grid-column: 1 / -1; }
   .plate--main img { aspect-ratio: 16 / 10; }
 }
@@ -434,9 +414,7 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   .ledger__row { flex-direction: row; align-items: baseline; gap: 16px; padding: 20px 0; }
   .ledger__row .fig { flex: none; width: 6.4ch; font-size: 36px; }
   .checks td { display: none; }
-  .panel { grid-template-columns: 1fr; gap: 20px; }
-  .tabs { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
-  .tab { margin-right: 0; padding: 10px 0; font-size: 15px; text-align: left; }
+  .cob__grid { grid-template-columns: 1fr; gap: 20px; }
 
   .fields { grid-template-columns: 1fr; }
   .contact > div { grid-template-columns: 1fr; gap: 4px; }

@@ -123,46 +123,6 @@
     rvObs.observe(rvSec);
   }
 
-  /* Sectores: pestañas accesibles; el sector elegido se copia al formulario */
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
-  var select = document.getElementById('sector');
-
-  function selectTab(tab, focus) {
-    tabs.forEach(function (t) {
-      var on = t === tab;
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-      t.tabIndex = on ? 0 : -1;
-      var panel = document.getElementById(t.getAttribute('aria-controls'));
-      panel.hidden = !on;
-      panel.classList.toggle('is-in', on);
-    });
-    if (focus) tab.focus();
-    if (select) {
-      select.value = tab.getAttribute('data-sector');
-      select.classList.remove('is-set'); void select.offsetWidth; select.classList.add('is-set');
-    }
-  }
-
-  tabs.forEach(function (tab, i) {
-    tab.addEventListener('click', function () {
-      if (tab.getAttribute('aria-selected') === 'true') return;
-      selectTab(tab);
-      track('cambio_sector', { sector: tab.getAttribute('data-sector') });
-    });
-    tab.addEventListener('keydown', function (e) {
-      var n = null;
-      if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
-      else if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
-      else if (e.key === 'Home') n = tabs[0];
-      else if (e.key === 'End') n = tabs[tabs.length - 1];
-      if (n) {
-        e.preventDefault();
-        selectTab(n, true);
-        track('cambio_sector', { sector: n.getAttribute('data-sector') });
-      }
-    });
-  });
-
   /* Formulario */
   var form = document.getElementById('form');
   if (!form) return;
@@ -420,8 +380,6 @@
     touched = {};
     Object.keys(f).forEach(function (name) { msg(f[name], ''); });
     if (stamp) stamp.value = String(Date.now());
-    var cur = document.querySelector('[role="tab"][aria-selected="true"]');
-    if (cur && select) select.value = cur.getAttribute('data-sector');
     ok.hidden = true;
     form.hidden = false;
     f.nombre.focus();
