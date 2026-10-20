@@ -153,6 +153,8 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
   border: 1px solid var(--ink-line); border-radius: 2px;
   font-size: 15px;
+  /* Se corre hacia el margen libre de la derecha (hasta 64px) para despejar al equipo de la foto */
+  translate: clamp(0px, (100vw - var(--max)) / 2, 64px) 0;
 }
 .log__head { display: flex; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--ink-line); font: 500 12px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--on-ink-3); }
 .log__tag { color: var(--accent); }
@@ -226,7 +228,7 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .checks__k { display: flex; align-items: center; gap: 14px; }
 .checks th .ico { color: var(--accent-ink); }
 .checks td { text-align: right; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-.resp__photo { position: relative; }
+.resp__photo { position: relative; overflow: clip; } /* el zoom de entrada no genera scroll horizontal */
 .resp__photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 2px 0 0 2px; }
 .resp__photo figcaption { display: flex; gap: 12px; align-items: baseline; padding-top: 12px; font-size: 14px; color: var(--muted); }
 .resp__photo figcaption .mono { white-space: nowrap; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
@@ -383,7 +385,7 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   .bar__nav a { font-size: 14px; }
   .hero__in { min-height: min(calc(100svh - var(--bar-total)), 860px); }
   .hero__grid { grid-template-columns: 1fr; gap: 40px; }
-  .log { max-width: 440px; }
+  .log { max-width: 440px; translate: none; }
 }
 @media (max-width: 900px) {
   .ledger { grid-template-columns: 1fr 1fr; }
@@ -403,7 +405,7 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   .hero__strip { font-size: 11px; }
   .hero__strip-r { display: none; }
   .hero__img { bottom: auto; height: 62%; }
-  .hero__img img { object-position: 64% 50%; }
+  .hero__img img { object-position: 50% 50%; }
   .hero::before { background: linear-gradient(0deg, var(--ink) 40%, color-mix(in srgb, var(--ink) 55%, transparent) 62%, color-mix(in srgb, var(--black) 25%, transparent) 85%, color-mix(in srgb, var(--black) 55%, transparent) 100%); }
   .hero__grid { align-content: end; padding-block: 34vh clamp(40px, 6vw, 72px); }
   .hero__cta .btn { width: 100%; }
