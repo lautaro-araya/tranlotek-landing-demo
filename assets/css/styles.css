@@ -530,3 +530,52 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   .ledger small { font-size: 10px; }
   .ledger .fig--chart { gap: 12px; }
 }
+
+/* ---------- 3b · Cobertura (mapa del Gran Concepción) ---------- */
+.cov { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: clamp(32px, 5vw, 80px); padding-block: clamp(40px, 5vw, 72px) clamp(56px, 7vw, 104px); border-top: 1px solid var(--ink-line); }
+.cov__copy { display: flex; flex-direction: column; gap: 18px; max-width: 46ch; }
+.cov__k { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.cov__h { font: 800 clamp(38px, 4.8vw, 68px)/.95 var(--f-display); letter-spacing: -.03em; }
+.cov__p { font-size: 17px; line-height: 1.5; color: var(--on-ink-2); }
+.cov__figs { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 0 32px; margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--ink-line); }
+.cov__figs dt { font-size: clamp(22px, 2.2vw, 30px); font-weight: 500; letter-spacing: -.02em; color: var(--accent); white-space: nowrap; }
+.cov__figs dd { margin-top: 4px; font-size: 14px; color: var(--on-ink-3); }
+.cov__src { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--on-ink-3); }
+.cov__map { width: 100%; max-height: 620px; overflow: visible; }
+.cov__grid line { stroke: color-mix(in srgb, var(--on-ink) 7%, transparent); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.cov__wave { fill: url(#cov-dots); }
+#cov-dots circle { fill: var(--accent); opacity: .5; }
+.cov__edge { fill: color-mix(in srgb, var(--accent) 7%, transparent); stroke: var(--accent); stroke-width: 1.6; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.cov__pin circle { fill: var(--ink); stroke: var(--on-ink); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+.cov__lead { fill: none; stroke: color-mix(in srgb, var(--on-ink) 30%, transparent); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.cov__map text { fill: var(--on-ink-2); font: 500 10px var(--f-mono); letter-spacing: .04em; paint-order: stroke; stroke: var(--ink); stroke-width: 4px; stroke-linejoin: round; }
+.cov__hq text { fill: var(--on-ink); font-weight: 600; }
+.cov__dot { fill: var(--on-ink); stroke: var(--accent); stroke-width: 3; }
+.cov__ping { fill: none; stroke: var(--accent); stroke-width: 1.5; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.cov__scale path { fill: none; stroke: var(--on-ink-3); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.cov__scale text { fill: var(--on-ink-3); text-anchor: middle; }
+/* Se dibuja el borde, la zona se llena desde la central, aparecen las comunas y la central late */
+.cov.is-armed .cov__edge { stroke-dasharray: 1 1; stroke-dashoffset: 1; fill-opacity: 0; }
+.cov.is-armed .cov__wave { transform: scale(0); transform-box: fill-box; transform-origin: center; }
+.cov.is-armed .cov__pin, .cov.is-armed .cov__hq, .cov.is-armed .cov__scale { opacity: 0; }
+.cov.is-in .cov__edge { stroke-dashoffset: 0; fill-opacity: 1; transition: stroke-dashoffset 2.4s cubic-bezier(.65, 0, .35, 1), fill-opacity 1s var(--ease) 1.8s; }
+.cov.is-in .cov__wave { transform: scale(1); transition: transform 2.6s var(--ease) .9s; }
+.cov.is-in .cov__hq { opacity: 1; transition: opacity .5s var(--ease) .5s; }
+.cov.is-in .cov__pin { opacity: 1; transition: opacity .5s var(--ease); transition-delay: calc(1.6s + var(--i) * 110ms); }
+.cov.is-in .cov__scale { opacity: 1; transition: opacity .6s var(--ease) 2.6s; }
+.cov.is-in .cov__ping { animation: cov-ping 2.8s var(--ease) 1.2s infinite; }
+.cov.is-in .cov__ping--2 { animation-delay: 2.6s; }
+@keyframes cov-ping { 0% { opacity: .9; transform: scale(.2); } 100% { opacity: 0; transform: scale(1.6); } }
+@media (max-width: 900px) {
+  .cov { grid-template-columns: 1fr; }
+  .cov__map { max-height: 560px; }
+}
+@media (max-width: 680px) {
+  .cov__figs { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 12px; }
+  .cov__figs dt { font-size: 20px; }
+  .cov__figs dd { font-size: 13px; }
+  .cov__map text { font-size: 13.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cov .cov__ping { animation: none; }
+}

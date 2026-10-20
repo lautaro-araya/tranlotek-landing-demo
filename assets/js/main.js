@@ -527,3 +527,31 @@
     }, { threshold: .25 }).observe(figs);
   }
 })();
+
+/* Cobertura: la animación del mapa parte al entrar en pantalla; sin JS o con movimiento reducido se ve completo */
+(function () {
+  var cov = document.querySelector('[data-cov]');
+  if (!cov) return;
+
+  // Las guías de las comunas terminan justo antes de su etiqueta, mida lo que mida el texto
+  function leads() {
+    Array.prototype.forEach.call(cov.querySelectorAll('.cov__pin'), function (pin) {
+      var t = pin.querySelector('text'), path = pin.querySelector('.cov__lead'), c = pin.querySelector('circle');
+      var b = t.getBBox(), west = t.getAttribute('text-anchor') === 'start';
+      var gx = west ? b.x + b.width + 6 : b.x - 6;
+      path.setAttribute('d', 'M' + c.getAttribute('cx') + ' ' + c.getAttribute('cy') + 'L' + gx.toFixed(1) + ' ' + (b.y + b.height / 2).toFixed(1));
+    });
+  }
+  leads();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(leads);
+  window.addEventListener('resize', leads);
+
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (cov.getBoundingClientRect().top < window.innerHeight * .9) return;
+  cov.classList.add('is-armed');
+  var obs = new IntersectionObserver(function (en) {
+    if (en[0].isIntersecting) { cov.classList.add('is-in'); obs.disconnect(); }
+  }, { threshold: .3 });
+  obs.observe(cov);
+})();
