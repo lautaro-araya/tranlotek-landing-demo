@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tranlotek · Retiro y traslado de vehículos en el Biobío</title>
+<meta name="description" content="Retiro y traslado de vehículos con grúa en la Región del Biobío. 25 grúas, control GPS en toda la flota, central 24 h y reporte diario de cada servicio.">
+<!-- Demo para el cliente: quitar noindex al publicar en tranlotek.com -->
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B1A2C">
+<link rel="icon" href="imagenes/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="imagenes/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="preload" as="image" type="image/webp" href="imagenes/hero-1200.webp" imagesrcset="imagenes/hero-800.webp 800w, imagenes/hero-1200.webp 1200w, imagenes/hero-1584.webp 1584w" imagesizes="(min-width: 900px) 64vw, 100vw">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- Íconos (trazo 1.8, estilo Lucide) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8.5 19H16a3.5 3.5 0 0 0 0-7H8a3.5 3.5 0 0 1 0-7h7.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-sign" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 16V6h11v10M13 9h4l4 4v3h-8"/><circle cx="6.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.6A8.4 8.4 0 1 1 21 11.5z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+</svg>
+
+<!-- 0 · Barra -->
+<header class="bar" data-bar>
+  <div class="bar__in">
+    <a class="bar__logo" href="#inicio" aria-label="Tranlotek, ir al inicio"><img src="imagenes/logo-tranlotek-oscuro.webp" alt="" width="560" height="157"></a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <ul class="nav__list">
+        <li><a href="#estandar">Estándar</a></li>
+        <li><a href="#modelo">El modelo</a></li>
+        <li><a href="#sectores">Sectores</a></li>
+        <li><a href="#cobertura">Cobertura</a></li>
+        <li><a href="#pasos">Cómo empezamos</a></li>
+      </ul>
+      <a class="btn btn--accent btn--lg btn--block nav__cta" href="#conversemos">Solicitar reunión comercial</a>
+    </nav>
+    <div class="bar__end">
+      <a class="btn btn--dark bar__cta" href="#conversemos">Solicitar reunión comercial</a>
+      <button class="nav__toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú" data-nav-toggle>
+        <svg class="ico ico--open" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="ico ico--close" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- 1 · Portada (formato del hero de bairesdev.com, sin el ciclo de palabras) -->
+<section class="hero" id="inicio" aria-labelledby="hero-h">
+  <picture class="hero__media">
+    <source type="image/webp" srcset="imagenes/hero-800.webp 800w, imagenes/hero-1200.webp 1200w, imagenes/hero-1584.webp 1584w" sizes="(min-width: 900px) 64vw, 100vw">
+    <img src="imagenes/hero-1200.webp" alt="Equipo de Tranlotek frente a su flota de grúas" width="1584" height="672" fetchpriority="high">
+  </picture>
+  <div class="hero__wrap">
+    <div class="hero__copy">
+      <h1 class="hero__title" id="hero-h">Un modelo de traslado probado en <span class="hero__accent">12.000 servicios.</span></h1>
+      <p class="hero__lead">Retiro y traslado de vehículos con grúa en la Región del Biobío: <strong>25 grúas</strong>, <strong>control GPS</strong> en toda la flota y <strong>reporte diario</strong> de cada servicio.</p>
+      <a class="btn btn--accent btn--lg" href="#conversemos">Solicitar reunión comercial</a>
+    </div>
+  </div>
+  <div class="hero__curve" aria-hidden="true"></div>
+</section>
+
+<!-- 2 · Estándar del sector público (ocupa el lugar de la franja de logos del original) -->
+<section class="std" id="estandar" aria-labelledby="std-h">
+  <div class="wrap std__grid">
+    <div class="std__copy" data-reveal>
+      <p class="eyebrow">Mecanismos de verificación</p>
+      <h2 class="h2" id="std-h">Operamos con el estándar del sector público<span class="dot">.</span></h2>
+      <p class="lead">2 años trasladando activos críticos para el sector público. Ese mismo estándar es el que aplicamos a tu operación.</p>
+      <ul class="checks">
+        <li><span class="checks__ico"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg></span>Documentación al día de flota y conductores</li>
+        <li><span class="checks__ico"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg></span>Control de flota GPS</li>
+        <li><span class="checks__ico"><svg class="ico" aria-hidden="true"><use href="#i-cam"/></svg></span>Actas y set fotográfico</li>
+        <li><span class="checks__ico"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></span>Reportes diarios</li>
+      </ul>
+    </div>
+    <figure class="std__media" data-reveal>
+      <picture>
+        <source type="image/webp" srcset="imagenes/monitoreo-800.webp 800w, imagenes/monitoreo-1024.webp 1024w" sizes="(min-width: 900px) 52vw, 100vw">
+        <img src="imagenes/monitoreo-800.webp" alt="Central de Tranlotek con pantallas de monitoreo GPS de la flota" width="1024" height="502" loading="lazy" decoding="async">
+      </picture>
+      <figcaption class="std__tag"><span class="live" aria-hidden="true"></span>Central telefónica 24 h · todos los días</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 3 · Cifras -->
+<section class="figs" aria-labelledby="figs-h">
+  <div class="wrap">
+    <div class="sec-head sec-head--center sec-head--dark" data-reveal>
+      <p class="eyebrow eyebrow--dark">Operación en cifras</p>
+      <h2 class="h2" id="figs-h">El modelo, medido<span class="dot">.</span></h2>
+    </div>
+    <dl class="ledger">
+      <div class="ledger__row">
+        <dt class="fig" data-ring="tally">12.000</dt>
+        <dd>traslados realizados en el Biobío <small class="mono">acumulado a octubre de 2026</small></dd>
+      </div>
+      <div class="ledger__row">
+        <dt class="fig" data-ring="timeline">2 años</dt>
+        <dd>trasladando activos críticos del sector público</dd>
+      </div>
+      <div class="ledger__row">
+        <dt class="fig" data-ring="fleet">25</dt>
+        <dd>grúas para todo tipo de vehículos</dd>
+      </div>
+      <div class="ledger__row">
+        <dt class="fig" data-ring="clock">24 h</dt>
+        <dd>central telefónica, todos los días</dd>
+      </div>
+      <div class="ledger__row">
+        <dt class="fig" data-ring="gauge">100 %</dt>
+        <dd>de la flota con control GPS</dd>
+      </div>
+      <div class="ledger__row">
+        <dt class="fig" data-ring="week">Diario</dt>
+        <dd>reporte de cada servicio</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- 4 · Lo que recibes en cada traslado -->
+<section class="deliv" id="modelo" aria-labelledby="deliv-h">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">El modelo</p>
+      <h2 class="h2" id="deliv-h">Lo que recibes en cada traslado<span class="dot">.</span></h2>
+      <p class="lead">Ejemplos ilustrativos del modelo en operación.</p>
+    </div>
+
+    <div class="deliv__grid">
+      <article class="card" data-reveal>
+        <div class="card__demo" aria-hidden="true">
+          <div class="acta">
+            <div class="acta__top"><strong>Acta de traslado</strong><span class="mono">Folio 12.048</span></div>
+            <dl class="acta__rows">
+              <div><dt>Patente</dt><dd class="mono">XX·XX·00</dd></div>
+              <div><dt>Origen</dt><dd>Punto A</dd></div>
+              <div><dt>Destino</dt><dd>Punto B</dd></div>
+              <div><dt>Retiro / entrega</dt><dd class="mono">14:32 / 15:10</dd></div>
+              <div><dt>Conductor</dt><dd>Licencia vigente</dd></div>
+            </dl>
+            <div class="acta__sign"><svg viewBox="0 0 120 30"><path d="M4 22c10-14 16-14 14-2s10-14 18-10-4 14 6 10 10-12 18-8 4 10 12 6 14-6 22-8"/></svg><span>Firma de recepción</span></div>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg></span>
+          <h3 class="h3">Acta por servicio</h3>
+          <p>Retiro y entrega con hora, origen, destino y firma de quien recibe.</p>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <div class="card__demo" aria-hidden="true">
+          <div class="shots">
+            <div class="shot"><svg viewBox="0 0 64 32"><path d="M6 24h52M10 24v-7l8-7h26l10 7h4v7"/><circle cx="18" cy="24" r="4"/><circle cx="46" cy="24" r="4"/></svg><span class="mono">Frontal · 14:31</span></div>
+            <div class="shot"><svg viewBox="0 0 64 32"><path d="M6 24h52M54 24v-7l-8-7H20L10 17H6v7"/><circle cx="46" cy="24" r="4"/><circle cx="18" cy="24" r="4"/></svg><span class="mono">Trasera · 14:31</span></div>
+            <div class="shot"><svg viewBox="0 0 64 32"><path d="M4 24h56M8 24v-6l10-8h22l12 8h6v6"/><circle cx="17" cy="24" r="4"/><circle cx="47" cy="24" r="4"/><path d="M24 10v8M36 10v8"/></svg><span class="mono">Lateral · 14:32</span></div>
+            <div class="shot shot--ok"><svg viewBox="0 0 64 32"><path d="M20 16l8 8 16-16"/></svg><span class="mono">Entrega · 15:10</span></div>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-cam"/></svg></span>
+          <h3 class="h3">Set fotográfico</h3>
+          <p>Fotos del vehículo al retirarlo y al entregarlo, con la hora de cada una.</p>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <div class="card__demo" aria-hidden="true">
+          <div class="report">
+            <div class="report__top"><strong>Reporte diario</strong><span class="report__gps"><span class="live"></span>GPS</span></div>
+            <div class="report__bars">
+              <span style="--h:.55"></span><span style="--h:.8"></span><span style="--h:.62"></span><span style="--h:.9"></span><span style="--h:.7"></span><span style="--h:.45"></span><span style="--h:.35"></span>
+            </div>
+            <div class="report__days mono"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></span>
+          <h3 class="h3">Reporte diario</h3>
+          <p>Servicios, tiempos y estado de cada traslado, con la ruta GPS.</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="deliv__note" data-reveal><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg><span>¿Tu empresa usa un formulario o registro propio? <strong>Lo sumamos al servicio. El modelo no cambia.</strong></span></p>
+  </div>
+</section>
+
+<!-- 5 · Sectores -->
+<section class="sectors" id="sectores" aria-labelledby="sect-h">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Sectores</p>
+      <h2 class="h2" id="sect-h">Un solo modelo, para cada sector<span class="dot">.</span></h2>
+      <p class="lead">Las mismas actas, fotos, GPS y reportes. Elige tu sector.</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Sector" data-tabs>
+      <button class="tab" role="tab" id="tab-log" aria-controls="sect-panel" aria-selected="true" data-sec="log">Transporte y logística</button>
+      <button class="tab" role="tab" id="tab-seg" aria-controls="sect-panel" aria-selected="false" tabindex="-1" data-sec="seg">Aseguradoras</button>
+      <button class="tab" role="tab" id="tab-flota" aria-controls="sect-panel" aria-selected="false" tabindex="-1" data-sec="flota">Flotas de empresa</button>
+      <button class="tab" role="tab" id="tab-conc" aria-controls="sect-panel" aria-selected="false" tabindex="-1" data-sec="conc">Concesionarias y talleres</button>
+    </div>
+
+    <div class="panel" id="sect-panel" role="tabpanel" aria-labelledby="tab-log" tabindex="0">
+      <figure class="panel__media">
+        <picture>
+          <source type="image/webp" srcset="imagenes/log-seguridad-800.webp 800w, imagenes/log-seguridad-1584.webp 1584w" sizes="(min-width: 900px) 46vw, 100vw">
+          <img src="imagenes/log-seguridad-800.webp" alt="Grúa de Tranlotek trasladando un auto por la ciudad" width="1584" height="672" loading="lazy" decoding="async">
+        </picture>
+      </figure>
+      <div class="panel__body">
+        <p class="panel__k mono" data-sec-label>Transporte y logística</p>
+        <ul class="points" data-points>
+          <li><span class="points__ico"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg></span><div><h3 class="h3">Punto a punto</h3><p>Retiramos en origen y entregamos en destino, con la hora de cada etapa registrada.</p></div></li>
+          <li><span class="points__ico"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></span><div><h3 class="h3">Máxima seguridad</h3><p>El vehículo va cargado y asegurado en la plataforma durante todo el trayecto.</p></div></li>
+          <li><span class="points__ico"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg></span><div><h3 class="h3">Seguimiento GPS</h3><p>Cada grúa reporta su posición a la central mientras dura el traslado.</p></div></li>
+        </ul>
+        <a class="link-arrow" href="#conversemos" data-sec-cta>Solicitar reunión <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Cobertura -->
+<section id="cobertura" class="covsec" aria-labelledby="cov-h">
+  <div class="wrap">
+  <!-- Cobertura: mapa generado con herramientas/zona-cobertura.py -->
+  <div class="cov" data-cov>
+    <div class="cov__copy">
+      <p class="cov__k mono">Cobertura · zona de origen</p>
+      <h2 id="cov-h" class="cov__h">Gran Concepción<span class="dot">.</span></h2>
+      <p class="cov__p">Retiramos vehículos en las 10 comunas del Gran Concepción, con la central operando desde Concepción.</p>
+      <dl class="cov__figs">
+        <div><dt class="mono">10</dt><dd>comunas</dd></div>
+        <div><dt class="mono">1.960 km²</dt><dd>de zona de retiro</dd></div>
+        <div><dt class="mono">84 km</dt><dd>de norte a sur</dd></div>
+      </dl>
+      <p class="cov__src mono">Límites: © OpenStreetMap</p>
+    </div>
+    <!-- cobertura:svg -->
+    <svg class="cov__map" viewBox="-150 -20 519 458" role="img" aria-labelledby="cov-map-t">
+      <title id="cov-map-t">Mapa del Gran Concepción con sus 10 comunas</title>
+      <defs><pattern id="cov-dots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.15"/></pattern><clipPath id="cov-clip"><path d="M0.0 178.5 1.6 181.1 3.2 181.5 7.1 178.8 11.3 178.7 11.4 181.5 13.9 181.5 15.4 185.1 17.6 186.8 16.5 188.3 17.6 189.8 16.6 190.5 19.2 192.7 19.5 194.7 18.5 195.1 24.9 198.4 27.7 204.6 28.6 232.2 27.0 251.5 21.8 272.3 13.4 290.9 12.7 294.8 16.3 301.5 17.2 309.0 17.9 309.4 21.0 307.2 24.1 308.0 26.3 306.9 28.9 308.5 33.2 322.9 29.8 332.0 23.8 332.6 23.5 335.7 21.3 336.2 19.2 340.9 20.0 344.2 21.8 343.3 25.1 345.2 25.7 347.8 24.1 350.5 27.7 351.0 28.5 353.4 27.6 356.5 24.2 357.1 19.9 361.2 18.7 365.0 20.3 369.8 16.3 374.5 14.5 374.3 16.5 377.5 20.2 378.3 25.3 375.4 28.2 375.5 30.5 374.1 34.2 375.5 39.4 374.5 44.1 375.1 48.0 379.7 50.9 379.5 53.1 383.3 54.8 395.4 59.9 400.0 61.4 397.8 65.0 398.1 65.4 391.9 68.7 378.5 71.8 372.3 71.5 370.3 68.7 368.6 68.8 367.4 70.0 367.6 73.6 364.9 73.7 363.5 71.6 361.6 75.7 356.9 73.8 353.4 71.8 352.6 73.9 351.4 75.1 348.5 80.8 345.6 84.1 341.7 84.7 338.9 82.5 335.9 84.1 331.9 92.3 331.8 95.4 329.6 97.4 329.9 102.2 316.3 99.4 298.2 110.4 287.3 111.9 283.6 109.3 279.9 100.7 283.1 88.4 282.2 76.0 272.8 72.6 265.8 71.0 248.1 61.3 210.7 48.8 202.5 43.3 201.6 41.4 199.8 27.7 201.7 23.9 197.1 24.3 194.4 19.8 193.5 24.9 189.9 34.7 191.4 40.8 190.7 43.7 191.5 41.7 190.9 42.6 190.7 56.6 195.3 69.9 213.1 73.4 224.4 76.2 229.0 78.4 241.0 77.0 248.9 77.7 255.4 80.3 263.8 83.9 270.2 93.0 277.0 102.1 278.5 110.8 276.5 114.6 278.2 116.0 277.7 114.7 278.2 116.5 283.3 114.7 288.2 105.4 297.2 104.4 301.1 105.0 308.0 107.1 312.8 107.2 319.4 109.4 320.8 107.4 320.1 107.3 335.9 106.2 341.0 107.3 350.4 110.5 358.5 122.7 372.9 125.0 377.0 129.5 380.4 136.5 384.0 146.1 386.8 153.9 394.8 159.3 397.6 164.3 397.8 169.0 396.3 168.6 394.9 169.6 394.1 168.4 392.9 171.1 390.7 170.6 387.9 172.7 387.4 173.1 385.2 175.5 385.8 177.5 381.6 181.9 381.4 181.3 379.5 182.3 377.6 186.3 375.9 186.0 374.1 187.7 374.0 187.4 372.8 190.2 371.8 189.0 368.6 193.0 368.2 192.7 364.4 188.4 363.0 190.4 362.0 189.2 361.6 187.1 356.6 187.6 351.9 189.0 350.5 187.5 346.3 188.4 344.7 187.8 342.6 189.7 337.3 188.3 334.8 191.3 333.5 194.4 335.2 198.7 332.2 199.6 328.7 204.1 325.2 205.2 320.8 206.6 319.5 206.0 318.0 210.3 315.3 210.8 308.4 209.1 303.7 204.5 303.2 202.9 301.3 201.6 301.7 199.9 298.4 194.9 298.0 195.7 294.0 192.5 294.0 191.4 293.0 190.3 293.9 191.4 294.8 189.4 295.2 188.9 293.9 190.0 292.7 189.5 291.8 194.8 288.9 196.4 285.7 201.9 280.5 204.6 272.2 194.5 272.6 191.8 270.2 187.1 269.6 185.0 263.4 183.2 263.8 182.0 262.3 180.6 264.9 178.0 264.7 176.1 267.5 176.8 271.7 174.3 273.2 174.0 274.6 171.9 271.6 169.7 273.6 166.8 269.3 165.9 264.8 168.3 261.3 163.8 258.6 161.2 249.4 158.2 248.9 158.4 244.7 156.1 242.1 157.8 240.0 154.6 238.2 154.9 235.8 152.3 231.0 152.1 227.0 148.6 221.0 159.4 208.1 158.3 194.6 155.0 194.6 154.7 193.6 157.4 189.8 158.6 184.4 151.3 185.5 150.5 183.8 149.4 183.8 149.7 180.0 148.1 175.5 149.1 174.6 149.0 172.3 151.4 171.2 150.3 169.6 151.2 166.1 153.1 166.1 154.9 161.4 156.7 161.2 159.4 162.7 164.5 161.6 166.7 157.7 170.1 155.8 174.8 155.8 177.7 157.7 180.4 155.2 183.4 155.2 186.8 157.7 189.4 155.5 194.0 154.9 198.5 150.8 201.2 152.0 205.1 150.8 206.8 146.6 213.3 140.7 218.7 138.2 215.4 133.9 216.3 126.6 213.9 123.2 214.1 117.1 212.7 112.7 206.0 104.2 206.6 92.1 202.6 94.2 194.8 95.9 188.0 95.6 190.7 93.3 193.4 87.5 192.0 84.7 178.8 86.0 178.0 68.6 179.3 67.6 179.1 64.6 169.9 54.7 167.1 53.1 168.4 49.7 166.5 44.1 170.2 37.0 172.5 38.7 174.8 36.4 177.8 35.9 175.0 33.6 178.2 28.5 172.6 20.9 174.2 9.0 169.9 6.0 167.2 9.9 164.4 10.3 156.3 8.7 155.5 9.8 149.3 6.6 146.9 7.6 145.3 6.6 145.7 3.3 140.6 0.0 137.8 2.0 136.7 1.4 134.2 6.4 135.0 7.7 132.5 12.4 133.1 13.7 130.4 16.8 131.2 18.6 128.3 19.8 132.6 22.7 132.6 25.2 131.0 27.5 132.7 28.1 132.7 29.2 130.6 33.2 125.5 36.8 123.7 42.1 121.7 41.4 121.9 44.8 119.6 47.1 122.2 52.9 118.9 55.0 114.9 55.1 112.1 61.0 112.2 53.9 110.8 50.1 111.1 45.5 113.0 45.0 112.9 43.4 110.9 44.2 110.0 42.5 107.8 41.7 105.4 44.5 103.6 43.9 102.2 48.2 103.4 56.7 102.6 61.7 101.6 63.3 100.5 62.9 100.6 64.3 96.6 69.9 92.4 71.8 94.9 73.6 96.5 72.7 100.8 75.9 103.1 81.7 101.6 87.8 103.2 89.4 107.6 89.5 108.8 93.2 109.9 92.6 111.0 93.7 111.9 97.1 108.4 108.6 102.8 116.4 102.6 118.5 99.8 120.5 103.0 125.5 104.6 134.5 102.8 137.1 103.2 140.6 101.2 142.3 100.3 139.6 101.2 142.3 99.0 142.8 97.4 138.7 100.1 145.9 96.6 148.5 97.2 150.5 95.9 154.0 87.0 157.0 58.2 151.6 52.1 149.7 53.4 148.0 51.5 149.5 49.6 148.6 50.4 146.8 49.4 148.0 47.8 147.2 47.3 141.3 46.4 143.0 45.2 142.0 45.1 140.7 46.3 140.5 45.1 139.2 49.4 131.6 50.4 131.9 50.3 133.8 50.7 132.8 50.8 133.8 52.9 132.6 49.1 128.5 51.8 122.4 51.6 110.9 53.9 105.6 54.8 98.9 53.3 94.9 50.5 92.2 47.5 90.8 45.9 92.2 43.2 90.8 42.0 99.9 36.6 104.8 36.4 106.2 38.6 107.6 40.0 111.5 38.8 115.0 36.9 116.0 36.0 115.0 37.8 117.2 36.2 119.4 36.8 121.5 35.5 121.3 34.6 123.1 36.0 125.0 35.2 126.1 33.7 125.9 35.0 129.6 31.9 130.7 35.0 132.4 34.1 133.8 31.8 133.1 31.0 134.8 30.1 134.3 30.0 136.5 28.2 137.0 28.4 138.2 27.3 139.5 26.0 139.3 26.4 140.8 25.5 140.3 24.5 141.8 26.6 141.4 26.2 143.6 28.0 145.4 27.0 146.1 27.9 147.0 29.4 146.3 31.7 147.8 32.6 149.8 31.0 153.5 32.4 152.0 34.1 152.4 33.3 153.4 36.6 149.5 38.2 149.3 39.5 154.4 38.9 157.2 36.9 156.6 38.6 157.4 37.6 160.1 34.8 164.1 30.3 167.8 25.4 170.3 21.5 171.0 18.7 170.1 19.3 167.8 18.0 164.5 14.7 163.6 12.9 160.1 11.8 160.3 10.8 162.8 12.6 164.0 10.2 164.8 10.1 165.8 9.1 165.0 8.5 166.6 10.1 168.0 5.8 169.3 6.5 170.1 5.1 170.6 4.7 173.1 3.1 173.6 3.1 174.8 1.0 174.9 2.5 175.8 2.3 177.8 0.0 178.5ZM19.3 173.6 19.6 171.7 20.5 172.5 22.0 171.5 25.3 172.1 26.3 171.3 28.1 172.3 29.1 171.0 30.0 171.6 28.5 171.6 29.5 173.2 33.1 174.6 28.5 172.8 30.3 174.0 29.7 175.4 30.3 174.0 28.9 174.0 26.8 172.7 30.0 179.6 27.6 176.4 27.1 173.1 23.0 172.8 23.9 174.3 22.3 173.1 19.7 173.5 19.3 174.7 19.3 173.6ZM29.8 260.2 30.2 257.9 31.8 257.5 33.8 254.5 35.2 250.4 37.7 249.4 38.6 247.8 38.3 249.3 35.7 250.4 33.6 256.8 32.0 258.8 30.2 258.4 29.8 260.2ZM41.0 286.8 41.7 286.0 45.1 287.7 45.3 289.5 41.0 286.8ZM43.2 224.7 44.3 220.1 46.7 217.3 46.0 215.6 44.8 215.8 45.3 213.6 47.2 212.8 49.0 213.9 50.7 217.6 49.1 216.5 46.2 221.9 47.8 224.2 46.3 225.6 45.1 223.4 44.1 225.4 43.2 224.7ZM54.0 211.9 56.6 210.2 57.9 211.7 59.6 214.2 58.2 214.5 59.1 218.7 57.8 216.7 56.1 216.2 56.3 213.9 54.0 211.9ZM79.9 184.1 81.9 177.1 80.2 185.5 82.6 193.8 86.7 196.9 89.5 195.8 93.2 196.3 95.2 193.5 101.2 189.6 107.6 189.1 108.8 188.0 111.0 188.5 116.7 186.2 119.1 187.5 118.2 188.9 119.2 193.2 125.6 203.2 131.0 202.0 134.2 197.2 135.1 199.1 134.3 200.7 135.3 200.8 134.2 200.7 135.1 199.1 134.2 197.3 133.5 199.5 130.9 202.2 125.5 203.3 119.1 193.3 118.1 188.9 119.1 187.7 116.6 186.3 111.1 188.6 108.9 188.0 108.1 189.0 101.3 189.9 95.4 193.5 92.9 196.7 89.7 195.9 86.5 197.0 86.3 200.4 89.8 202.2 90.3 206.5 89.8 202.2 86.7 201.2 86.3 196.8 82.2 193.7 79.9 184.1ZM37.3 199.6 41.3 199.6 42.4 200.8 43.1 199.8 45.9 199.9 50.6 203.1 48.9 198.1 50.0 200.1 50.0 199.0 48.6 197.0 45.6 195.8 46.1 196.6 43.9 196.4 45.8 198.0 43.5 196.4 41.0 197.8 43.6 199.0 40.7 198.0 37.3 199.6ZM45.5 195.3 50.0 198.2 51.5 204.7 59.8 207.4 55.5 200.5 52.5 198.7 50.4 195.1 47.3 194.4 45.5 195.3Z" clip-rule="evenodd"/></clipPath></defs>
+      <g class="cov__grid"><line x1="0" y1="-20" x2="0" y2="420"/><line x1="50" y1="-20" x2="50" y2="420"/><line x1="100" y1="-20" x2="100" y2="420"/><line x1="150" y1="-20" x2="150" y2="420"/><line x1="200" y1="-20" x2="200" y2="420"/><line x1="-150" y1="0" x2="369" y2="0"/><line x1="-150" y1="50" x2="369" y2="50"/><line x1="-150" y1="100" x2="369" y2="100"/><line x1="-150" y1="150" x2="369" y2="150"/><line x1="-150" y1="200" x2="369" y2="200"/><line x1="-150" y1="250" x2="369" y2="250"/><line x1="-150" y1="300" x2="369" y2="300"/><line x1="-150" y1="350" x2="369" y2="350"/><line x1="-150" y1="400" x2="369" y2="400"/></g>
+      <g clip-path="url(#cov-clip)"><circle class="cov__wave" cx="72.1" cy="202.7" r="420"/></g>
+      <path class="cov__edge" d="M0.0 178.5 1.6 181.1 3.2 181.5 7.1 178.8 11.3 178.7 11.4 181.5 13.9 181.5 15.4 185.1 17.6 186.8 16.5 188.3 17.6 189.8 16.6 190.5 19.2 192.7 19.5 194.7 18.5 195.1 24.9 198.4 27.7 204.6 28.6 232.2 27.0 251.5 21.8 272.3 13.4 290.9 12.7 294.8 16.3 301.5 17.2 309.0 17.9 309.4 21.0 307.2 24.1 308.0 26.3 306.9 28.9 308.5 33.2 322.9 29.8 332.0 23.8 332.6 23.5 335.7 21.3 336.2 19.2 340.9 20.0 344.2 21.8 343.3 25.1 345.2 25.7 347.8 24.1 350.5 27.7 351.0 28.5 353.4 27.6 356.5 24.2 357.1 19.9 361.2 18.7 365.0 20.3 369.8 16.3 374.5 14.5 374.3 16.5 377.5 20.2 378.3 25.3 375.4 28.2 375.5 30.5 374.1 34.2 375.5 39.4 374.5 44.1 375.1 48.0 379.7 50.9 379.5 53.1 383.3 54.8 395.4 59.9 400.0 61.4 397.8 65.0 398.1 65.4 391.9 68.7 378.5 71.8 372.3 71.5 370.3 68.7 368.6 68.8 367.4 70.0 367.6 73.6 364.9 73.7 363.5 71.6 361.6 75.7 356.9 73.8 353.4 71.8 352.6 73.9 351.4 75.1 348.5 80.8 345.6 84.1 341.7 84.7 338.9 82.5 335.9 84.1 331.9 92.3 331.8 95.4 329.6 97.4 329.9 102.2 316.3 99.4 298.2 110.4 287.3 111.9 283.6 109.3 279.9 100.7 283.1 88.4 282.2 76.0 272.8 72.6 265.8 71.0 248.1 61.3 210.7 48.8 202.5 43.3 201.6 41.4 199.8 27.7 201.7 23.9 197.1 24.3 194.4 19.8 193.5 24.9 189.9 34.7 191.4 40.8 190.7 43.7 191.5 41.7 190.9 42.6 190.7 56.6 195.3 69.9 213.1 73.4 224.4 76.2 229.0 78.4 241.0 77.0 248.9 77.7 255.4 80.3 263.8 83.9 270.2 93.0 277.0 102.1 278.5 110.8 276.5 114.6 278.2 116.0 277.7 114.7 278.2 116.5 283.3 114.7 288.2 105.4 297.2 104.4 301.1 105.0 308.0 107.1 312.8 107.2 319.4 109.4 320.8 107.4 320.1 107.3 335.9 106.2 341.0 107.3 350.4 110.5 358.5 122.7 372.9 125.0 377.0 129.5 380.4 136.5 384.0 146.1 386.8 153.9 394.8 159.3 397.6 164.3 397.8 169.0 396.3 168.6 394.9 169.6 394.1 168.4 392.9 171.1 390.7 170.6 387.9 172.7 387.4 173.1 385.2 175.5 385.8 177.5 381.6 181.9 381.4 181.3 379.5 182.3 377.6 186.3 375.9 186.0 374.1 187.7 374.0 187.4 372.8 190.2 371.8 189.0 368.6 193.0 368.2 192.7 364.4 188.4 363.0 190.4 362.0 189.2 361.6 187.1 356.6 187.6 351.9 189.0 350.5 187.5 346.3 188.4 344.7 187.8 342.6 189.7 337.3 188.3 334.8 191.3 333.5 194.4 335.2 198.7 332.2 199.6 328.7 204.1 325.2 205.2 320.8 206.6 319.5 206.0 318.0 210.3 315.3 210.8 308.4 209.1 303.7 204.5 303.2 202.9 301.3 201.6 301.7 199.9 298.4 194.9 298.0 195.7 294.0 192.5 294.0 191.4 293.0 190.3 293.9 191.4 294.8 189.4 295.2 188.9 293.9 190.0 292.7 189.5 291.8 194.8 288.9 196.4 285.7 201.9 280.5 204.6 272.2 194.5 272.6 191.8 270.2 187.1 269.6 185.0 263.4 183.2 263.8 182.0 262.3 180.6 264.9 178.0 264.7 176.1 267.5 176.8 271.7 174.3 273.2 174.0 274.6 171.9 271.6 169.7 273.6 166.8 269.3 165.9 264.8 168.3 261.3 163.8 258.6 161.2 249.4 158.2 248.9 158.4 244.7 156.1 242.1 157.8 240.0 154.6 238.2 154.9 235.8 152.3 231.0 152.1 227.0 148.6 221.0 159.4 208.1 158.3 194.6 155.0 194.6 154.7 193.6 157.4 189.8 158.6 184.4 151.3 185.5 150.5 183.8 149.4 183.8 149.7 180.0 148.1 175.5 149.1 174.6 149.0 172.3 151.4 171.2 150.3 169.6 151.2 166.1 153.1 166.1 154.9 161.4 156.7 161.2 159.4 162.7 164.5 161.6 166.7 157.7 170.1 155.8 174.8 155.8 177.7 157.7 180.4 155.2 183.4 155.2 186.8 157.7 189.4 155.5 194.0 154.9 198.5 150.8 201.2 152.0 205.1 150.8 206.8 146.6 213.3 140.7 218.7 138.2 215.4 133.9 216.3 126.6 213.9 123.2 214.1 117.1 212.7 112.7 206.0 104.2 206.6 92.1 202.6 94.2 194.8 95.9 188.0 95.6 190.7 93.3 193.4 87.5 192.0 84.7 178.8 86.0 178.0 68.6 179.3 67.6 179.1 64.6 169.9 54.7 167.1 53.1 168.4 49.7 166.5 44.1 170.2 37.0 172.5 38.7 174.8 36.4 177.8 35.9 175.0 33.6 178.2 28.5 172.6 20.9 174.2 9.0 169.9 6.0 167.2 9.9 164.4 10.3 156.3 8.7 155.5 9.8 149.3 6.6 146.9 7.6 145.3 6.6 145.7 3.3 140.6 0.0 137.8 2.0 136.7 1.4 134.2 6.4 135.0 7.7 132.5 12.4 133.1 13.7 130.4 16.8 131.2 18.6 128.3 19.8 132.6 22.7 132.6 25.2 131.0 27.5 132.7 28.1 132.7 29.2 130.6 33.2 125.5 36.8 123.7 42.1 121.7 41.4 121.9 44.8 119.6 47.1 122.2 52.9 118.9 55.0 114.9 55.1 112.1 61.0 112.2 53.9 110.8 50.1 111.1 45.5 113.0 45.0 112.9 43.4 110.9 44.2 110.0 42.5 107.8 41.7 105.4 44.5 103.6 43.9 102.2 48.2 103.4 56.7 102.6 61.7 101.6 63.3 100.5 62.9 100.6 64.3 96.6 69.9 92.4 71.8 94.9 73.6 96.5 72.7 100.8 75.9 103.1 81.7 101.6 87.8 103.2 89.4 107.6 89.5 108.8 93.2 109.9 92.6 111.0 93.7 111.9 97.1 108.4 108.6 102.8 116.4 102.6 118.5 99.8 120.5 103.0 125.5 104.6 134.5 102.8 137.1 103.2 140.6 101.2 142.3 100.3 139.6 101.2 142.3 99.0 142.8 97.4 138.7 100.1 145.9 96.6 148.5 97.2 150.5 95.9 154.0 87.0 157.0 58.2 151.6 52.1 149.7 53.4 148.0 51.5 149.5 49.6 148.6 50.4 146.8 49.4 148.0 47.8 147.2 47.3 141.3 46.4 143.0 45.2 142.0 45.1 140.7 46.3 140.5 45.1 139.2 49.4 131.6 50.4 131.9 50.3 133.8 50.7 132.8 50.8 133.8 52.9 132.6 49.1 128.5 51.8 122.4 51.6 110.9 53.9 105.6 54.8 98.9 53.3 94.9 50.5 92.2 47.5 90.8 45.9 92.2 43.2 90.8 42.0 99.9 36.6 104.8 36.4 106.2 38.6 107.6 40.0 111.5 38.8 115.0 36.9 116.0 36.0 115.0 37.8 117.2 36.2 119.4 36.8 121.5 35.5 121.3 34.6 123.1 36.0 125.0 35.2 126.1 33.7 125.9 35.0 129.6 31.9 130.7 35.0 132.4 34.1 133.8 31.8 133.1 31.0 134.8 30.1 134.3 30.0 136.5 28.2 137.0 28.4 138.2 27.3 139.5 26.0 139.3 26.4 140.8 25.5 140.3 24.5 141.8 26.6 141.4 26.2 143.6 28.0 145.4 27.0 146.1 27.9 147.0 29.4 146.3 31.7 147.8 32.6 149.8 31.0 153.5 32.4 152.0 34.1 152.4 33.3 153.4 36.6 149.5 38.2 149.3 39.5 154.4 38.9 157.2 36.9 156.6 38.6 157.4 37.6 160.1 34.8 164.1 30.3 167.8 25.4 170.3 21.5 171.0 18.7 170.1 19.3 167.8 18.0 164.5 14.7 163.6 12.9 160.1 11.8 160.3 10.8 162.8 12.6 164.0 10.2 164.8 10.1 165.8 9.1 165.0 8.5 166.6 10.1 168.0 5.8 169.3 6.5 170.1 5.1 170.6 4.7 173.1 3.1 173.6 3.1 174.8 1.0 174.9 2.5 175.8 2.3 177.8 0.0 178.5ZM19.3 173.6 19.6 171.7 20.5 172.5 22.0 171.5 25.3 172.1 26.3 171.3 28.1 172.3 29.1 171.0 30.0 171.6 28.5 171.6 29.5 173.2 33.1 174.6 28.5 172.8 30.3 174.0 29.7 175.4 30.3 174.0 28.9 174.0 26.8 172.7 30.0 179.6 27.6 176.4 27.1 173.1 23.0 172.8 23.9 174.3 22.3 173.1 19.7 173.5 19.3 174.7 19.3 173.6ZM29.8 260.2 30.2 257.9 31.8 257.5 33.8 254.5 35.2 250.4 37.7 249.4 38.6 247.8 38.3 249.3 35.7 250.4 33.6 256.8 32.0 258.8 30.2 258.4 29.8 260.2ZM41.0 286.8 41.7 286.0 45.1 287.7 45.3 289.5 41.0 286.8ZM43.2 224.7 44.3 220.1 46.7 217.3 46.0 215.6 44.8 215.8 45.3 213.6 47.2 212.8 49.0 213.9 50.7 217.6 49.1 216.5 46.2 221.9 47.8 224.2 46.3 225.6 45.1 223.4 44.1 225.4 43.2 224.7ZM54.0 211.9 56.6 210.2 57.9 211.7 59.6 214.2 58.2 214.5 59.1 218.7 57.8 216.7 56.1 216.2 56.3 213.9 54.0 211.9ZM79.9 184.1 81.9 177.1 80.2 185.5 82.6 193.8 86.7 196.9 89.5 195.8 93.2 196.3 95.2 193.5 101.2 189.6 107.6 189.1 108.8 188.0 111.0 188.5 116.7 186.2 119.1 187.5 118.2 188.9 119.2 193.2 125.6 203.2 131.0 202.0 134.2 197.2 135.1 199.1 134.3 200.7 135.3 200.8 134.2 200.7 135.1 199.1 134.2 197.3 133.5 199.5 130.9 202.2 125.5 203.3 119.1 193.3 118.1 188.9 119.1 187.7 116.6 186.3 111.1 188.6 108.9 188.0 108.1 189.0 101.3 189.9 95.4 193.5 92.9 196.7 89.7 195.9 86.5 197.0 86.3 200.4 89.8 202.2 90.3 206.5 89.8 202.2 86.7 201.2 86.3 196.8 82.2 193.7 79.9 184.1ZM37.3 199.6 41.3 199.6 42.4 200.8 43.1 199.8 45.9 199.9 50.6 203.1 48.9 198.1 50.0 200.1 50.0 199.0 48.6 197.0 45.6 195.8 46.1 196.6 43.9 196.4 45.8 198.0 43.5 196.4 41.0 197.8 43.6 199.0 40.7 198.0 37.3 199.6ZM45.5 195.3 50.0 198.2 51.5 204.7 59.8 207.4 55.5 200.5 52.5 198.7 50.4 195.1 47.3 194.4 45.5 195.3Z" fill-rule="evenodd" pathLength="1"/>
+      <g class="cov__pin" style="--i:0"><path class="cov__lead" d="M112.0 92.0L329.9 92.0"/><circle cx="112.0" cy="92.0" r="2.6"/><text x="360.7" y="95.5" text-anchor="end">Tomé</text></g><g class="cov__pin" style="--i:1"><path class="cov__lead" d="M95.4 157.1L323.7 157.1"/><circle cx="95.4" cy="157.1" r="2.6"/><text x="360.7" y="160.6" text-anchor="end">Penco</text></g><g class="cov__pin" style="--i:2"><path class="cov__lead" d="M43.7 148.9L-74.0 142.9"/><circle cx="43.7" cy="148.9" r="2.6"/><text x="-142.0" y="146.4" text-anchor="start">Talcahuano</text></g><g class="cov__pin" style="--i:3"><path class="cov__lead" d="M53.7 179.8L-92.6 179.8"/><circle cx="53.7" cy="179.8" r="2.6"/><text x="-142.0" y="183.3" text-anchor="start">Hualpén</text></g><g class="cov__pin" style="--i:4"><path class="cov__lead" d="M47.4 211.2L-18.2 221.2"/><circle cx="47.4" cy="211.2" r="2.6"/><text x="-142.0" y="224.7" text-anchor="start">San Pedro de la Paz</text></g><g class="cov__pin" style="--i:5"><path class="cov__lead" d="M81.4 254.4L286.5 254.4"/><circle cx="81.4" cy="254.4" r="2.6"/><text x="360.7" y="257.9" text-anchor="end">Chiguayante</text></g><g class="cov__pin" style="--i:6"><path class="cov__lead" d="M119.6 281.5L311.3 281.5"/><circle cx="119.6" cy="281.5" r="2.6"/><text x="360.7" y="285.0" text-anchor="end">Hualqui</text></g><g class="cov__pin" style="--i:7"><path class="cov__lead" d="M32.5 302.9L-92.6 302.9"/><circle cx="32.5" cy="302.9" r="2.6"/><text x="-142.0" y="306.4" text-anchor="start">Coronel</text></g><g class="cov__pin" style="--i:8"><path class="cov__lead" d="M26.9 341.3L-111.2 341.3"/><circle cx="26.9" cy="341.3" r="2.6"/><text x="-142.0" y="344.8" text-anchor="start">Lota</text></g>
+      <g class="cov__hq" transform="translate(72.1 202.7)"><circle class="cov__ping" r="22"/><circle class="cov__ping cov__ping--2" r="22"/><circle class="cov__dot" r="5"/><text x="12" y="-10">Concepción · central</text></g>
+      <g class="cov__scale" transform="translate(171.0 414)"><path d="M0 0v5h47.7v-5"/><text x="23.9" y="-4">10 km</text></g>
+    </svg>
+    <!-- /cobertura:svg -->
+  </div>
+  </div>
+</section>
+
+<!-- 7 · Cómo empezamos -->
+<section class="steps" id="pasos" aria-labelledby="pasos-h">
+  <div class="wrap">
+    <div class="sec-head sec-head--center" data-reveal>
+      <p class="eyebrow">Cómo empezamos</p>
+      <h2 class="h2" id="pasos-h">Tres pasos para activar el servicio<span class="dot">.</span></h2>
+    </div>
+    <ol class="steps__list">
+      <li class="step" data-reveal>
+        <span class="step__n mono">01</span>
+        <h3 class="h3">Te escuchamos</h3>
+        <p>Conocemos tu problema de traslado.</p>
+      </li>
+      <li class="step" data-reveal>
+        <span class="step__n mono">02</span>
+        <h3 class="h3">Te mostramos el modelo</h3>
+        <p>Actas, reportes y GPS funcionando.</p>
+      </li>
+      <li class="step" data-reveal>
+        <span class="step__n mono">03</span>
+        <h3 class="h3">Operamos</h3>
+        <p>Activamos el servicio para tu empresa.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 8 · Conversemos -->
+<section class="contact" id="conversemos" aria-labelledby="conv-h">
+  <div class="wrap contact__grid">
+    <div class="contact__copy">
+      <h2 class="h2" id="conv-h">Conversemos<span class="dot">.</span></h2>
+      <p class="lead lead--dark">Cuéntanos tu problema de traslado. Te contactamos para conocer tu operación.</p>
+      <ul class="channels">
+        <li><a href="tel:+56412964800"><span class="channels__ico"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></span><span><small>Central 24 h</small><span class="mono">+56 41 296 4800</span></span></a></li>
+        <li><a href="https://wa.me/56961234567" target="_blank" rel="noopener"><span class="channels__ico"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span><span><small>WhatsApp</small><span class="mono">+56 9 6123 4567</span></span></a></li>
+        <li><a href="mailto:contacto@tranlotek.cl"><span class="channels__ico"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span><span><small>Correo</small><span>contacto@tranlotek.cl</span></span></a></li>
+      </ul>
+    </div>
+
+    <div class="formcard">
+      <!-- DESARROLLADOR: action al PHP del formulario (destino ventas@tranlotek.com). En la demo no se envía nada. -->
+      <form class="form" id="form" action="#" method="post" novalidate data-form>
+        <p class="form__req"><span aria-hidden="true">*</span> Campos obligatorios</p>
+        <div class="field">
+          <label for="f-nombre">Nombre <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-nombre" name="nombre" autocomplete="name" required aria-describedby="e-nombre">
+          <p class="field__err" id="e-nombre" data-err>Escribe tu nombre.</p>
+        </div>
+        <div class="field">
+          <label for="f-empresa">Empresa <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-empresa" name="empresa" autocomplete="organization" required aria-describedby="e-empresa">
+          <p class="field__err" id="e-empresa" data-err>Escribe el nombre de tu empresa.</p>
+        </div>
+        <div class="field">
+          <label for="f-contacto">Teléfono o correo <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-contacto" name="contacto" autocomplete="email" required aria-describedby="h-contacto e-contacto" data-contact>
+          <p class="field__help" id="h-contacto">Te escribimos o llamamos a este dato.</p>
+          <p class="field__err" id="e-contacto" data-err>Escribe un teléfono (9 dígitos o más) o un correo válido.</p>
+        </div>
+        <div class="field">
+          <label for="f-sector">Sector</label>
+          <div class="select">
+            <select id="f-sector" name="sector">
+              <option value="Transporte y logística">Transporte y logística</option>
+              <option value="Aseguradoras">Aseguradoras</option>
+              <option value="Flotas de empresa">Flotas de empresa</option>
+              <option value="Concesionarias y talleres">Concesionarias y talleres</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn--accent btn--lg btn--block" type="submit" data-submit><span class="btn__spin" aria-hidden="true"></span><span data-submit-label>Solicitar reunión</span></button>
+        <p class="form__legal">Usamos tus datos solo para contactarte. <a href="#privacidad">Política de privacidad</a>.</p>
+      </form>
+
+      <div class="ok" id="form-ok" role="status" tabindex="-1" hidden>
+        <span class="ok__ico"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>
+        <h3 class="h3">Gracias. Te llamamos pronto.</h3>
+        <p>Recibimos tu solicitud de reunión.</p>
+        <button class="btn btn--ghost" type="button" data-reset>Volver al formulario</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 9 · Pie -->
+<footer class="foot" id="privacidad">
+  <div class="wrap">
+    <div class="foot__top">
+      <img class="foot__logo" src="imagenes/logo-tranlotek.webp" alt="Tranlotek" width="560" height="157" loading="lazy">
+      <ul class="foot__nav">
+        <li><a href="#estandar">Estándar</a></li>
+        <li><a href="#modelo">El modelo</a></li>
+        <li><a href="#sectores">Sectores</a></li>
+        <li><a href="#cobertura">Cobertura</a></li>
+        <li><a href="#conversemos">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="foot__bottom">
+      <span>Tranlotek SpA · RUT 77.123.456-7 · Concepción, Región del Biobío</span>
+      <span>Retiro y traslado de vehículos. No prestamos servicios de custodia. · <a href="#privacidad">Privacidad</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
