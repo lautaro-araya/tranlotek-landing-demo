@@ -21,6 +21,56 @@
   document.querySelectorAll('[data-serial-input]').forEach((el) => { el.value = serial; });
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
+  /* ---------- Selector de paleta ---------- */
+  const palettes = document.querySelector('[data-palettes]');
+  if (palettes) {
+    const opts = [...palettes.querySelectorAll('[data-palette-option]')];
+    const list = palettes.querySelector('#palettes-list');
+    const toggleBtn = palettes.querySelector('[data-palettes-toggle]');
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const KEY = 'tlk-paleta';
+    const apply = (id, animate) => {
+      if (!opts.some((o) => o.dataset.paletteOption === id)) id = '1';
+      if (animate && !reduceMotion) {
+        document.documentElement.classList.add('is-swapping');
+        clearTimeout(apply.t);
+        apply.t = setTimeout(() => document.documentElement.classList.remove('is-swapping'), 500);
+      }
+      if (id === '1') delete document.documentElement.dataset.palette;
+      else document.documentElement.dataset.palette = id;
+      opts.forEach((o) => {
+        const on = o.dataset.paletteOption === id;
+        o.setAttribute('aria-checked', String(on));
+        o.tabIndex = on ? 0 : -1;
+      });
+      if (themeMeta) themeMeta.content = getComputedStyle(document.documentElement).getPropertyValue('--door').trim();
+      try { localStorage.setItem(KEY, id); } catch (e) { /* sin almacenamiento */ }
+    };
+    let initial = new URLSearchParams(location.search).get('paleta');
+    if (!initial) { try { initial = localStorage.getItem(KEY); } catch (e) { initial = null; } }
+    apply(initial || '1', false);
+
+    opts.forEach((o, i) => {
+      o.addEventListener('click', () => apply(o.dataset.paletteOption, true));
+      o.addEventListener('keydown', (e) => {
+        const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (!step) return;
+        e.preventDefault();
+        const next = opts[(i + step + opts.length) % opts.length];
+        next.focus();
+        apply(next.dataset.paletteOption, true);
+      });
+    });
+
+    const setOpen = (open) => {
+      toggleBtn.setAttribute('aria-expanded', String(open));
+      list.hidden = !open;
+      document.documentElement.classList.toggle('palettes-open', open);
+    };
+    setOpen(!window.matchMedia('(max-width: 900px)').matches);
+    toggleBtn.addEventListener('click', () => setOpen(toggleBtn.getAttribute('aria-expanded') !== 'true'));
+  }
+
   /* ---------- Cabecera ---------- */
   const masthead = document.querySelector('[data-masthead]');
   const onScroll = () => masthead.classList.toggle('is-solid', window.scrollY > 24);

@@ -97,7 +97,8 @@ a { color: inherit; }
 
 /* ---------- Tarjetas ---------- */
 .versions { padding-bottom: clamp(64px, 8vw, 112px); }
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 28px); counter-reset: v; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 28px); counter-reset: v; }
+@media (max-width: 1180px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .grid > :last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - clamp(8px, 1.2vw, 14px)); justify-self: center; } }
 .card {
   position: relative; display: flex; flex-direction: column;
   border: 1px solid var(--line); border-radius: var(--r);

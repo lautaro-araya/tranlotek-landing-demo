@@ -40,6 +40,23 @@
 <body>
   <a class="skip" href="#contenido">Ir al contenido</a>
 
+  <aside class="palettes" aria-label="Selector de paleta de color" data-palettes>
+    <button class="palettes__toggle" type="button" aria-expanded="true" aria-controls="palettes-list" aria-label="Mostrar u ocultar paletas" data-palettes-toggle>
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.8-1.9 0-.5-.2-.9-.5-1.3-.3-.3-.5-.8-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.4 17 3 12 3Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="7.5" cy="11" r="1.4" fill="currentColor"/><circle cx="10" cy="7" r="1.4" fill="currentColor"/><circle cx="14.5" cy="7" r="1.4" fill="currentColor"/></svg>
+    </button>
+    <div class="palettes__list" id="palettes-list" role="radiogroup" aria-label="Paleta de color">
+      <button class="palettes__opt" type="button" role="radio" aria-checked="true" tabindex="0" data-palette-option="1" aria-label="Cadena de custodia"><span class="palettes__chips" aria-hidden="true"><i style="--c:#0A2C4E"></i><i style="--c:#C7CDD2"></i><i style="--c:#F4C20D"></i><i style="--c:#111417"></i><i style="--c:#EEF0EF"></i></span><span class="palettes__name" aria-hidden="true">Cadena de custodia</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="2" aria-label="Guía de despacho"><span class="palettes__chips" aria-hidden="true"><i style="--c:#FFFFFF"></i><i style="--c:#22408F"></i><i style="--c:#C8102E"></i><i style="--c:#14161A"></i></span><span class="palettes__name" aria-hidden="true">Guía de despacho</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="3" aria-label="Siete segmentos"><span class="palettes__chips" aria-hidden="true"><i style="--c:#0D0F12"></i><i style="--c:#FFB000"></i><i style="--c:#2B2F33"></i><i style="--c:#E8E8E8"></i></span><span class="palettes__name" aria-hidden="true">Siete segmentos</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="4" aria-label="Consola CD-ROM"><span class="palettes__chips" aria-hidden="true"><i style="--c:#9AA3AB"></i><i style="--c:#2BA7A0"></i><i style="--c:#6C4FB3"></i></span><span class="palettes__name" aria-hidden="true">Consola CD-ROM</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="5" aria-label="Tren agitprop"><span class="palettes__chips" aria-hidden="true"><i style="--c:#EFE6D2"></i><i style="--c:#151515"></i><i style="--c:#C8102E"></i></span><span class="palettes__name" aria-hidden="true">Tren agitprop</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="6" aria-label="Tensegridad"><span class="palettes__chips" aria-hidden="true"><i style="--c:#1A1A1A"></i><i style="--c:#D9D6D0"></i><i style="--c:#D2302C"></i></span><span class="palettes__name" aria-hidden="true">Tensegridad</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="7" aria-label="Origami"><span class="palettes__chips" aria-hidden="true"><i style="--c:#D9381E"></i><i style="--c:#F4EFE6"></i><i style="--c:#1C1C1C"></i></span><span class="palettes__name" aria-hidden="true">Origami</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="8" aria-label="Portal WebGL"><span class="palettes__chips" aria-hidden="true"><i style="--c:#0B0B2A"></i><i style="--c:#7CF5FF"></i><i style="--c:#FFFFFF"></i></span><span class="palettes__name" aria-hidden="true">Portal WebGL</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="9" aria-label="Estándar de la categoría"><span class="palettes__chips" aria-hidden="true"><i style="--c:#FFFFFF"></i><i style="--c:#0B1F3A"></i><i style="--c:#0A5CA8"></i></span><span class="palettes__name" aria-hidden="true">Estándar de la categoría</span></button>
+    </div>
+  </aside>
+
   <header class="masthead" data-masthead>
     <div class="masthead__inner wrap">
       <a class="brand" href="#inicio" aria-label="TRANLOTEK, ir al inicio">
@@ -75,11 +92,6 @@
           <h1 class="hero__title" id="hero-title">Retiro y traslado de vehículos con grúa</h1>
           <p class="hero__lead">Operamos en la Región del Biobío con una central telefónica 24 h y control GPS en toda la flota. Cada servicio queda en un reporte diario.</p>
           <div class="hero__actions">
-            <a class="seal seal--link" href="#conversemos">
-              <span class="seal__head" aria-hidden="true"></span>
-              <span class="seal__label">Solicitar reunión comercial</span>
-              <svg class="seal__arrow" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg>
-            </a>
             <p class="hero__call">
               <span>Central 24 h</span>
               <!-- REEMPLAZAR: teléfono provisorio -->
