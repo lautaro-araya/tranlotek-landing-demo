@@ -110,16 +110,11 @@
   /* ---------- Mapa: dibujo de rutas ---------- */
   const map = document.querySelector('[data-routemap]');
   if (map) {
-    // Al terminar de dibujarse, el contorno pasa a trazo continuo (Chrome corta el guion en trazados con varias partes)
-    const finishMap = () => map.classList.add('is-done');
-    const edge = map.querySelector('.gc__edge');
-    if (edge) edge.addEventListener('transitionend', (e) => { if (e.propertyName === 'stroke-dashoffset') finishMap(); });
     if (reduceMotion || !('IntersectionObserver' in window)) {
       map.classList.add('is-drawn');
-      finishMap();
     } else {
       const mapIO = new IntersectionObserver((entries) => {
-        if (entries.some((e) => e.isIntersecting)) { map.classList.add('is-drawn'); mapIO.disconnect(); setTimeout(finishMap, 2600); }
+        if (entries.some((e) => e.isIntersecting)) { map.classList.add('is-drawn'); mapIO.disconnect(); }
       }, { threshold: 0.35 });
       mapIO.observe(map);
     }
