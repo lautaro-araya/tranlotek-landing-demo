@@ -72,16 +72,68 @@
 
   /* ---------- Conversemos: la grúa baja la ficha ---------- */
   const hoist = document.querySelector('[data-hoist]');
+  const canAnimate = !reduceMotion && 'IntersectionObserver' in window;
   if (hoist) {
-    if (reduceMotion || !('IntersectionObserver' in window)) {
+    if (!canAnimate) {
       hoist.classList.add('is-hoisted');
     } else {
-      const hoistIO = new IntersectionObserver((entries) => {
-        if (entries.some((e) => e.isIntersecting)) { hoist.classList.add('is-hoisted'); hoistIO.disconnect(); }
-      }, { threshold: 0.2 });
-      hoistIO.observe(hoist);
+      new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) hoist.classList.add('is-hoisted');
+      }, { threshold: 0.2 }).observe(hoist);
     }
   }
+
+  // "Contacto": scroll lento hasta la sección, terminando con la ficha centrada
+  const contact = document.getElementById('conversemos');
+  const contactPlate = contact && contact.querySelector('.contact__plate .plate');
+  const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const isVisible = (el) => { const b = el.getBoundingClientRect(); return b.bottom > 0 && b.top < window.innerHeight; };
+
+  document.querySelectorAll('a[href="#conversemos"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      if (!contact || !contactPlate) return;
+      e.preventDefault();
+      const head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--masthead')) || 72;
+      const plate = contactPlate.getBoundingClientRect();
+      const room = window.innerHeight - head;
+      const offset = plate.height < room ? head + (room - plate.height) / 2 : head + 16;
+      const maxY = document.documentElement.scrollHeight - window.innerHeight;
+      // Si la grúa aún no bajó la ficha, su posición final está 40px más abajo
+      const pending = hoist && !hoist.classList.contains('is-hoisted') ? 40 : 0;
+      const target = Math.min(maxY, Math.max(0, window.scrollY + plate.top + pending - offset));
+      const finish = () => {
+        history.pushState(null, '', '#conversemos');
+        document.getElementById('contact-title').focus({ preventScroll: true });
+      };
+
+      if (!canAnimate) { window.scrollTo({ top: target, behavior: 'instant' }); finish(); return; }
+
+      // La grúa vuelve a bajar la ficha si la sección no está a la vista
+      if (hoist && !isVisible(hoist)) hoist.classList.remove('is-hoisted');
+
+      const start = window.scrollY;
+      const dist = target - start;
+      const duration = Math.min(2600, Math.max(1300, Math.abs(dist) * 0.45));
+      let t0 = null;
+      let cancelled = false;
+      const cancel = () => { cancelled = true; };
+      window.addEventListener('wheel', cancel, { passive: true, once: true });
+      window.addEventListener('touchstart', cancel, { passive: true, once: true });
+      const step = (now) => {
+        if (cancelled) return;
+        if (t0 === null) t0 = now;
+        const t = Math.min(1, (now - t0) / duration);
+        window.scrollTo({ top: start + dist * easeInOut(t), behavior: 'instant' });
+        if (t < 1) requestAnimationFrame(step);
+        else {
+          window.removeEventListener('wheel', cancel);
+          window.removeEventListener('touchstart', cancel);
+          finish();
+        }
+      };
+      requestAnimationFrame(step);
+    });
+  });
 
   /* ---------- Servicio: riel de etapas ---------- */
   const custody = document.querySelector('[data-custody]');
