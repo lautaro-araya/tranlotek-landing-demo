@@ -70,7 +70,20 @@
     }
   }
 
-  /* ---------- Cadena de custodia: riel de etapas ---------- */
+  /* ---------- Conversemos: la grúa baja la ficha ---------- */
+  const hoist = document.querySelector('[data-hoist]');
+  if (hoist) {
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      hoist.classList.add('is-hoisted');
+    } else {
+      const hoistIO = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) { hoist.classList.add('is-hoisted'); hoistIO.disconnect(); }
+      }, { threshold: 0.2 });
+      hoistIO.observe(hoist);
+    }
+  }
+
+  /* ---------- Servicio: riel de etapas ---------- */
   const custody = document.querySelector('[data-custody]');
   if (custody) {
     const steps = [...custody.querySelectorAll('[data-step]')];
@@ -109,7 +122,7 @@
   /* ---------- Formularios de contacto ---------- */
   const messages = {
     nombre: 'Ingresa tu nombre.',
-    empresa: 'Indica tu empresa o institución.',
+    empresa: 'Indica el nombre de tu empresa.',
     telefono: 'Ingresa al menos 8 dígitos.',
     correo: 'Revisa el correo: falta el @ o el dominio.',
   };
@@ -177,7 +190,7 @@
         form.classList.add('is-sealed');
         seal.classList.add('is-closed');
         seal.disabled = true;
-        sealLabel.innerHTML = `<span class="seal__word">Precintado · </span><span class="seal__serial">${serial}</span>`;
+        sealLabel.innerHTML = `<span class="seal__word">Recibida · </span><span class="seal__serial">${serial}</span>`;
         done.hidden = false;
         done.focus();
       } catch (err) {
@@ -187,7 +200,7 @@
         seal.removeAttribute('aria-busy');
         if (!sealed) {
           seal.disabled = false;
-          sealLabel.textContent = 'Solicitar contacto';
+          sealLabel.textContent = 'Solicitar reunión';
         }
       }
     });
