@@ -88,24 +88,6 @@
     });
   }
 
-  /* Respaldo: entrada escalonada de título, texto, verificaciones y foto */
-  var rvSec = document.querySelector('[data-reveal]');
-  if (rvSec && !reduced && 'IntersectionObserver' in window && rvSec.getBoundingClientRect().top > window.innerHeight * .9) {
-    var targets = rvSec.querySelectorAll('.h2, .lead, .checks caption, .checks tbody tr, .resp__photo');
-    Array.prototype.forEach.call(targets, function (el, i) {
-      el.setAttribute('data-rv', '');
-      el.style.setProperty('--i', i);
-    });
-    rvSec.classList.add('rv');
-    var rvObs = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) {
-        rvSec.classList.add('rv-in');
-        rvObs.disconnect();
-      }
-    }, { threshold: .2 });
-    rvObs.observe(rvSec);
-  }
-
   /* Formulario */
   var form = document.getElementById('form');
   if (!form) return;
