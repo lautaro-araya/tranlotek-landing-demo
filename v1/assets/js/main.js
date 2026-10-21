@@ -520,3 +520,17 @@
   }, { threshold: .3 });
   obs.observe(cov);
 })();
+
+/* Torre de control: los puntos y la pantalla GPS entran al llegar a la sección;
+   sin JS, con movimiento reducido o si ya está a la vista, se ve completa */
+(function () {
+  var ctl = document.querySelector('[data-ctl]');
+  if (!ctl || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (ctl.getBoundingClientRect().top < window.innerHeight * .9) return;
+  ctl.classList.add('is-armed');
+  var obs = new IntersectionObserver(function (en) {
+    if (en[0].isIntersecting) { ctl.classList.add('is-in'); obs.disconnect(); }
+  }, { threshold: .35 });
+  obs.observe(ctl);
+})();

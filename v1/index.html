@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=27">
+<link rel="stylesheet" href="assets/css/styles.css?v=28">
 
 <script type="application/ld+json">
 {
@@ -164,6 +164,41 @@
   </div>
 </section>
 
+<!-- 4 · Torre de control: la central a sangre, tres puntos que nombran las cifras oficiales
+     y la pantalla GPS como monitor superpuesto -->
+<section id="central" class="ctl" aria-labelledby="ctl-h" data-ctl>
+  <div class="ctl__stage">
+    <div class="ctl__frame">
+    <picture class="ctl__img">
+      <img src="assets/img/central-1371.webp?v=2" srcset="assets/img/central-800.webp?v=2 800w, assets/img/central-1371.webp?v=2 1371w"
+           sizes="100vw" width="1371" height="672" loading="lazy" decoding="async"
+           alt="Central de monitoreo de Tranlotek: tres operadores frente a la pared de pantallas con el GPS de la flota">
+    </picture>
+    <div class="ctl__top">
+      <p>Central 24 h · Concepción</p>
+      <p class="ctl__live"><i class="beacon" aria-hidden="true"></i>En línea</p>
+    </div>
+    <ul class="ctl__spots" aria-label="Lo que se ve en la central">
+      <li style="--x:42.5%; --y:36%; --mx:44.9%; --i:0"><button class="ctl__spot" type="button"><span class="ctl__n mono" aria-hidden="true">1</span><span class="ctl__lab"><b class="mono">100 %</b> de la flota con GPS</span></button></li>
+      <li style="--x:21%; --y:58%; --mx:12%; --i:1"><button class="ctl__spot" type="button"><span class="ctl__n mono" aria-hidden="true">2</span><span class="ctl__lab"><b class="mono">24 h</b> central telefónica</span></button></li>
+      <li style="--x:65%; --y:56%; --mx:79.3%; --i:2"><button class="ctl__spot" type="button"><span class="ctl__n mono" aria-hidden="true">3</span><span class="ctl__lab"><b class="mono">Diario</b> reporte de cada servicio</span></button></li>
+    </ul>
+    </div>
+    <h2 id="ctl-h" class="ctl__h">Vemos cada grúa. <span>Todo el trayecto.</span></h2>
+    <figure class="ctl__gps">
+      <img src="assets/img/log-gps-480.webp?v=3" srcset="assets/img/log-gps-480.webp?v=3 480w, assets/img/log-gps-800.webp?v=3 800w"
+           sizes="(min-width: 901px) 260px, 60vw" width="800" height="1000" loading="lazy" decoding="async"
+           alt="Pantalla del sistema GPS con las grúas de la flota sobre el mapa del Gran Concepción">
+      <figcaption class="mono">Ejemplo ilustrativo</figcaption>
+    </figure>
+  </div>
+  <ol class="ctl__legend" aria-hidden="true">
+    <li><span class="ctl__n mono">1</span><b class="mono">100 %</b> de la flota con GPS</li>
+    <li><span class="ctl__n mono">2</span><b class="mono">24 h</b> central telefónica</li>
+    <li><span class="ctl__n mono">3</span><b class="mono">Diario</b> reporte de cada servicio</li>
+  </ol>
+</section>
+
 <!-- 5 · Cobertura -->
 <section id="cobertura" class="covsec" aria-labelledby="cov-h">
   <div class="wrap">
@@ -193,6 +228,23 @@
     </svg>
     <!-- /cobertura:svg -->
   </div>
+  </div>
+</section>
+
+<!-- 6 · Cinemático: la grúa a pantalla completa con parallax suave y tres hechos antes de Conversemos -->
+<section class="ride" aria-labelledby="ride-h">
+  <div class="ride__media">
+    <img src="assets/img/log-seguridad-1584.webp?v=2" srcset="assets/img/log-seguridad-800.webp?v=2 800w, assets/img/log-seguridad-1584.webp?v=2 1584w"
+         sizes="100vw" width="1584" height="672" loading="lazy" decoding="async"
+         alt="Grúa de Tranlotek trasladando un automóvil fijado sobre la plataforma por una avenida">
+  </div>
+  <div class="ride__in">
+    <h2 id="ride-h" class="ride__h">Del punto A al punto B. <span>Sin sorpresas.</span></h2>
+    <ul class="ride__facts">
+      <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Fijado a la plataforma</li>
+      <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Rastreado por GPS</li>
+      <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>Con acta de entrega</li>
+    </ul>
   </div>
 </section>
 
@@ -281,6 +333,6 @@
   <span>WhatsApp</span>
 </a>
 
-<script src="assets/js/main.js?v=13" defer></script>
+<script src="assets/js/main.js?v=14" defer></script>
 </body>
 </html>
