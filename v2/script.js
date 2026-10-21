@@ -209,6 +209,50 @@
   Object.keys(links).forEach(function (id) { var s = document.getElementById(id); if (s) obs.observe(s); });
 })();
 
+/* Portada: tarjeta que rota por lo que incluye cada servicio.
+   Avanza sola cuando la barra de progreso termina (se pausa al pasar el mouse o con foco);
+   con movimiento reducido no hay animación y solo avanza con el botón. */
+(function () {
+  var card = document.querySelector('[data-hcard]');
+  if (!card) return;
+  var ITEMS = [
+    ['Retiro y traslado con grúa', '25 grúas para todo tipo de vehículos.'],
+    ['Control GPS en toda la flota', 'Cada grúa reporta su posición a la central.'],
+    ['Reporte diario de cada servicio', 'Acta, set fotográfico y ruta de cada traslado.'],
+    ['Central telefónica 24 h', 'Atendemos todos los días del año.']
+  ];
+  var nEl = card.querySelector('[data-hcard-n]');
+  var text = card.querySelector('[data-hcard-text]');
+  var bar = card.querySelector('[data-hcard-bar]');
+  var next = card.querySelector('[data-hcard-next]');
+  var i = 0;
+  card.querySelector('[data-hcard-total]').textContent = pad(ITEMS.length);
+  next.hidden = false;
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function restart(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+  function show(k, byUser) {
+    i = (k + ITEMS.length) % ITEMS.length;
+    nEl.textContent = pad(i + 1);
+    text.setAttribute('aria-live', byUser ? 'polite' : 'off');
+    text.querySelector('.hcard__title').textContent = ITEMS[i][0];
+    text.querySelector('.hcard__sub').textContent = ITEMS[i][1];
+    restart(text, 'is-in');
+    restart(card, 'is-running');
+  }
+  next.addEventListener('click', function () { show(i + 1, true); });
+  bar.addEventListener('animationend', function () { show(i + 1, false); });
+
+  function pause(on) { card.classList.toggle('is-paused', on); }
+  card.addEventListener('mouseenter', function () { pause(true); });
+  card.addEventListener('mouseleave', function () { pause(card.contains(document.activeElement)); });
+  card.addEventListener('focusin', function () { pause(true); });
+  card.addEventListener('focusout', function () { pause(card.matches(':hover')); });
+  document.addEventListener('visibilitychange', function () { pause(document.hidden); });
+
+  card.classList.add('is-running');
+})();
+
 /* Sectores: pestañas accesibles (flechas, Inicio, Fin). El sector elegido se lleva al formulario. */
 (function () {
   var list = document.querySelector('[data-tabs]');

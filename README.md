@@ -6,7 +6,7 @@ La raíz es un hub con todas las versiones: https://lautaro-araya.github.io/tran
 | Carpeta | Versión | Estado |
 |---|---|---|
 | `v1/` | Landing original (portada oscura, respaldo, cobertura GPS) | Publicada |
-| `v2/` | Portada clara y curva (formato bairesdev.com), cifras animadas, sectores, mapa | Publicada |
+| `v2/` | Portada a sangre con barra flotante y tarjeta de servicios, cifras animadas, sectores, mapa. Fuente: `tranlotek/web-anterior` | Publicada |
 | `v3/` | Puerta de acero + grúa (formulario en portada, flota, Gran Concepción, 4 etapas del traslado). Se edita directo en esta carpeta | Publicada |
 | `v4/` | Página "Coming soon". Fuente: carpeta `ver3` del PC (vacía) | Coming soon |
 
