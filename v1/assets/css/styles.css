@@ -362,7 +362,7 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 /* ---------- 4 · Central (torre de control) ----------
    La foto de la central conserva su proporción en escritorio para que los tres puntos caigan
    siempre sobre la pared de pantallas, los escritorios y el monitor. */
-.ctl { position: relative; background: var(--ink); color: #FFFFFF; padding-bottom: clamp(56px, 7vw, 104px); }
+.ctl { position: relative; background: var(--ink); color: #FFFFFF; padding-bottom: clamp(24px, 4vw, 56px); }
 .ctl__stage { position: relative; aspect-ratio: 1371 / 672; }
 .ctl__frame { position: absolute; inset: 0; isolation: isolate; }
 .ctl__img { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
@@ -422,22 +422,11 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 }
 .ctl__h span { color: var(--accent); }
 
-/* La pantalla GPS: monitor blanco que sobresale del borde inferior de la foto */
-.ctl__gps {
-  position: absolute; right: var(--gutter); bottom: clamp(-72px, -5vw, -40px);
-  width: clamp(180px, 16vw, 260px); padding: 6px;
-  background: #FFFFFF; border-radius: 6px;
-  box-shadow: 0 30px 60px -24px rgb(6 16 27 / .75);
-  rotate: 2deg;
-}
-.ctl__gps img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 3px; }
 .ctl__legend { display: none; }
 
-/* Entrada: los puntos aparecen en orden y el monitor sube (solo con JS y sin movimiento reducido) */
+/* Entrada: los puntos aparecen en orden (solo con JS y sin movimiento reducido) */
 .ctl.is-armed .ctl__spots li { opacity: 0; scale: .6; }
-.ctl.is-armed .ctl__gps { opacity: 0; translate: 0 48px; }
 .ctl.is-in .ctl__spots li { opacity: 1; scale: 1; transition: opacity .4s var(--ease), scale .7s var(--ease); transition-delay: calc(.5s + var(--i) * .18s); }
-.ctl.is-in .ctl__gps { opacity: 1; translate: 0 0; transition: opacity .6s var(--ease), translate 1.1s var(--ease); transition-delay: .15s; }
 
 /* ---------- 6 · Traslado (cinemático) ---------- */
 .ride {
@@ -493,8 +482,6 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   .ctl__spot { translate: -17px -17px; }
   .ctl__n, .ctl__spot .ctl__n::after { width: 34px; height: 34px; }
   .ctl__h { position: relative; bottom: auto; left: auto; margin-top: -0.6em; padding-inline: var(--gutter); max-width: none; }
-  .ctl__gps { position: relative; right: auto; bottom: auto; margin: 28px auto 0; width: min(52vw, 220px); }
-  .ctl.is-armed .ctl__gps { translate: 0 24px; }
   .ctl__legend {
     display: grid; gap: 0; margin: 28px var(--gutter) 0;
     border-top: 1px solid rgb(255 255 255 / .2);
@@ -627,6 +614,9 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .ring .r-hand { stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; }
 .ring .r-hub { fill: var(--accent); }
 .ring .c-cell { fill: var(--accent); }
+.ring .c-dot { fill: var(--accent); }
+.ring .c-dot--end { fill: var(--on-ink); stroke: var(--accent); stroke-width: 2.5; }
+.ring .c-guide { stroke: color-mix(in srgb, var(--on-ink) 35%, transparent); stroke-width: 1; stroke-dasharray: 2 3; }
 .ring .c-axis { stroke: color-mix(in srgb, var(--on-ink) 28%, transparent); stroke-width: 1; }
 .ring .c-bar { fill: none; stroke: var(--accent); stroke-width: 8; }
 .ring .c-faint { fill: color-mix(in srgb, var(--on-ink-3) 80%, transparent); }

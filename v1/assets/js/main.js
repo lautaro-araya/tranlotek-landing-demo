@@ -395,15 +395,21 @@
 
   /* Gráficos lineales: lienzo de 240 × 150 bajo la cifra */
   var charts = {
-    tally: function (g) { // 12.000 = 12 columnas de 1.000; cada celda, 100 traslados
-      for (var c = 0; c < 12; c++) {
-        for (var r = 0; r < 10; r++) {
-          el('rect', { x: c * 20 + 3, y: 108 - r * 11, width: 14, height: 8, rx: 1, 'class': 'c-cell', style: '--d:' + (c * 4 + r * .4).toFixed(1) }, g);
-        }
+    tally: function (g) { // 12.000 = traslados acumulados en el tiempo (x) contra traslados (y).
+      // Solo los extremos llevan número (0 al inicio, 12.000 a octubre de 2026); los puntos intermedios
+      // siguen el ritmo promedio y no muestran valores, para no inventar datos mensuales.
+      var X0 = 44, X1 = 234, Y0 = 112, Y1 = 16, N = 24;
+      el('line', { x1: X0 - 4, y1: Y0 + 6, x2: X1 + 4, y2: Y0 + 6, 'class': 'c-axis' }, g);
+      el('line', { x1: X0 - 4, y1: Y1 - 6, x2: X0 - 4, y2: Y0 + 6, 'class': 'c-axis' }, g);
+      for (var i = 0; i < N; i++) {
+        var t = i / (N - 1), x = X0 + t * (X1 - X0), y = Y0 - t * (Y0 - Y1), last = i === N - 1;
+        el('circle', { cx: x.toFixed(1), cy: y.toFixed(1), r: last ? 4.5 : 2.8, 'class': 'c-pop c-dot' + (last ? ' c-dot--end' : ''), style: '--d:' + i * 2 }, g);
       }
-      el('line', { x1: 0, y1: 122.5, x2: 240, y2: 122.5, 'class': 'c-axis' }, g);
-      el('rect', { x: 62, y: 134, width: 14, height: 8, rx: 1, 'class': 'c-cell c-key' }, g);
-      text(g, 84, 141.5, '= 100 TRASLADOS', 'start', 'c-key', 48);
+      el('line', { x1: X0 - 4, y1: Y1, x2: X1 - 8, y2: Y1, 'class': 'c-guide c-pop', style: '--d:' + N * 2 }, g);
+      text(g, X0 - 10, Y1 + 3.5, '12.000', 'end', 'c-key', N * 2);
+      text(g, X0 - 10, Y0 + 3.5, '0', 'end', 'c-faint', 0);
+      text(g, X0, Y0 + 26, 'INICIO', 'start', 'c-faint', 0);
+      text(g, X1, Y0 + 26, 'OCT 2026', 'end', 'c-key', N * 2);
     },
     timeline: function (g) { // 2 años = 24 meses
       var x0 = 6, x1 = 226, y = 100, step = (x1 - x0) / 24;
