@@ -162,19 +162,19 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
 .hero__img { position: absolute; inset: 0; z-index: -2; }
 .hero__img img {
   width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%;
-  filter: saturate(.28) contrast(1.06) brightness(.86);
+  filter: saturate(.45) contrast(1.04) brightness(.96);
 }
 /* Velo azul noche: más denso abajo, donde va el título */
 .hero::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
     linear-gradient(180deg,
-      rgb(11 26 44 / .45) 0%,
-      rgb(11 26 44 / .12) 26%,
-      rgb(11 26 44 / .18) 52%,
-      rgb(6 16 27 / .78) 82%,
-      rgb(6 16 27 / .92) 100%),
-    rgb(24 49 80 / .28);
+      rgb(11 26 44 / .3) 0%,
+      rgb(11 26 44 / .04) 26%,
+      rgb(11 26 44 / .08) 52%,
+      rgb(6 16 27 / .62) 82%,
+      rgb(6 16 27 / .82) 100%),
+    rgb(24 49 80 / .14);
 }
 .hero__in {
   flex: 1;
@@ -198,7 +198,8 @@ html { scrollbar-color: var(--ink-line) var(--paper-2); }
   font: 700 clamp(15px, 1.3vw, 19px)/1 var(--f-display); font-stretch: 72%;
   letter-spacing: .04em; text-transform: uppercase;
 }
-.hero__steps span { margin-left: 6px; font-weight: 500; color: rgb(255 255 255 / .6); }
+.hero__steps span { margin-left: 6px; font-weight: 500; color: rgb(255 255 255 / .82); }
+.hero__route { text-shadow: 0 1px 12px rgb(6 16 27 / .7), 0 0 2px rgb(6 16 27 / .5); }
 .hero__steps em { font-style: normal; }
 .hero__tag { display: inline-flex; align-items: center; gap: 10px; margin-left: auto; }
 
