@@ -395,21 +395,24 @@
 
   /* Gráficos lineales: lienzo de 240 × 150 bajo la cifra */
   var charts = {
-    tally: function (g) { // 12.000 = traslados acumulados en el tiempo (x) contra traslados (y).
-      // Solo los extremos llevan número (0 al inicio, 12.000 a octubre de 2026); los puntos intermedios
-      // siguen el ritmo promedio y no muestran valores, para no inventar datos mensuales.
-      var X0 = 44, X1 = 234, Y0 = 112, Y1 = 16, N = 24;
-      el('line', { x1: X0 - 4, y1: Y0 + 6, x2: X1 + 4, y2: Y0 + 6, 'class': 'c-axis' }, g);
-      el('line', { x1: X0 - 4, y1: Y1 - 6, x2: X0 - 4, y2: Y0 + 6, 'class': 'c-axis' }, g);
-      for (var i = 0; i < N; i++) {
-        var t = i / (N - 1), x = X0 + t * (X1 - X0), y = Y0 - t * (Y0 - Y1), last = i === N - 1;
-        el('circle', { cx: x.toFixed(1), cy: y.toFixed(1), r: last ? 4.5 : 2.8, 'class': 'c-pop c-dot' + (last ? ' c-dot--end' : ''), style: '--d:' + i * 2 }, g);
-      }
-      el('line', { x1: X0 - 4, y1: Y1, x2: X1 - 8, y2: Y1, 'class': 'c-guide c-pop', style: '--d:' + N * 2 }, g);
-      text(g, X0 - 10, Y1 + 3.5, '12.000', 'end', 'c-key', N * 2);
-      text(g, X0 - 10, Y0 + 3.5, '0', 'end', 'c-faint', 0);
-      text(g, X0, Y0 + 26, 'INICIO', 'start', 'c-faint', 0);
-      text(g, X1, Y0 + 26, 'OCT 2026', 'end', 'c-key', N * 2);
+    tally: function (g) { // 12.000 = traslados por mes (y) a lo largo del tiempo (x).
+      // Serie ilustrativa de 24 meses que suma exactamente 12.000: meses dispares con tendencia al alza.
+      // No muestra valores por mes porque el cliente no entregó datos mensuales.
+      var M = [312, 362, 292, 422, 382, 352, 463, 412, 523, 443, 392, 513, 563, 483, 604, 533, 473, 624, 583, 664, 543, 694, 644, 724];
+      var X0 = 20, X1 = 232, Y0 = 112, Y1 = 18, LO = 200, HI = 760, N = M.length, pts = [];
+      el('line', { x1: X0 - 6, y1: Y0 + 6, x2: X1 + 6, y2: Y0 + 6, 'class': 'c-axis' }, g);
+      el('line', { x1: X0 - 6, y1: Y1 - 10, x2: X0 - 6, y2: Y0 + 6, 'class': 'c-axis' }, g);
+      M.forEach(function (v, i) {
+        pts.push([X0 + i / (N - 1) * (X1 - X0), Y0 - (v - LO) / (HI - LO) * (Y0 - Y1)]);
+      });
+      el('path', { d: 'M' + pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join('L'), 'class': 'c-trail', pathLength: 1 }, g);
+      pts.forEach(function (p, i) {
+        var last = i === N - 1;
+        el('circle', { cx: p[0].toFixed(1), cy: p[1].toFixed(1), r: last ? 4.5 : 2.8, 'class': 'c-pop c-dot' + (last ? ' c-dot--end' : ''), style: '--d:' + i * 2 }, g);
+      });
+      text(g, X0, Y1 - 12, 'POR MES', 'start', 'c-faint', 0);
+      text(g, X0 - 6, Y0 + 26, 'INICIO', 'start', 'c-faint', 0);
+      text(g, X1 + 6, Y0 + 26, 'OCT 2026', 'end', 'c-key', N * 2);
     },
     timeline: function (g) { // 2 años = 24 meses
       var x0 = 6, x1 = 226, y = 100, step = (x1 - x0) / 24;
