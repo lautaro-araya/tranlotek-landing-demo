@@ -238,6 +238,7 @@ button,input{font:inherit;color:inherit}
 .js .gcmap .gc__pin{opacity:0;transition:opacity .5s var(--ease-out);transition-delay:calc(1.5s + var(--i) * 110ms)}
 .js .gcmap .gc__hq,.js .gcmap .gc__scale{opacity:0;transition:opacity .6s var(--ease-out) .5s}
 .js .gcmap.is-drawn .gc__edge{stroke-dashoffset:0}
+.gcmap.is-done .gc__edge{stroke-dasharray:none}
 .js .gcmap.is-drawn .gc__wave,.js .gcmap.is-drawn .gc__pin,.js .gcmap.is-drawn .gc__hq,.js .gcmap.is-drawn .gc__scale{opacity:1}
 .dataplate{position:relative;margin-top:var(--s-7);padding:28px 28px 20px;border-radius:4px;color:var(--ink);
   background:linear-gradient(170deg,var(--zinc-1),color-mix(in srgb,var(--zinc-1) 55%,var(--zinc-2)) 75%,var(--zinc-2));
@@ -308,7 +309,7 @@ button,input{font:inherit;color:inherit}
 .rigging__shank{fill:url(#steel)}
 .rigging__hook{fill:none;stroke:url(#steel);stroke-width:14;stroke-linecap:round}
 .rigging__latch{stroke:#D9DEE2;stroke-width:3;stroke-linecap:round}
-.rigging__sling{fill:none;stroke:#16202C;stroke-width:5;stroke-linecap:round}
+.rigging__sling{fill:none;stroke:#2C3A4A;stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round}
 .rigging__shackle{fill:#C6CDD3;stroke:#5E6E80;stroke-width:2}
 .js [data-hoist] .rigging,.js [data-hoist] .plate{transform:translateY(-40px);transition:transform 1.6s var(--ease-out)}
 .js [data-hoist].is-hoisted .rigging,.js [data-hoist].is-hoisted .plate{transform:none}
