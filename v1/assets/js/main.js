@@ -13,61 +13,44 @@
     if (el) track(el.getAttribute('data-ga'), { ubicacion: el.getAttribute('data-ga-lugar') || '' });
   });
 
-  /* Portada: registro de servicio que avanza retiro → ruta → entrega.
-     Cada tramo dura STEP ms; la barra se llena de forma continua y la hora
-     de cada fila solo aparece cuando la etapa se cierra. */
-  var log = document.querySelector('[data-log]');
-  if (log && !reduced) {
-    var panel = log.closest('.log');
-    var rows = log.querySelectorAll('li');
-    var times = Array.prototype.map.call(rows, function (li) { return li.querySelector('time'); });
-    var stamps = times.map(function (t) { return t ? t.textContent : ''; });
-    var bar = document.querySelector('.log__track span');
-    var STEP = 1800, HOLD = 2600, FADE = 500;
-    var n = rows.length, step = 0, timer = null;
-
-    var setBar = function (p, ms) {
-      if (!bar) return;
-      bar.style.setProperty('--dur', ms + 'ms');
-      bar.style.setProperty('--p', p);
+  /* Portada: tarjeta que rota por lo que incluye cada servicio.
+     Avanza sola cuando la barra de progreso termina (se pausa al pasar el mouse o con foco);
+     con movimiento reducido no hay animación y solo avanza con el botón. */
+  var card = document.querySelector('[data-hcard]');
+  if (card) {
+    var ITEMS = [
+      ['Retiro y traslado con grúa', '25 grúas para todo tipo de vehículos.'],
+      ['Control GPS en toda la flota', 'Cada grúa reporta su posición a la central.'],
+      ['Acta y fotos de cada servicio', 'Retiro y entrega con hora, fotos y firma de recepción.'],
+      ['Central telefónica 24 h', 'Atendemos todos los días del año.']
+    ];
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var restart = function (el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); };
+    var hcN = card.querySelector('[data-hcard-n]');
+    var hcText = card.querySelector('[data-hcard-text]');
+    var hcBar = card.querySelector('[data-hcard-bar]');
+    var hcNext = card.querySelector('[data-hcard-next]');
+    var hcI = 0;
+    var show = function (k, byUser) {
+      hcI = (k + ITEMS.length) % ITEMS.length;
+      hcN.textContent = pad(hcI + 1);
+      hcText.setAttribute('aria-live', byUser ? 'polite' : 'off');
+      hcText.querySelector('.hcard__title').textContent = ITEMS[hcI][0];
+      hcText.querySelector('.hcard__sub').textContent = ITEMS[hcI][1];
+      restart(hcText, 'is-in');
+      restart(card, 'is-running');
     };
-    var render = function () {
-      rows.forEach(function (li, i) {
-        var done = i < step;
-        li.classList.toggle('is-done', done);
-        li.classList.toggle('is-now', i === step);
-        if (times[i]) times[i].textContent = done ? stamps[i] : '--:--';
-      });
-    };
-    var advance = function () {
-      render();
-      if (step < n) {
-        setBar((step + 1) / n, STEP);
-        step++;
-        timer = setTimeout(advance, STEP);
-      } else {
-        timer = setTimeout(reset, HOLD);
-      }
-    };
-    var reset = function () {
-      panel.classList.add('is-reset');
-      step = 0;
-      rows.forEach(function (li) { li.classList.remove('is-done', 'is-now'); });
-      timer = setTimeout(function () {
-        setBar(0, 0);
-        render();
-        if (bar) void bar.offsetWidth;
-        panel.classList.remove('is-reset');
-        timer = setTimeout(advance, 400);
-      }, FADE);
-    };
-
-    step = 0; setBar(0, 0); render();
-    timer = setTimeout(advance, 700);
-    document.addEventListener('visibilitychange', function () {
-      clearTimeout(timer);
-      if (!document.hidden) reset();
-    });
+    var pause = function (on) { card.classList.toggle('is-paused', on); };
+    card.querySelector('[data-hcard-total]').textContent = pad(ITEMS.length);
+    hcNext.hidden = false;
+    hcNext.addEventListener('click', function () { show(hcI + 1, true); });
+    hcBar.addEventListener('animationend', function () { show(hcI + 1, false); });
+    card.addEventListener('mouseenter', function () { pause(true); });
+    card.addEventListener('mouseleave', function () { pause(card.contains(document.activeElement)); });
+    card.addEventListener('focusin', function () { pause(true); });
+    card.addEventListener('focusout', function () { pause(card.matches(':hover')); });
+    document.addEventListener('visibilitychange', function () { pause(document.hidden); });
+    card.classList.add('is-running');
   }
 
   /* Navegación: marca la sección visible */

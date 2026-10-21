@@ -12,8 +12,8 @@
 <link rel="apple-touch-icon" href="imagenes/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="preload" as="image" type="image/webp" href="imagenes/hero-1200.webp" imagesrcset="imagenes/hero-800.webp 800w, imagenes/hero-1200.webp 1200w, imagenes/hero-1584.webp 1584w" imagesizes="100vw">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="preload" as="image" type="image/webp" href="imagenes/hero-1200.webp" imagesrcset="imagenes/hero-800.webp 800w, imagenes/hero-1200.webp 1200w, imagenes/hero-1584.webp 1584w" imagesizes="(min-width: 900px) 64vw, 100vw">
 <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
@@ -41,11 +41,11 @@
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
 </svg>
 
-<!-- 0 · Barra: piezas blancas que flotan sobre la portada (logo · enlaces · contacto) -->
+<!-- 0 · Barra -->
 <header class="bar" data-bar>
   <div class="bar__in">
-    <a class="bar__logo tile" href="#inicio" aria-label="Tranlotek, ir al inicio"><img src="imagenes/logo-tranlotek-oscuro.webp" alt="" width="560" height="157"></a>
-    <nav class="nav tile" id="nav" aria-label="Principal">
+    <a class="bar__logo" href="#inicio" aria-label="Tranlotek, ir al inicio"><img src="imagenes/logo-tranlotek-oscuro.webp" alt="" width="560" height="157"></a>
+    <nav class="nav" id="nav" aria-label="Principal">
       <ul class="nav__list">
         <li><a href="#estandar">Estándar</a></li>
         <li><a href="#modelo">El modelo</a></li>
@@ -56,8 +56,8 @@
       <a class="btn btn--accent btn--lg btn--block nav__cta" href="#conversemos">Solicitar reunión comercial</a>
     </nav>
     <div class="bar__end">
-      <a class="tile bar__cta" href="#conversemos">Solicitar reunión<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      <button class="nav__toggle tile" type="button" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú" data-nav-toggle>
+      <a class="btn btn--dark bar__cta" href="#conversemos">Solicitar reunión comercial</a>
+      <button class="nav__toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú" data-nav-toggle>
         <svg class="ico ico--open" aria-hidden="true"><use href="#i-menu"/></svg>
         <svg class="ico ico--close" aria-hidden="true"><use href="#i-close"/></svg>
       </button>
@@ -67,40 +67,20 @@
 
 <main id="contenido">
 
-<!-- 1 · Portada: foto a sangre en tono frío, título condensado abajo a la izquierda,
-     línea de etapas a media altura y tarjeta rotativa de lo que incluye cada servicio -->
+<!-- 1 · Portada (formato del hero de bairesdev.com, sin el ciclo de palabras) -->
 <section class="hero" id="inicio" aria-labelledby="hero-h">
   <picture class="hero__media">
-    <source type="image/webp" srcset="imagenes/hero-800.webp 800w, imagenes/hero-1200.webp 1200w, imagenes/hero-1584.webp 1584w" sizes="100vw">
+    <source type="image/webp" srcset="imagenes/hero-800.webp 800w, imagenes/hero-1200.webp 1200w, imagenes/hero-1584.webp 1584w" sizes="(min-width: 900px) 64vw, 100vw">
     <img src="imagenes/hero-1200.webp" alt="Equipo de Tranlotek frente a su flota de grúas" width="1584" height="672" fetchpriority="high">
   </picture>
-  <div class="hero__in">
-    <div class="hero__route">
-      <ol class="hero__steps" aria-label="Etapas de cada servicio">
-        <li>R. <span>Retiro</span></li>
-        <li>T. <span>Traslado</span></li>
-        <li>E. <span>Entrega</span></li>
-      </ol>
-      <p class="hero__tag">Región del Biobío</p>
-    </div>
-    <div class="hero__foot">
-      <h1 class="hero__title" id="hero-h">Un modelo de traslado probado en 12.000 servicios.</h1>
-      <aside class="hcard" aria-label="Lo que incluye cada servicio" data-hcard>
-        <div class="hcard__top">
-          <p class="hcard__count mono"><b data-hcard-n>01</b> / <span data-hcard-total>04</span></p>
-          <p class="hcard__label">Cada servicio</p>
-        </div>
-        <div class="hcard__bar" aria-hidden="true"><span data-hcard-bar></span></div>
-        <div class="hcard__body">
-          <div class="hcard__text" data-hcard-text>
-            <p class="hcard__title">Retiro y traslado con grúa</p>
-            <p class="hcard__sub">25 grúas para todo tipo de vehículos.</p>
-          </div>
-          <button class="hcard__next" type="button" aria-label="Ver lo siguiente que incluye" data-hcard-next hidden><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </div>
-      </aside>
+  <div class="hero__wrap">
+    <div class="hero__copy">
+      <h1 class="hero__title" id="hero-h">Un modelo de traslado probado en <span class="hero__accent">12.000 servicios.</span></h1>
+      <p class="hero__lead">Retiro y traslado de vehículos con grúa en la Región del Biobío: <strong>25 grúas</strong>, <strong>control GPS</strong> en toda la flota y <strong>reporte diario</strong> de cada servicio.</p>
+      <a class="btn btn--accent btn--lg" href="#conversemos">Solicitar reunión comercial</a>
     </div>
   </div>
+  <div class="hero__curve" aria-hidden="true"></div>
 </section>
 
 <!-- 2 · Estándar del sector público (ocupa el lugar de la franja de logos del original) -->
