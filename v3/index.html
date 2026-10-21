@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TRANLOTEK · Transporte y logística con control operativo</title>
+  <meta name="description" content="Operador logístico de transporte terrestre en la Región del Biobío. Transporte de carga, traslado de activos de alto control, planificación de rutas y registro operativo de cada traslado.">
+  <meta name="theme-color" content="#0D3B66">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:title" content="TRANLOTEK · Transporte y logística con control operativo">
+  <meta property="og:description" content="Transporte terrestre y gestión segura de activos en la Región del Biobío.">
+  <meta property="og:url" content="https://tranlotek.cl/">
+  <meta property="og:image" content="https://tranlotek.cl/assets/img/favicon-192.png">
+  <link rel="preload" href="assets/fonts/big-shoulders-stencil-display-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TRANLOTEK",
+    "url": "https://tranlotek.cl/",
+    "logo": "https://tranlotek.cl/assets/img/tranlotek-logo.png",
+    "email": "contacto@tranlotek.cl",
+    "slogan": "Transporte · Tecnología · Logística",
+    "areaServed": {"@type": "AdministrativeArea", "name": "Región del Biobío, Chile"}
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#contenido">Ir al contenido</a>
+
+  <header class="masthead" data-masthead>
+    <div class="masthead__inner wrap">
+      <a class="brand" href="#inicio" aria-label="TRANLOTEK, ir al inicio">
+        <img src="assets/img/tranlotek-logo.png" width="647" height="183" alt="TRANLOTEK · Transporte, Tecnología, Logística">
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-nav-toggle>
+          <span class="nav__toggle-bars" aria-hidden="true"></span>
+          <span class="nav__toggle-label">Menú</span>
+        </button>
+        <ul class="nav__list" id="menu" data-nav-list>
+          <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li class="nav__cta"><a class="tag-link" href="#ficha">Solicitar contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- Puerta: primera vista -->
+    <section class="door hero" id="inicio" aria-labelledby="hero-title">
+      <div class="door__grain" aria-hidden="true"></div>
+      <div class="hero__grid wrap">
+        <div class="hero__copy">
+          <h1 class="hero__title" id="hero-title">Transporte y logística con control operativo</h1>
+          <p class="hero__lead">Operador logístico de transporte terrestre en la Región del Biobío. Planificamos, supervisamos y registramos cada traslado de carga y activos.</p>
+          <p class="hero__call">
+            <span>¿Prefieres hablar ahora?</span>
+            <!-- REEMPLAZAR: teléfono provisorio -->
+            <a class="phone-link" href="tel:+56988888888" data-placeholder="telefono">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M6.6 3.5h3l1.5 4.2-2 1.3a11 11 0 0 0 5.9 5.9l1.3-2 4.2 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              +56 9 8888 8888
+            </a>
+          </p>
+        </div>
+
+        <div class="seam" aria-hidden="true">
+          <span class="rod rod--a"><i></i><i></i></span>
+          <span class="seam__line"></span>
+          <span class="rod rod--b"><i></i><i></i></span>
+        </div>
+
+        <div class="hero__plate" id="ficha">
+          <form class="plate contact-form" action="enviar.php" method="post" novalidate data-contact-form>
+            <span class="rivet rivet--tl" aria-hidden="true"></span><span class="rivet rivet--tr" aria-hidden="true"></span>
+            <span class="rivet rivet--bl" aria-hidden="true"></span><span class="rivet rivet--br" aria-hidden="true"></span>
+            <div class="plate__head">
+              <h2 class="plate__title">Solicita contacto comercial</h2>
+              <p class="plate__ref">Ref. <span data-serial>TLK-000000-0000</span></p>
+            </div>
+            <p class="plate__intro">Déjanos tus datos y un ejecutivo de ventas te contactará para coordinar tu traslado.</p>
+            <div class="plate__body" data-form-body>
+              <div class="field">
+                <label for="f1-nombre">Nombre y apellido</label>
+                <input id="f1-nombre" name="nombre" type="text" autocomplete="name" required maxlength="80" aria-describedby="f1-nombre-err">
+                <p class="field__err" id="f1-nombre-err" hidden></p>
+              </div>
+              <div class="field">
+                <label for="f1-empresa">Empresa o institución</label>
+                <input id="f1-empresa" name="empresa" type="text" autocomplete="organization" required maxlength="100" aria-describedby="f1-empresa-err">
+                <p class="field__err" id="f1-empresa-err" hidden></p>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="f1-telefono">Teléfono</label>
+                  <input id="f1-telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="+56 9 1234 5678" aria-describedby="f1-telefono-err">
+                  <p class="field__err" id="f1-telefono-err" hidden></p>
+                </div>
+                <div class="field">
+                  <label for="f1-correo">Correo <span class="field__opt">(opcional)</span></label>
+                  <input id="f1-correo" name="correo" type="email" autocomplete="email" maxlength="120" aria-describedby="f1-correo-err">
+                  <p class="field__err" id="f1-correo-err" hidden></p>
+                </div>
+              </div>
+              <div class="hp" aria-hidden="true"><label for="f1-web">No completar</label><input id="f1-web" name="web" type="text" tabindex="-1" autocomplete="off"></div>
+              <input type="hidden" name="referencia" data-serial-input>
+              <input type="hidden" name="origen" value="Formulario portada">
+              <button class="seal" type="submit" data-seal>
+                <span class="seal__head" aria-hidden="true"></span>
+                <span class="seal__label" data-seal-label>Solicitar contacto</span>
+                <svg class="seal__arrow" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg>
+              </button>
+              <p class="plate__note">Usaremos tus datos solo para responder a esta solicitud.</p>
+              <p class="plate__status" role="alert" data-form-error hidden></p>
+            </div>
+            <div class="plate__done" data-form-done hidden tabindex="-1">
+              <p class="plate__done-title">Solicitud registrada</p>
+              <p class="plate__done-text">Un ejecutivo comercial te contactará al <strong data-done-phone></strong>. Guarda tu referencia: <strong data-serial></strong></p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <nav class="sill" aria-label="Etapas del servicio">
+        <ol class="sill__list wrap">
+          <li><a href="#etapa-planificacion"><span class="num">01</span> Planificación</a></li>
+          <li><a href="#etapa-traslado"><span class="num">02</span> Traslado</a></li>
+          <li><a href="#etapa-custodia"><span class="num">03</span> Custodia</a></li>
+          <li><a href="#etapa-registro"><span class="num">04</span> Registro</a></li>
+        </ol>
+      </nav>
+    </section>
+
+    <!-- Sobre nosotros -->
+    <section class="ground about" id="sobre-nosotros" aria-labelledby="about-title">
+      <div class="wrap">
+        <h2 class="big-word" id="about-title">Operador logístico <span>de alto control</span></h2>
+        <div class="about__grid">
+          <div class="about__text">
+            <p class="about__statement">TRANLOTEK es un operador logístico especializado en transporte terrestre y gestión segura de activos, con experiencia en operaciones institucionales y traslado de activos de alto control operativo.</p>
+            <ul class="logbook">
+              <li>
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="m4.5 12.5 4.5 4.5L19.5 6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg>
+                <p>Transporte terrestre y coordinación de traslados con trazabilidad y control operativo.</p>
+              </li>
+              <li>
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="m4.5 12.5 4.5 4.5L19.5 6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg>
+                <p>Experiencia comprobada en operaciones institucionales y traslado de activos bajo procedimientos controlados.</p>
+              </li>
+              <li>
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="m4.5 12.5 4.5 4.5L19.5 6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg>
+                <p>Más de 7.000 operaciones logísticas ejecutadas en la provincia de Concepción, con activos valorizados en más de $14.000 millones bajo responsabilidad operativa.</p>
+              </li>
+            </ul>
+            <a class="btn-line" href="#contacto">Conversemos tu operación
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg>
+            </a>
+          </div>
+          <figure class="photo-print">
+            <img src="assets/img/unidad-tractora.jpg" width="804" height="680" loading="lazy" alt="Tracto camión en una ruta del sur de Chile, con cerros y bosque de fondo, impreso en azul.">
+            <figcaption>Transporte terrestre · Región del Biobío</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cobertura y cifras -->
+    <section class="deep coverage" id="cobertura" aria-labelledby="coverage-title">
+      <div class="wrap coverage__grid">
+        <div class="coverage__text">
+          <h2 class="big-word big-word--xl" id="coverage-title">Biobío</h2>
+          <p class="coverage__lead">Cobertura en toda la Región del Biobío, en rutas urbanas e interurbanas de las provincias de Concepción, Arauco y Biobío, con proyección hacia la Zona Sur.</p>
+
+          <div class="dataplate" role="group" aria-label="Datos de operación">
+            <span class="rivet rivet--tl" aria-hidden="true"></span><span class="rivet rivet--tr" aria-hidden="true"></span>
+            <span class="rivet rivet--bl" aria-hidden="true"></span><span class="rivet rivet--br" aria-hidden="true"></span>
+            <p class="dataplate__title">Placa de operación</p>
+            <dl class="dataplate__rows">
+              <div><dt>Operaciones logísticas ejecutadas</dt><dd>+7.000</dd></div>
+              <div><dt>Activos gestionados</dt><dd>$14.000<small> MM</small></dd></div>
+              <div><dt>Cobertura en Región del Biobío</dt><dd>100<small>%</small></dd></div>
+              <div><dt>Control y trazabilidad operativa</dt><dd>24/7</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <figure class="routemap" data-routemap>
+          <svg viewBox="0 0 700 640" role="img" aria-labelledby="map-title map-desc">
+            <title id="map-title">Mapa esquemático de la Región del Biobío</title>
+            <desc id="map-desc">Esquema de las principales rutas de la región: Ruta 160 por la costa desde Concepción hasta Cañete y Tirúa, y Ruta 5 por el interior pasando por Cabrero y Los Ángeles, con continuidad hacia la Zona Sur.</desc>
+            <defs>
+              <pattern id="sea" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)">
+                <line x1="0" y1="0" x2="0" y2="14" stroke="#B5C6D8" stroke-opacity=".14" stroke-width="2"/>
+              </pattern>
+            </defs>
+            <!-- Océano -->
+            <path class="map-sea" d="M0 0H232L221 30 214 51 206 87 195 98 176 82 179 50 166 66 168 90 174 128 162 174 162 192 148 214 127 240 96 222 65 210 58 262 47 347 62 420 76 498 86 567 92 640H0Z" fill="url(#sea)"/>
+            <path class="map-coast" d="M232 0 221 30 214 51 206 87 195 98 176 82 179 50 166 66 168 90 174 128 162 174 162 192 148 214 127 240 96 222 65 210 58 262 47 347 62 420 76 498 86 567 92 640" fill="none"/>
+            <!-- Cordillera -->
+            <path class="map-andes" d="M650 0 664 70 646 140 668 214 652 290 676 360 660 440 684 520 670 640" fill="none"/>
+            <text class="map-label map-label--sea" x="30" y="150" transform="rotate(-90 30 150)">Océano Pacífico</text>
+            <text class="map-label map-label--sea" x="690" y="260" transform="rotate(90 690 260)">Cordillera de los Andes</text>
+
+            <!-- Rutas -->
+            <path class="map-route map-route--minor" pathLength="1" d="M192 113 C240 135 300 150 348 174"/>
+            <path class="map-route map-route--minor" pathLength="1" d="M176 82 192 113"/>
+            <path class="map-route map-route--minor" pathLength="1" d="M360 306 386 381"/>
+            <path class="map-route map-route--minor" pathLength="1" d="M112 356 47 347"/>
+            <path class="map-route" pathLength="1" d="M192 113 180 124 166 174 166 192 127 240 120 306 112 356 109 405 96 490 86 567"/>
+            <path class="map-route" pathLength="1" d="M376 0 348 174 360 306 352 420 348 560"/>
+            <path class="map-route map-route--ahead" pathLength="1" d="M348 560 346 636"/>
+
+            <g class="map-shield"><rect x="96" y="282" width="48" height="26" rx="6"/><text x="120" y="301">160</text></g>
+            <g class="map-shield"><rect x="330" y="226" width="40" height="26" rx="6"/><text x="350" y="245">5</text></g>
+
+            <!-- Nodos -->
+            <g class="map-nodes">
+              <circle class="hub" cx="192" cy="113" r="11"/>
+              <circle cx="176" cy="82" r="6"/>
+              <circle cx="166" cy="174" r="6"/>
+              <circle cx="166" cy="192" r="6"/>
+              <circle cx="127" cy="240" r="6"/>
+              <circle cx="47" cy="347" r="6"/>
+              <circle cx="109" cy="405" r="6"/>
+              <circle cx="86" cy="567" r="6"/>
+              <circle cx="348" cy="174" r="6"/>
+              <circle class="hub hub--sm" cx="360" cy="306" r="9"/>
+              <circle cx="386" cy="381" r="6"/>
+            </g>
+            <g class="map-names">
+              <text class="map-name-sm" x="214" y="120">Concepción</text>
+              <text x="132" y="78" text-anchor="end">Talcahuano</text>
+              <text x="186" y="178" text-anchor="start" dx="0">Coronel</text>
+              <text x="184" y="200">Lota</text>
+              <text x="146" y="246">Arauco</text>
+              <text x="62" y="338">Lebu</text>
+              <text x="126" y="410">Cañete</text>
+              <text x="104" y="572">Tirúa</text>
+              <text x="366" y="168">Cabrero</text>
+              <text x="380" y="304">Los Ángeles</text>
+              <text x="402" y="386">Mulchén</text>
+            </g>
+
+            <!-- Anotaciones -->
+            <g class="map-note">
+              <path d="M206 99 250 58H424" fill="none"/>
+              <circle cx="192" cy="113" r="20" fill="none"/>
+              <text class="map-note__value" x="434" y="68">Concepción</text>
+              <text class="map-note__text" x="434" y="100">+7.000 operaciones</text>
+              <text class="map-note__text" x="434" y="124">ejecutadas en la</text>
+              <text class="map-note__text" x="434" y="148">provincia</text>
+            </g>
+            <g class="map-note map-note--south">
+              <path d="M358 600H420" fill="none"/>
+              <text class="map-note__value" x="430" y="598">Zona Sur</text>
+              <text class="map-note__text" x="430" y="622">Proyección de cobertura</text>
+            </g>
+          </svg>
+          <figcaption>
+            <ul class="map-callouts">
+              <li><strong>Concepción</strong> +7.000 operaciones ejecutadas en la provincia</li>
+              <li><strong>Zona Sur</strong> Proyección de cobertura</li>
+            </ul>
+            <span>Esquema de rutas, no a escala.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Servicios: cadena de custodia -->
+    <section class="ground services" id="servicios" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="services__intro">
+          <h2 class="big-word" id="services-title">Servicios</h2>
+          <p class="services__lead">Nuestro enfoque combina operación, tecnología y procedimientos para asegurar continuidad, visibilidad y control del servicio. Cada traslado recorre las mismas cuatro etapas.</p>
+        </div>
+
+        <div class="custody" data-custody>
+          <aside class="rail" aria-label="Etapas del traslado">
+            <div class="rail__inner">
+              <p class="rail__ref">Ref. <span data-serial>TLK-000000-0000</span></p>
+              <ol class="rail__steps">
+                <li data-step="etapa-planificacion"><a href="#etapa-planificacion"><span class="rail__dot" aria-hidden="true"></span><span class="num">01</span> Planificación<span class="rail__state" data-state></span></a></li>
+                <li data-step="etapa-traslado"><a href="#etapa-traslado"><span class="rail__dot" aria-hidden="true"></span><span class="num">02</span> Traslado<span class="rail__state" data-state></span></a></li>
+                <li data-step="etapa-custodia"><a href="#etapa-custodia"><span class="rail__dot" aria-hidden="true"></span><span class="num">03</span> Custodia<span class="rail__state" data-state></span></a></li>
+                <li data-step="etapa-registro"><a href="#etapa-registro"><span class="rail__dot" aria-hidden="true"></span><span class="num">04</span> Registro<span class="rail__state" data-state></span></a></li>
+              </ol>
+              <span class="rail__track" aria-hidden="true"><span class="rail__fill" data-rail-fill></span></span>
+            </div>
+          </aside>
+
+          <div class="stages">
+            <article class="stage" id="etapa-planificacion" aria-labelledby="st1">
+              <header class="stage__head">
+                <span class="stage__num">01</span>
+                <h3 class="stage__name" id="st1">Planificación</h3>
+              </header>
+              <p class="stage__line">Antes de mover la carga: rutas, recursos y ventanas horarias definidos.</p>
+              <div class="stage__services">
+                <div class="service">
+                  <h4>Coordinación logística y distribución</h4>
+                  <p>Coordinación de operaciones que requieren planificación, control de activos y seguimiento permanente de cada servicio.</p>
+                </div>
+                <div class="service">
+                  <h4>Planificación de rutas</h4>
+                  <p>Planificación de rutas, asignación de recursos, coordinación de puntos de carga y descarga, y gestión de ventanas horarias.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="stage" id="etapa-traslado" aria-labelledby="st2">
+              <header class="stage__head">
+                <span class="stage__num">02</span>
+                <h3 class="stage__name" id="st2">Traslado</h3>
+              </header>
+              <p class="stage__line">Carga comercial e industrial en rutas urbanas e interurbanas.</p>
+              <div class="stage__services">
+                <div class="service">
+                  <h4>Transporte de mercancías y carga regional</h4>
+                  <p>Traslado de mercancías comerciales e industriales mediante transporte terrestre con planificación de rutas.</p>
+                </div>
+                <div class="service">
+                  <h4>Traslados en ruta</h4>
+                  <p>Traslados en rutas urbanas e interurbanas para carga comercial e industrial, con coordinación operativa y cumplimiento.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="stage" id="etapa-custodia" aria-labelledby="st3">
+              <header class="stage__head">
+                <span class="stage__num">03</span>
+                <h3 class="stage__name" id="st3">Custodia</h3>
+              </header>
+              <p class="stage__line">Activos de alto control trasladados bajo procedimientos controlados.</p>
+              <div class="stage__services">
+                <div class="service">
+                  <h4>Transporte especializado de activos</h4>
+                  <p>Operaciones institucionales y traslado de activos de alto control operativo, ejecutados bajo procedimientos controlados.</p>
+                </div>
+                <div class="service">
+                  <h4>Traslado de activos</h4>
+                  <p>Traslado de activos que requieren control y manejo operacional: activos móviles, equipos y cargas sensibles por criticidad operativa.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="stage" id="etapa-registro" aria-labelledby="st4">
+              <header class="stage__head">
+                <span class="stage__num">04</span>
+                <h3 class="stage__name" id="st4">Registro</h3>
+              </header>
+              <p class="stage__line">Cada traslado deja evidencia de cumplimiento, trazabilidad y control.</p>
+              <div class="stage__services">
+                <div class="service">
+                  <h4>Trazabilidad y control del servicio</h4>
+                  <p>Supervisión, trazabilidad y registro operativo en cada traslado para garantizar seguridad, coordinación y cumplimiento del servicio.</p>
+                </div>
+                <div class="service">
+                  <h4>Registro operativo</h4>
+                  <p>Registro operativo por traslado, control de cumplimiento y evidencia de gestión logística.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sectores -->
+    <section class="zinc sectors" id="sectores" aria-labelledby="sectors-title">
+      <div class="wrap sectors__grid">
+        <h2 class="big-word sectors__title" id="sectors-title">Sectores <span>que atendemos</span></h2>
+        <ul class="sectors__list">
+          <li>Industria y manufactura</li>
+          <li>Distribución y comercio</li>
+          <li>Agroindustria y abastecimiento</li>
+          <li>Operadores logísticos</li>
+          <li>Instituciones públicas y privadas</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contacto: la puerta se cierra -->
+    <section class="door contact" id="contacto" aria-labelledby="contact-title">
+      <div class="door__grain" aria-hidden="true"></div>
+      <div class="wrap contact__grid">
+        <div class="contact__copy">
+          <h2 class="contact__title" id="contact-title">¿Necesitas coordinar un traslado?</h2>
+          <p class="contact__lead">TRANLOTEK ofrece transporte terrestre seguro y gestión logística con control operativo. Déjanos tus datos y nuestro equipo comercial te llamará.</p>
+          <dl class="channels">
+            <div>
+              <dt>Teléfono</dt>
+              <!-- REEMPLAZAR: teléfono provisorio -->
+              <dd><a href="tel:+56988888888" data-placeholder="telefono">+56 9 8888 8888</a></dd>
+            </div>
+            <div>
+              <dt>Correo</dt>
+              <dd><a href="mailto:contacto@tranlotek.cl">contacto@tranlotek.cl</a></dd>
+            </div>
+            <div>
+              <dt>Ubicación</dt>
+              <dd>Región del Biobío, Chile</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="seam" aria-hidden="true">
+          <span class="rod rod--a"><i></i><i></i></span>
+          <span class="seam__line"></span>
+          <span class="rod rod--b"><i></i><i></i></span>
+        </div>
+
+        <div class="contact__plate">
+          <form class="plate contact-form" action="enviar.php" method="post" novalidate data-contact-form>
+            <span class="rivet rivet--tl" aria-hidden="true"></span><span class="rivet rivet--tr" aria-hidden="true"></span>
+            <span class="rivet rivet--bl" aria-hidden="true"></span><span class="rivet rivet--br" aria-hidden="true"></span>
+            <div class="plate__head">
+              <h3 class="plate__title">Solicita contacto comercial</h3>
+              <p class="plate__ref">Ref. <span data-serial>TLK-000000-0000</span></p>
+            </div>
+            <div class="plate__body" data-form-body>
+              <div class="field">
+                <label for="f2-nombre">Nombre y apellido</label>
+                <input id="f2-nombre" name="nombre" type="text" autocomplete="name" required maxlength="80" aria-describedby="f2-nombre-err">
+                <p class="field__err" id="f2-nombre-err" hidden></p>
+              </div>
+              <div class="field">
+                <label for="f2-empresa">Empresa o institución</label>
+                <input id="f2-empresa" name="empresa" type="text" autocomplete="organization" required maxlength="100" aria-describedby="f2-empresa-err">
+                <p class="field__err" id="f2-empresa-err" hidden></p>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="f2-telefono">Teléfono</label>
+                  <input id="f2-telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="+56 9 1234 5678" aria-describedby="f2-telefono-err">
+                  <p class="field__err" id="f2-telefono-err" hidden></p>
+                </div>
+                <div class="field">
+                  <label for="f2-correo">Correo <span class="field__opt">(opcional)</span></label>
+                  <input id="f2-correo" name="correo" type="email" autocomplete="email" maxlength="120" aria-describedby="f2-correo-err">
+                  <p class="field__err" id="f2-correo-err" hidden></p>
+                </div>
+              </div>
+              <div class="hp" aria-hidden="true"><label for="f2-web">No completar</label><input id="f2-web" name="web" type="text" tabindex="-1" autocomplete="off"></div>
+              <input type="hidden" name="referencia" data-serial-input>
+              <input type="hidden" name="origen" value="Formulario contacto">
+              <button class="seal" type="submit" data-seal>
+                <span class="seal__head" aria-hidden="true"></span>
+                <span class="seal__label" data-seal-label>Solicitar contacto</span>
+                <svg class="seal__arrow" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg>
+              </button>
+              <p class="plate__note">Usaremos tus datos solo para responder a esta solicitud.</p>
+              <p class="plate__status" role="alert" data-form-error hidden></p>
+            </div>
+            <div class="plate__done" data-form-done hidden tabindex="-1">
+              <p class="plate__done-title">Solicitud registrada</p>
+              <p class="plate__done-text">Un ejecutivo comercial te contactará al <strong data-done-phone></strong>. Guarda tu referencia: <strong data-serial></strong></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/tranlotek-logo.png" width="647" height="183" alt="TRANLOTEK" loading="lazy">
+        <p>Transporte terrestre seguro y gestión logística con control operativo.</p>
+      </div>
+      <nav class="footer__col" aria-label="Secciones">
+        <p class="footer__head">Secciones</p>
+        <ul>
+          <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="footer__col">
+        <p class="footer__head">Cobertura</p>
+        <p>Región del Biobío (cobertura inicial)<br>Proyección Zona Sur</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__head">Contacto</p>
+        <p><a href="mailto:contacto@tranlotek.cl">contacto@tranlotek.cl</a><br><!-- REEMPLAZAR: teléfono provisorio --><a href="tel:+56988888888" data-placeholder="telefono">+56 9 8888 8888</a></p>
+      </div>
+    </div>
+    <div class="wrap footer__base">
+      <p>© <span data-year>2026</span> TRANLOTEK. Todos los derechos reservados.</p>
+      <p class="footer__tag">Transporte · Tecnología · Logística</p>
+      <p>Desarrollado por <a href="https://www.piacarrascozavala.com" rel="noopener" target="_blank">Pía CZ</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

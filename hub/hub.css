@@ -191,3 +191,10 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- Página "Coming soon" (v4/) ---------- */
+.soon-page { min-height: calc(100dvh - 65px); display: grid; align-items: center; padding-block: 64px; }
+.soon-page .wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.soon-page .prompt { margin-bottom: 0; }
+.back { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 8px; padding: 0 16px; border: 1px solid var(--line-2); border-radius: 10px; font-size: 14px; color: var(--fg-2); text-decoration: none; transition: border-color .2s var(--ease), color .2s var(--ease); }
+.back:hover { border-color: var(--accent); color: var(--fg); }
