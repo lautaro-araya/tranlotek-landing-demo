@@ -93,7 +93,7 @@ button,input{font:inherit;color:inherit}
 /* ---------- Portada: grúa en ruta ---------- */
 .hero{position:relative;isolation:isolate;color:var(--on-door);background:var(--door-night);min-height:clamp(640px,92svh,880px);display:flex;flex-direction:column;justify-content:center;padding-top:var(--masthead)}
 .hero__photo{position:absolute;inset:0;z-index:-2}
-.hero__photo img{width:100%;height:100%;object-fit:cover;object-position:42% 55%}
+.hero__photo img{width:100%;height:100%;object-fit:cover;object-position:62% 50%}
 .hero__veil{position:absolute;inset:0;z-index:-1;background:
   linear-gradient(90deg,color-mix(in srgb,var(--door-night) 94%,transparent) 0%,color-mix(in srgb,var(--door-deep) 86%,transparent) 30%,color-mix(in srgb,var(--door-deep) 42%,transparent) 50%,color-mix(in srgb,var(--door-deep) 0%,transparent) 66%),
   linear-gradient(0deg,color-mix(in srgb,var(--door-night) 70%,transparent) 0%,color-mix(in srgb,var(--door-night) 0%,transparent) 34%),
@@ -195,7 +195,7 @@ button,input{font:inherit;color:inherit}
 /* ---------- Sobre nosotros ---------- */
 .ground{background:var(--concrete);color:var(--ink)}
 .about{padding-block:calc(var(--section) + 70px) var(--section)}
-.about .big-word{max-width:14ch}
+.about .big-word{max-width:20ch}
 .fleet{margin-top:clamp(40px,5vw,72px)}
 .fleet img{width:100%;height:auto;aspect-ratio:1584/672;object-fit:cover}
 .about__grid{display:block}
@@ -349,7 +349,7 @@ button,input{font:inherit;color:inherit}
   .hero__inner{order:1}
   .hero__photo{order:2;position:relative;inset:auto;z-index:0;display:block}
   .hero__plate{order:3}
-  .hero__photo img{height:auto;aspect-ratio:16/10;object-position:62% 60%}
+  .hero__photo img{height:auto;aspect-ratio:16/10;object-position:50% 55%}
   .hero__veil{display:none}
   .hero__inner{padding-block:40px 36px;background:linear-gradient(180deg,var(--door-night),var(--door-deep))}
   .hero__copy{max-width:none}
@@ -400,7 +400,7 @@ button,input{font:inherit;color:inherit}
   .boom{display:none}
   .about .dataplate--fleet{margin-top:var(--s-6)}
   .about__text{padding-top:var(--s-6)}
-  .fleet img{aspect-ratio:4/3;object-position:50% 45%}
+  .fleet img{aspect-ratio:4/3;object-position:62% 55%}
   .contact__copy{padding-right:0}
   .footer__grid{grid-template-columns:1fr 1fr}
   .footer__brand{grid-column:1 / -1}
