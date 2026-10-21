@@ -6,7 +6,7 @@
 <title>Tranlotek · Versiones de la web</title>
 <meta name="description" content="Hub de revisión con las versiones de la landing de Tranlotek.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#070B14">
+<meta name="theme-color" content="#000000">
 <link rel="icon" type="image/png" sizes="32x32" href="v1/assets/img/favicon-32.png">
 <link rel="apple-touch-icon" href="v1/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="hub/hub.css">
 </head>
-<body>
+<body class="hub">
 <a class="skip" href="#versiones">Saltar a las versiones</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -26,42 +26,15 @@
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
 </svg>
 
-<div class="bg" aria-hidden="true"><div class="bg__grid"></div><div class="bg__glow"></div></div>
-
-<header class="top">
-  <div class="wrap top__in">
-    <a class="brand" href="./" aria-label="Tranlotek · versiones, inicio">
-      <img src="v1/assets/img/logo-tranlotek.webp" alt="" width="560" height="157">
-      <span class="brand__path mono">/ versiones</span>
-    </a>
-    <p class="top__status mono"><span class="pulse" aria-hidden="true"></span>3 de 4 publicadas</p>
-  </div>
-</header>
-
 <main>
-  <section class="intro" aria-labelledby="intro-h">
-    <div class="wrap">
-      <p class="prompt mono"><span class="prompt__sign" aria-hidden="true">&gt;</span> tranlotek web <span class="prompt__flag">--versiones</span><span class="caret" aria-hidden="true"></span></p>
-      <h1 class="intro__h" id="intro-h">Versiones de la <span class="grad">landing</span></h1>
-      <p class="intro__p">Cada versión de tranlotek.com en un solo lugar, para comparar y revisar. Todas son demos: datos provisionales, formulario sin envío y fuera de buscadores.</p>
-
-      <dl class="stats">
-        <div class="stat"><dt class="mono">Versiones</dt><dd>4</dd></div>
-        <div class="stat"><dt class="mono">Publicadas</dt><dd><span class="dot dot--live" aria-hidden="true"></span>3</dd></div>
-        <div class="stat"><dt class="mono">Próximas</dt><dd><span class="dot dot--soon" aria-hidden="true"></span>1</dd></div>
-        <div class="stat"><dt class="mono">Última actualización</dt><dd class="mono stat__date">21·10·2026</dd></div>
-      </dl>
-    </div>
-  </section>
-
   <section class="versions" id="versiones" aria-labelledby="ver-h">
     <div class="wrap">
-      <h2 class="sr-only" id="ver-h">Versiones</h2>
+      <h1 class="sr-only" id="ver-h">Versiones de la landing de Tranlotek</h1>
       <ol class="grid">
 
         <!-- V1 -->
         <li class="card card--live">
-          <a class="card__link" href="v1/" aria-labelledby="v1-t" aria-describedby="v1-d"></a>
+          <a class="card__link" href="v1/" aria-labelledby="v1-tag" aria-describedby="v1-d"></a>
           <div class="frame">
             <div class="frame__bar" aria-hidden="true">
               <span class="frame__dots"><i></i><i></i><i></i></span>
@@ -74,10 +47,9 @@
           </div>
           <div class="card__body">
             <div class="card__head">
-              <span class="tag-v mono">V1</span>
+              <span class="tag-v mono" id="v1-tag">V1</span>
               <span class="status status--live mono"><span class="dot dot--live" aria-hidden="true"></span>Live</span>
             </div>
-            <h3 class="card__t" id="v1-t">Landing original</h3>
             <p class="card__d" id="v1-d">Primera versión publicada: portada a sangre con barra flotante y tarjeta rotativa de servicios, respaldo del sector público, cobertura con mapa GPS y formulario de contacto.</p>
             <ul class="chips mono" aria-label="Contenido">
               <li>Hero a sangre</li><li>Respaldo</li><li>Cobertura GPS</li><li>Formulario</li>
@@ -92,7 +64,7 @@
 
         <!-- V2 -->
         <li class="card card--live">
-          <a class="card__link" href="v2/" aria-labelledby="v2-t" aria-describedby="v2-d"></a>
+          <a class="card__link" href="v2/" aria-labelledby="v2-tag" aria-describedby="v2-d"></a>
           <div class="frame">
             <div class="frame__bar" aria-hidden="true">
               <span class="frame__dots"><i></i><i></i><i></i></span>
@@ -105,10 +77,9 @@
           </div>
           <div class="card__body">
             <div class="card__head">
-              <span class="tag-v mono">V2</span>
+              <span class="tag-v mono" id="v2-tag">V2</span>
               <span class="status status--live mono"><span class="dot dot--live" aria-hidden="true"></span>Live</span>
             </div>
-            <h3 class="card__t" id="v2-t">Portada clara y curva</h3>
             <p class="card__d" id="v2-d">Hero claro con borde curvo (formato bairesdev.com), cifras con gráficos animados, sectores por pestañas, mapa del Gran Concepción y formulario con validación.</p>
             <ul class="chips mono" aria-label="Contenido">
               <li>Hero claro</li><li>Cifras animadas</li><li>Sectores</li><li>Mapa animado</li>
@@ -123,7 +94,7 @@
 
         <!-- V3 -->
         <li class="card card--live card--new">
-          <a class="card__link" href="v3/" aria-labelledby="v3-t" aria-describedby="v3-d"></a>
+          <a class="card__link" href="v3/" aria-labelledby="v3-tag" aria-describedby="v3-d"></a>
           <div class="frame">
             <div class="frame__bar" aria-hidden="true">
               <span class="frame__dots"><i></i><i></i><i></i></span>
@@ -136,11 +107,10 @@
           </div>
           <div class="card__body">
             <div class="card__head">
-              <span class="tag-v mono">V3</span>
+              <span class="tag-v mono" id="v3-tag">V3</span>
               <span class="status status--live mono"><span class="dot dot--live" aria-hidden="true"></span>Live</span>
               <span class="status status--new mono">Nueva</span>
             </div>
-            <h3 class="card__t" id="v3-t">Puerta de acero y grúa</h3>
             <p class="card__d" id="v3-d">Retiro y traslado de vehículos con formulario en la portada, foto de la flota con las 6 cifras, mapa del Gran Concepción, las cuatro etapas del traslado y una grúa que levanta el formulario de contacto.</p>
             <ul class="chips mono" aria-label="Contenido">
               <li>Formulario en portada</li><li>Gran Concepción</li><li>4 etapas</li><li>Grúa</li>
@@ -177,7 +147,6 @@
               <span class="tag-v mono">V4</span>
               <span class="status status--soon mono"><span class="dot dot--soon" aria-hidden="true"></span>Coming soon</span>
             </div>
-            <h3 class="card__t">Versión 4</h3>
             <p class="card__d">En desarrollo. Se publicará aquí cuando esté lista para revisión.</p>
             <dl class="meta mono">
               <div><dt><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg><span class="sr-only">Fecha</span></dt><dd>Por definir</dd></div>
@@ -190,11 +159,5 @@
   </section>
 </main>
 
-<footer class="foot">
-  <div class="wrap foot__in mono">
-    <span>Tranlotek SpA · demo privada para revisión</span>
-    <span>noindex · datos provisionales · formulario sin envío</span>
-  </div>
-</footer>
 </body>
 </html>
