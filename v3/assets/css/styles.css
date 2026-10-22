@@ -250,10 +250,11 @@ button,input{font:inherit;color:inherit}
 
 /* ---------- Servicios: cadena de custodia ---------- */
 .services{padding-block:var(--section)}
-.services__intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s-7) clamp(32px,5vw,80px);align-items:end}
+.services__intro{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s-7) clamp(32px,4vw,64px);align-items:end}
+.services__photo{margin-right:calc(-1 * var(--gutter));margin-bottom:calc(-1 * clamp(40px,5vw,72px))}
 .services__photo img{width:100%;height:auto;aspect-ratio:1469/720;object-fit:cover;border-radius:2px}
 .services__lead{margin-top:var(--s-6);max-width:44ch;font-size:1.1875rem;line-height:1.55;color:var(--ink-2)}
-.custody{margin-top:clamp(48px,6vw,96px);display:grid;grid-template-columns:minmax(220px,3fr) minmax(0,9fr);gap:clamp(32px,5vw,80px)}
+.custody{margin-top:calc(clamp(48px,6vw,96px) + clamp(40px,5vw,72px));display:grid;grid-template-columns:minmax(220px,3fr) minmax(0,9fr);gap:clamp(32px,5vw,80px)}
 .rail{position:relative}
 .rail__inner{position:sticky;top:calc(var(--masthead) + 40px);padding-left:0}
 .rail__steps{position:relative;z-index:1;display:grid;gap:0}
@@ -373,6 +374,9 @@ button,input{font:inherit;color:inherit}
 
   .about__grid{grid-template-columns:1fr}
   .services__intro{grid-template-columns:1fr}
+  .services__photo{margin-inline:calc(-1 * var(--gutter));margin-bottom:0}
+  .services__photo figcaption{padding-inline:var(--gutter)}
+  .custody{margin-top:clamp(48px,6vw,96px)}
   .custody{grid-template-columns:1fr;gap:0}
   .rail{position:sticky;top:var(--masthead);z-index:5;margin-inline:calc(-1 * var(--gutter));background:rgba(231,234,233,.94);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--rule)}
   .rail__inner{position:static;padding:10px var(--gutter)}
