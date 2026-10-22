@@ -36,7 +36,6 @@ $nombre     = campo('nombre', 80);
 $empresa    = campo('empresa', 100);
 $telefono   = campo('telefono', 20);
 $correo     = campo('correo', 120);
-$referencia = campo('referencia', 24);
 $origen     = campo('origen', 40);
 
 $errores = [];
@@ -45,17 +44,15 @@ if (mb_strlen($empresa) < 2) $errores[] = 'empresa';
 $digitos = preg_replace('/\D/', '', $telefono) ?? '';
 if (strlen($digitos) < 8 || strlen($digitos) > 12) $errores[] = 'telefono';
 if ($correo !== '' && !filter_var($correo, FILTER_VALIDATE_EMAIL)) $errores[] = 'correo';
-if (!preg_match('/^TLK-\d{6}-\d{4}$/', $referencia)) $referencia = 'sin referencia';
 
 if ($errores) {
     responder(422, ['ok' => false, 'error' => 'validacion', 'campos' => $errores]);
 }
 
-$asunto = 'Solicitud de reunión comercial · ' . $empresa . ' · ' . $referencia;
+$asunto = 'Solicitud de reunión comercial · ' . $empresa;
 $cuerpo = implode("\n", [
     'Nueva solicitud de reunión comercial desde tranlotek.com',
     '',
-    'Referencia: ' . $referencia,
     'Nombre:     ' . $nombre,
     'Empresa:    ' . $empresa,
     'Teléfono:   ' . $telefono,
@@ -78,4 +75,4 @@ if (!$enviado) {
     responder(500, ['ok' => false, 'error' => 'mail']);
 }
 
-responder(200, ['ok' => true, 'referencia' => $referencia]);
+responder(200, ['ok' => true]);

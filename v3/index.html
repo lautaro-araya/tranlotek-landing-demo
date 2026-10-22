@@ -174,14 +174,19 @@
     <section class="ground services" id="servicio" aria-labelledby="services-title">
       <div class="wrap">
         <div class="services__intro">
-          <h2 class="big-word" id="services-title">El servicio</h2>
-          <p class="services__lead">Cada traslado sigue las mismas cuatro etapas, de la llamada a la entrega. Así sabes dónde está tu vehículo y qué pasó en cada servicio.</p>
+          <div class="services__copy">
+            <h2 class="big-word" id="services-title">El servicio</h2>
+            <p class="services__lead">Cada traslado sigue las mismas cuatro etapas, de la llamada a la entrega. Así sabes dónde está tu vehículo y qué pasó en cada servicio.</p>
+          </div>
+          <figure class="services__photo">
+            <img src="assets/img/central-1469.webp" srcset="assets/img/central-800.webp 800w, assets/img/central-1469.webp 1469w" sizes="(max-width: 900px) 100vw, 760px" width="1469" height="720" loading="lazy" alt="Tres operadores trabajan frente a una pared de pantallas con el mapa de monitoreo de la zona de Concepción en la central de TRANLOTEK.">
+            <figcaption>Central de operaciones 24 h</figcaption>
+          </figure>
         </div>
 
         <div class="custody" data-custody>
           <aside class="rail" aria-label="Etapas del traslado">
             <div class="rail__inner">
-              <p class="rail__ref">Ref. <span data-serial>TLK-000000-0000</span></p>
               <ol class="rail__steps">
                 <li data-step="etapa-solicitud"><a href="#etapa-solicitud"><span class="rail__dot" aria-hidden="true"></span><span class="num">01</span> Solicitud<span class="rail__state" data-state></span></a></li>
                 <li data-step="etapa-retiro"><a href="#etapa-retiro"><span class="rail__dot" aria-hidden="true"></span><span class="num">02</span> Retiro<span class="rail__state" data-state></span></a></li>
@@ -199,10 +204,6 @@
                 <h3 class="stage__name" id="st1">Solicitud</h3>
               </header>
               <p class="stage__line">La central recibe tu pedido a cualquier hora, todos los días.</p>
-              <figure class="stage__photo">
-                <img src="assets/img/central-1469.webp" srcset="assets/img/central-800.webp 800w, assets/img/central-1469.webp 1469w" sizes="(max-width: 900px) 100vw, 900px" width="1469" height="720" loading="lazy" alt="Tres operadores trabajan frente a una pared de pantallas con el mapa de monitoreo de la zona de Concepción en la central de TRANLOTEK.">
-                <figcaption>Central de operaciones</figcaption>
-              </figure>
               <div class="stage__services">
                 <div class="service">
                   <h4>Central telefónica 24 h</h4>
@@ -339,7 +340,6 @@
             <span class="rivet rivet--bl" aria-hidden="true"></span><span class="rivet rivet--br" aria-hidden="true"></span>
             <div class="plate__head">
               <h3 class="plate__title">Solicita una reunión comercial</h3>
-              <p class="plate__ref">Ref. <span data-serial>TLK-000000-0000</span></p>
             </div>
             <div class="plate__body" data-form-body>
               <div class="field">
@@ -365,7 +365,6 @@
                 </div>
               </div>
               <div class="hp" aria-hidden="true"><label for="f2-web">No completar</label><input id="f2-web" name="web" type="text" tabindex="-1" autocomplete="off"></div>
-              <input type="hidden" name="referencia" data-serial-input>
               <input type="hidden" name="origen" value="Formulario Conversemos">
               <button class="seal" type="submit" data-seal>
                 <span class="seal__head" aria-hidden="true"></span>
@@ -377,7 +376,7 @@
             </div>
             <div class="plate__done" data-form-done hidden tabindex="-1">
               <p class="plate__done-title">Solicitud registrada</p>
-              <p class="plate__done-text">Un ejecutivo comercial te contactará al <strong data-done-phone></strong> para coordinar la reunión. Guarda tu referencia: <strong data-serial></strong></p>
+              <p class="plate__done-text">Un ejecutivo comercial te contactará al <strong data-done-phone></strong> para coordinar la reunión.</p>
             </div>
           </form>
         </div>

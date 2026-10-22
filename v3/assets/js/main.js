@@ -3,22 +3,6 @@
   document.documentElement.classList.add('js');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Referencia de solicitud (un mismo folio por visita) ---------- */
-  const serial = (() => {
-    const KEY = 'tlk-ref';
-    try {
-      const saved = sessionStorage.getItem(KEY);
-      if (saved) return saved;
-    } catch (e) { /* almacenamiento no disponible */ }
-    const d = new Date();
-    const pad = (n) => String(n).padStart(2, '0');
-    const rand = String(Math.floor(Math.random() * 10000)).padStart(4, '0');
-    const ref = `TLK-${String(d.getFullYear()).slice(2)}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${rand}`;
-    try { sessionStorage.setItem(KEY, ref); } catch (e) { /* sin persistencia */ }
-    return ref;
-  })();
-  document.querySelectorAll('[data-serial]').forEach((el) => { el.textContent = serial; });
-  document.querySelectorAll('[data-serial-input]').forEach((el) => { el.value = serial; });
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
   /* ---------- Selector de paleta ---------- */
@@ -292,7 +276,7 @@
         form.classList.add('is-sealed');
         seal.classList.add('is-closed');
         seal.disabled = true;
-        sealLabel.innerHTML = `<span class="seal__word">Recibida · </span><span class="seal__serial">${serial}</span>`;
+        sealLabel.textContent = 'Enviada';
         done.hidden = false;
         done.focus();
       } catch (err) {
