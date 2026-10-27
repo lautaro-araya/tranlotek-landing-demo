@@ -396,7 +396,9 @@ button,input{font:inherit;color:inherit}
   .contact{padding-top:var(--section)}
   .contact__grid{grid-template-columns:1fr;row-gap:40px}
   .contact__plate{margin-top:120px}
-  .contact__plate::before{height:120px;-webkit-mask:linear-gradient(transparent,#000 70%);mask:linear-gradient(transparent,#000 70%)}
+  /* Un solo cable recto hasta el motón: mismo ancho y trazo que el del SVG (x 224/236, trazo 2.5, hasta y 68 en 460) */
+  .contact__plate::before{box-sizing:content-box;height:120px;bottom:100%;padding-bottom:calc(100% * 68 / 460);margin-bottom:calc(-100% * 68 / 460);width:calc(100% * 14.5 / 460);margin-left:calc(100% * -7.25 / 460);border:0;background:linear-gradient(90deg,#AFC0D0 0 17.25%,transparent 17.25% 82.75%,#AFC0D0 82.75%);-webkit-mask:linear-gradient(transparent,#000 84px);mask:linear-gradient(transparent,#000 84px)}
+  .rigging__cable{display:none}
   .boom{display:none}
   .about .dataplate--fleet{margin-top:var(--s-6)}
   .about__text{padding-top:var(--s-6)}
