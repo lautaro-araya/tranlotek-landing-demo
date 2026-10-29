@@ -1,132 +1,316 @@
 <!doctype html>
 <html lang="es-CL">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tranlotek · Versiones de la web</title>
-<meta name="description" content="Hub de revisión con las versiones de la landing de Tranlotek.">
-<meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#000000">
-<link rel="icon" type="image/png" sizes="32x32" href="v1/assets/img/favicon-32.png">
-<link rel="apple-touch-icon" href="v1/assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="hub/hub.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>TRANLOTEK · Retiro y traslado de vehículos con grúa en el Biobío</title>
+  <meta name="description" content="Retiro y traslado de vehículos con grúa en la Región del Biobío. 12.000 traslados realizados, 25 grúas, central telefónica 24 h, 100 % de la flota con control GPS y reporte diario de cada servicio.">
+  <meta name="theme-color" content="#0D3B66">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:title" content="TRANLOTEK · Retiro y traslado de vehículos con grúa">
+  <meta property="og:description" content="12.000 traslados realizados en el Biobío. 25 grúas, central 24 h y control GPS en toda la flota.">
+  <meta property="og:url" content="https://tranlotek.com/">
+  <meta property="og:image" content="https://tranlotek.com/assets/img/hero-1200.webp">
+  <link rel="preload" href="assets/fonts/big-shoulders-stencil-display-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- REEMPLAZAR: teléfono provisorio en el JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "TRANLOTEK SpA",
+    "url": "https://tranlotek.com/",
+    "logo": "https://tranlotek.com/assets/img/tranlotek-logo.png",
+    "image": "https://tranlotek.com/assets/img/hero-1200.webp",
+    "description": "Retiro y traslado de vehículos con grúa en la Región del Biobío.",
+    "email": "contacto@tranlotek.cl",
+    "telephone": "+56412964800",
+    "address": {"@type": "PostalAddress", "addressLocality": "Concepción", "addressRegion": "Región del Biobío", "addressCountry": "CL"},
+    "areaServed": {"@type": "AdministrativeArea", "name": "Región del Biobío"},
+    "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59"}
+  }
+  </script>
 </head>
-<body class="hub">
-<a class="skip" href="#versiones">Saltar a las versiones</a>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
-  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
-  <symbol id="i-commit" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><path d="M2 12h6.5M15.5 12H22"/></symbol>
-  <symbol id="i-branch" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2.5"/><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="8" r="2.5"/><path d="M6 7.5v9M18 10.5c0 4-6 3-11 6"/></symbol>
-  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
-</svg>
-
-<main>
-  <section class="versions" id="versiones" aria-labelledby="ver-h">
-    <div class="wrap">
-      <h1 class="sr-only" id="ver-h">Versiones de la landing de Tranlotek</h1>
-      <ol class="grid">
-
-        <!-- V1 -->
-        <li class="card card--live">
-          <a class="card__link" href="v1/" aria-labelledby="v1-tag" aria-describedby="v1-d"></a>
-          <div class="frame">
-            <div class="frame__bar" aria-hidden="true">
-              <span class="frame__dots"><i></i><i></i><i></i></span>
-              <span class="frame__url mono">tranlotek-landing-demo/<b>v1</b>/</span>
-            </div>
-            <div class="frame__shot">
-              <img src="hub/v1.webp" alt="Portada de la versión 1: foto de la flota a pantalla completa en tono frío, barra flotante y el título «Cada traslado, bajo control.»" width="960" height="600" loading="lazy" decoding="async">
-              <span class="frame__open"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg>Ver versión</span>
-            </div>
-          </div>
-          <div class="card__body">
-            <div class="card__head">
-              <span class="tag-v mono" id="v1-tag">V1</span>
-              <span class="status status--live mono"><span class="dot dot--live" aria-hidden="true"></span>Live</span>
-            </div>
-            <p class="card__d" id="v1-d">Primera versión publicada: portada a sangre con barra flotante, cifras animadas, torre de control de la central 24 h, Gran Concepción, la grúa a pantalla completa y formulario de contacto.</p>
-            <ul class="chips mono" aria-label="Contenido">
-              <li>Hero a sangre</li><li>Torre de control</li><li>Gran Concepción</li><li>Formulario</li>
-            </ul>
-            <dl class="meta mono">
-              <div><dt><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg><span class="sr-only">Fechas</span></dt><dd>13·10 → 20·10·2026</dd></div>
-              <div><dt><svg class="ico" aria-hidden="true"><use href="#i-commit"/></svg><span class="sr-only">Cambios</span></dt><dd>18 commits</dd></div>
-            </dl>
-            <span class="card__cta" aria-hidden="true">Abrir V1<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-          </div>
-        </li>
-
-        <!-- V2 -->
-        <li class="card card--live">
-          <a class="card__link" href="v2/" aria-labelledby="v2-tag" aria-describedby="v2-d"></a>
-          <div class="frame">
-            <div class="frame__bar" aria-hidden="true">
-              <span class="frame__dots"><i></i><i></i><i></i></span>
-              <span class="frame__url mono">tranlotek-landing-demo/<b>v2</b>/</span>
-            </div>
-            <div class="frame__shot">
-              <img src="hub/v2.webp" alt="Portada de la versión 2: fondo claro, título «Un modelo de traslado probado en 12.000 servicios.» y borde inferior curvo" width="960" height="600" loading="lazy" decoding="async">
-              <span class="frame__open"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg>Ver versión</span>
-            </div>
-          </div>
-          <div class="card__body">
-            <div class="card__head">
-              <span class="tag-v mono" id="v2-tag">V2</span>
-              <span class="status status--live mono"><span class="dot dot--live" aria-hidden="true"></span>Live</span>
-            </div>
-            <p class="card__d" id="v2-d">Hero claro con borde curvo (formato bairesdev.com), cifras con gráficos animados, sectores por pestañas, mapa del Gran Concepción y formulario con validación.</p>
-            <ul class="chips mono" aria-label="Contenido">
-              <li>Hero claro</li><li>Cifras animadas</li><li>Sectores</li><li>Mapa animado</li>
-            </ul>
-            <dl class="meta mono">
-              <div><dt><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg><span class="sr-only">Fecha</span></dt><dd>21·10·2026</dd></div>
-              <div><dt><svg class="ico" aria-hidden="true"><use href="#i-branch"/></svg><span class="sr-only">Base</span></dt><dd>desde V1</dd></div>
-            </dl>
-            <span class="card__cta" aria-hidden="true">Abrir V2<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-          </div>
-        </li>
-
-        <!-- V3 -->
-        <li class="card card--live card--new">
-          <a class="card__link" href="v3/" aria-labelledby="v3-tag" aria-describedby="v3-d"></a>
-          <div class="frame">
-            <div class="frame__bar" aria-hidden="true">
-              <span class="frame__dots"><i></i><i></i><i></i></span>
-              <span class="frame__url mono">tranlotek-landing-demo/<b>v3</b>/</span>
-            </div>
-            <div class="frame__shot">
-              <img src="hub/v3.webp" alt="Portada de la versión 3: título «Retiro y traslado de vehículos con grúa» sobre la foto de la flota y el equipo, con las cifras en una placa" width="960" height="600" loading="lazy" decoding="async">
-              <span class="frame__open"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg>Ver versión</span>
-            </div>
-          </div>
-          <div class="card__body">
-            <div class="card__head">
-              <span class="tag-v mono" id="v3-tag">V3</span>
-              <span class="status status--live mono"><span class="dot dot--live" aria-hidden="true"></span>Live</span>
-              <span class="status status--new mono">Nueva</span>
-            </div>
-            <p class="card__d" id="v3-d">Retiro y traslado de vehículos: portada con la flota y las 6 cifras, la grúa en ruta, mapa del Gran Concepción, las cuatro etapas del traslado y una grúa que levanta el formulario de contacto.</p>
-            <ul class="chips mono" aria-label="Contenido">
-              <li>Flota en portada</li><li>Gran Concepción</li><li>4 etapas</li><li>Grúa con gancho</li>
-            </ul>
-            <dl class="meta mono">
-              <div><dt><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg><span class="sr-only">Fecha</span></dt><dd>21·10·2026</dd></div>
-              <div><dt><svg class="ico" aria-hidden="true"><use href="#i-branch"/></svg><span class="sr-only">Base</span></dt><dd>brief propio</dd></div>
-            </dl>
-            <span class="card__cta" aria-hidden="true">Abrir V3<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-          </div>
-        </li>
-
-      </ol>
+<body>
+  <a class="skip" href="#contenido">Ir al contenido</a>
+<!-- 
+  <aside class="palettes" aria-label="Selector de paleta de color" data-palettes>
+    <button class="palettes__toggle" type="button" aria-expanded="true" aria-controls="palettes-list" aria-label="Mostrar u ocultar paletas" data-palettes-toggle>
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.8-1.9 0-.5-.2-.9-.5-1.3-.3-.3-.5-.8-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.4 17 3 12 3Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="7.5" cy="11" r="1.4" fill="currentColor"/><circle cx="10" cy="7" r="1.4" fill="currentColor"/><circle cx="14.5" cy="7" r="1.4" fill="currentColor"/></svg>
+    </button>
+    <div class="palettes__list" id="palettes-list" role="radiogroup" aria-label="Paleta de color">
+      <button class="palettes__opt" type="button" role="radio" aria-checked="true" tabindex="0" data-palette-option="1" aria-label="Cadena de custodia"><span class="palettes__chips" aria-hidden="true"><i style="--c:#0A2C4E"></i><i style="--c:#C7CDD2"></i><i style="--c:#F4C20D"></i><i style="--c:#111417"></i><i style="--c:#EEF0EF"></i></span><span class="palettes__name" aria-hidden="true">Cadena de custodia</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="2" aria-label="Guía de despacho"><span class="palettes__chips" aria-hidden="true"><i style="--c:#FFFFFF"></i><i style="--c:#22408F"></i><i style="--c:#C8102E"></i><i style="--c:#14161A"></i></span><span class="palettes__name" aria-hidden="true">Guía de despacho</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="3" aria-label="Siete segmentos"><span class="palettes__chips" aria-hidden="true"><i style="--c:#0D0F12"></i><i style="--c:#FFB000"></i><i style="--c:#2B2F33"></i><i style="--c:#E8E8E8"></i></span><span class="palettes__name" aria-hidden="true">Siete segmentos</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="4" aria-label="Consola CD-ROM"><span class="palettes__chips" aria-hidden="true"><i style="--c:#9AA3AB"></i><i style="--c:#2BA7A0"></i><i style="--c:#6C4FB3"></i></span><span class="palettes__name" aria-hidden="true">Consola CD-ROM</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="5" aria-label="Tren agitprop"><span class="palettes__chips" aria-hidden="true"><i style="--c:#EFE6D2"></i><i style="--c:#151515"></i><i style="--c:#C8102E"></i></span><span class="palettes__name" aria-hidden="true">Tren agitprop</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="6" aria-label="Tensegridad"><span class="palettes__chips" aria-hidden="true"><i style="--c:#1A1A1A"></i><i style="--c:#D9D6D0"></i><i style="--c:#D2302C"></i></span><span class="palettes__name" aria-hidden="true">Tensegridad</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="7" aria-label="Origami"><span class="palettes__chips" aria-hidden="true"><i style="--c:#D9381E"></i><i style="--c:#F4EFE6"></i><i style="--c:#1C1C1C"></i></span><span class="palettes__name" aria-hidden="true">Origami</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="8" aria-label="Portal WebGL"><span class="palettes__chips" aria-hidden="true"><i style="--c:#0B0B2A"></i><i style="--c:#7CF5FF"></i><i style="--c:#FFFFFF"></i></span><span class="palettes__name" aria-hidden="true">Portal WebGL</span></button>
+      <button class="palettes__opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-palette-option="9" aria-label="Estándar de la categoría"><span class="palettes__chips" aria-hidden="true"><i style="--c:#FFFFFF"></i><i style="--c:#0B1F3A"></i><i style="--c:#0A5CA8"></i></span><span class="palettes__name" aria-hidden="true">Estándar de la categoría</span></button>
     </div>
-  </section>
-</main>
+  </aside>
+-->
+  <header class="masthead" data-masthead>
+    <div class="masthead__inner wrap">
+      <a class="brand" href="#inicio" aria-label="TRANLOTEK, ir al inicio">
+        <img src="assets/img/tranlotek-logo.png" width="647" height="183" alt="TRANLOTEK">
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-nav-toggle>
+          <span class="nav__toggle-bars" aria-hidden="true"></span>
+          <span class="nav__toggle-label">Menú</span>
+        </button>
+        <ul class="nav__list" id="menu" data-nav-list>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+          <li><a href="#servicio">Servicio</a></li>
+          <li><a href="#conversemos">Contacto</a></li>
+          <li class="nav__cta"><a class="tag-link" href="#conversemos">Solicitar reunión comercial</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+  <main id="contenido">
+
+    <!-- Portada: la flota -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <picture class="hero__photo">
+        <source media="(max-width: 900px)" srcset="assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w, assets/img/hero-1584.webp 1584w" sizes="100vw">
+        <img src="assets/img/hero-1584.webp" srcset="assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w, assets/img/hero-1584.webp 1584w" sizes="100vw" width="1584" height="672" fetchpriority="high" alt="Equipo de TRANLOTEK, conductores con chaleco reflectante y ejecutivos, frente a una fila de grúas de la flota con el logo de la empresa.">
+      </picture>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="hero__inner wrap">
+        <div class="hero__copy">
+          <h1 class="hero__title" id="hero-title">Retiro y traslado de vehículos con grúa</h1>
+          <p class="hero__lead">Operamos en la Región del Biobío con una central telefónica 24 h y control GPS en toda la flota. Cada servicio queda en un reporte diario.</p>
+        </div>
+      </div>
+      <div class="hero__plate wrap">
+        <div class="figplate" role="group" aria-label="Cifras de la operación">
+          <span class="rivet rivet--tl" aria-hidden="true"></span><span class="rivet rivet--tr" aria-hidden="true"></span>
+          <span class="rivet rivet--bl" aria-hidden="true"></span><span class="rivet rivet--br" aria-hidden="true"></span>
+          <dl class="figplate__grid">
+            <div><dt>traslados realizados en el Biobío</dt><dd>+ de 12.000</dd></div>
+            <div><dt>operando para el sector público</dt><dd>+ de 2 años</dd></div>
+            <div><dt>grúas para todo tipo de vehículos</dt><dd>+ de 25</dd></div>
+            <div><dt>central telefónica, todos los días</dt><dd>24 h</dd></div>
+            <div><dt>de la flota con control GPS</dt><dd>100 %</dd></div>
+            <div><dt>reporte de cada servicio</dt><dd>Diario</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nosotros: la flota -->
+    <section class="ground about" id="nosotros" aria-labelledby="about-title">
+      <div class="wrap">
+        <h2 class="big-word about__title" id="about-title">La red más grande de grúas <span>en la Región del Biobío</span></h2>
+      </div>
+      <figure class="fleet">
+        <img src="assets/img/log-seguridad-1584.webp" srcset="assets/img/log-seguridad-800.webp 800w, assets/img/log-seguridad-1584.webp 1584w" sizes="100vw" width="1584" height="672" loading="lazy" alt="Grúa plataforma de TRANLOTEK trasladando un auto deportivo por una avenida de la ciudad.">
+      </figure>
+      <div class="wrap about__grid">
+        <div class="about__text">
+          <p class="about__statement">TRANLOTEK SpA retira y traslada vehículos con grúa en la Región del Biobío. Llevamos 2 años operando para el sector público y hoy ponemos esa misma operación al servicio de las empresas.</p>
+          <a class="btn-line" href="#conversemos">Solicitar reunión comercial
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cobertura: Gran Concepción -->
+    <section class="deep coverage" id="cobertura" aria-labelledby="coverage-title">
+      <div class="wrap coverage__grid">
+        <div class="coverage__text">
+          <h2 class="big-word big-word--xl" id="coverage-title">Gran <span>Concepción</span></h2>
+          <p class="coverage__lead">Retiramos vehículos en las 10 comunas del Gran Concepción, con la central operando desde Concepción.</p>
+          <div class="dataplate" role="group" aria-label="Zona de retiro">
+            <span class="rivet rivet--tl" aria-hidden="true"></span><span class="rivet rivet--tr" aria-hidden="true"></span>
+            <span class="rivet rivet--bl" aria-hidden="true"></span><span class="rivet rivet--br" aria-hidden="true"></span>
+            <p class="dataplate__title">Zona de retiro</p>
+            <dl class="dataplate__rows">
+              <div><dt>comunas</dt><dd>10</dd></div>
+              <div><dt>de zona de retiro</dt><dd>1.960 km²</dd></div>
+              <div><dt>de norte a sur</dt><dd>84 km</dd></div>
+            </dl>
+          </div>
+        </div>
+        <figure class="gcmap" data-routemap>
+          <svg viewBox="-150 -20 519 458" role="img" aria-labelledby="gc-map-t gc-map-d">
+      <title id="gc-map-t">Mapa del Gran Concepción con sus 10 comunas</title>
+      <desc id="gc-map-d">Contorno de las 10 comunas del Gran Concepción: Tomé, Penco, Talcahuano, Hualpén, Concepción, San Pedro de la Paz, Chiguayante, Hualqui, Coronel y Lota, con la central en Concepción.</desc>
+      <defs><clipPath id="gc-clip"><path d="M0.0 178.5 1.6 181.1 3.2 181.5 7.1 178.8 11.3 178.7 11.4 181.5 13.9 181.5 15.4 185.1 17.6 186.8 16.5 188.3 17.6 189.8 16.6 190.5 19.2 192.7 19.5 194.7 18.5 195.1 24.9 198.4 27.7 204.6 28.6 232.2 27.0 251.5 21.8 272.3 13.4 290.9 12.7 294.8 16.3 301.5 17.2 309.0 17.9 309.4 21.0 307.2 24.1 308.0 26.3 306.9 28.9 308.5 33.2 322.9 29.8 332.0 23.8 332.6 23.5 335.7 21.3 336.2 19.2 340.9 20.0 344.2 21.8 343.3 25.1 345.2 25.7 347.8 24.1 350.5 27.7 351.0 28.5 353.4 27.6 356.5 24.2 357.1 19.9 361.2 18.7 365.0 20.3 369.8 16.3 374.5 14.5 374.3 16.5 377.5 20.2 378.3 25.3 375.4 28.2 375.5 30.5 374.1 34.2 375.5 39.4 374.5 44.1 375.1 48.0 379.7 50.9 379.5 53.1 383.3 54.8 395.4 59.9 400.0 61.4 397.8 65.0 398.1 65.4 391.9 68.7 378.5 71.8 372.3 71.5 370.3 68.7 368.6 68.8 367.4 70.0 367.6 73.6 364.9 73.7 363.5 71.6 361.6 75.7 356.9 73.8 353.4 71.8 352.6 73.9 351.4 75.1 348.5 80.8 345.6 84.1 341.7 84.7 338.9 82.5 335.9 84.1 331.9 92.3 331.8 95.4 329.6 97.4 329.9 102.2 316.3 99.4 298.2 110.4 287.3 111.9 283.6 109.3 279.9 100.7 283.1 88.4 282.2 76.0 272.8 72.6 265.8 71.0 248.1 61.3 210.7 48.8 202.5 43.3 201.6 41.4 199.8 27.7 201.7 23.9 197.1 24.3 194.4 19.8 193.5 24.9 189.9 34.7 191.4 40.8 190.7 43.7 191.5 41.7 190.9 42.6 190.7 56.6 195.3 69.9 213.1 73.4 224.4 76.2 229.0 78.4 241.0 77.0 248.9 77.7 255.4 80.3 263.8 83.9 270.2 93.0 277.0 102.1 278.5 110.8 276.5 114.6 278.2 116.0 277.7 114.7 278.2 116.5 283.3 114.7 288.2 105.4 297.2 104.4 301.1 105.0 308.0 107.1 312.8 107.2 319.4 109.4 320.8 107.4 320.1 107.3 335.9 106.2 341.0 107.3 350.4 110.5 358.5 122.7 372.9 125.0 377.0 129.5 380.4 136.5 384.0 146.1 386.8 153.9 394.8 159.3 397.6 164.3 397.8 169.0 396.3 168.6 394.9 169.6 394.1 168.4 392.9 171.1 390.7 170.6 387.9 172.7 387.4 173.1 385.2 175.5 385.8 177.5 381.6 181.9 381.4 181.3 379.5 182.3 377.6 186.3 375.9 186.0 374.1 187.7 374.0 187.4 372.8 190.2 371.8 189.0 368.6 193.0 368.2 192.7 364.4 188.4 363.0 190.4 362.0 189.2 361.6 187.1 356.6 187.6 351.9 189.0 350.5 187.5 346.3 188.4 344.7 187.8 342.6 189.7 337.3 188.3 334.8 191.3 333.5 194.4 335.2 198.7 332.2 199.6 328.7 204.1 325.2 205.2 320.8 206.6 319.5 206.0 318.0 210.3 315.3 210.8 308.4 209.1 303.7 204.5 303.2 202.9 301.3 201.6 301.7 199.9 298.4 194.9 298.0 195.7 294.0 192.5 294.0 191.4 293.0 190.3 293.9 191.4 294.8 189.4 295.2 188.9 293.9 190.0 292.7 189.5 291.8 194.8 288.9 196.4 285.7 201.9 280.5 204.6 272.2 194.5 272.6 191.8 270.2 187.1 269.6 185.0 263.4 183.2 263.8 182.0 262.3 180.6 264.9 178.0 264.7 176.1 267.5 176.8 271.7 174.3 273.2 174.0 274.6 171.9 271.6 169.7 273.6 166.8 269.3 165.9 264.8 168.3 261.3 163.8 258.6 161.2 249.4 158.2 248.9 158.4 244.7 156.1 242.1 157.8 240.0 154.6 238.2 154.9 235.8 152.3 231.0 152.1 227.0 148.6 221.0 159.4 208.1 158.3 194.6 155.0 194.6 154.7 193.6 157.4 189.8 158.6 184.4 151.3 185.5 150.5 183.8 149.4 183.8 149.7 180.0 148.1 175.5 149.1 174.6 149.0 172.3 151.4 171.2 150.3 169.6 151.2 166.1 153.1 166.1 154.9 161.4 156.7 161.2 159.4 162.7 164.5 161.6 166.7 157.7 170.1 155.8 174.8 155.8 177.7 157.7 180.4 155.2 183.4 155.2 186.8 157.7 189.4 155.5 194.0 154.9 198.5 150.8 201.2 152.0 205.1 150.8 206.8 146.6 213.3 140.7 218.7 138.2 215.4 133.9 216.3 126.6 213.9 123.2 214.1 117.1 212.7 112.7 206.0 104.2 206.6 92.1 202.6 94.2 194.8 95.9 188.0 95.6 190.7 93.3 193.4 87.5 192.0 84.7 178.8 86.0 178.0 68.6 179.3 67.6 179.1 64.6 169.9 54.7 167.1 53.1 168.4 49.7 166.5 44.1 170.2 37.0 172.5 38.7 174.8 36.4 177.8 35.9 175.0 33.6 178.2 28.5 172.6 20.9 174.2 9.0 169.9 6.0 167.2 9.9 164.4 10.3 156.3 8.7 155.5 9.8 149.3 6.6 146.9 7.6 145.3 6.6 145.7 3.3 140.6 0.0 137.8 2.0 136.7 1.4 134.2 6.4 135.0 7.7 132.5 12.4 133.1 13.7 130.4 16.8 131.2 18.6 128.3 19.8 132.6 22.7 132.6 25.2 131.0 27.5 132.7 28.1 132.7 29.2 130.6 33.2 125.5 36.8 123.7 42.1 121.7 41.4 121.9 44.8 119.6 47.1 122.2 52.9 118.9 55.0 114.9 55.1 112.1 61.0 112.2 53.9 110.8 50.1 111.1 45.5 113.0 45.0 112.9 43.4 110.9 44.2 110.0 42.5 107.8 41.7 105.4 44.5 103.6 43.9 102.2 48.2 103.4 56.7 102.6 61.7 101.6 63.3 100.5 62.9 100.6 64.3 96.6 69.9 92.4 71.8 94.9 73.6 96.5 72.7 100.8 75.9 103.1 81.7 101.6 87.8 103.2 89.4 107.6 89.5 108.8 93.2 109.9 92.6 111.0 93.7 111.9 97.1 108.4 108.6 102.8 116.4 102.6 118.5 99.8 120.5 103.0 125.5 104.6 134.5 102.8 137.1 103.2 140.6 101.2 142.3 100.3 139.6 101.2 142.3 99.0 142.8 97.4 138.7 100.1 145.9 96.6 148.5 97.2 150.5 95.9 154.0 87.0 157.0 58.2 151.6 52.1 149.7 53.4 148.0 51.5 149.5 49.6 148.6 50.4 146.8 49.4 148.0 47.8 147.2 47.3 141.3 46.4 143.0 45.2 142.0 45.1 140.7 46.3 140.5 45.1 139.2 49.4 131.6 50.4 131.9 50.3 133.8 50.7 132.8 50.8 133.8 52.9 132.6 49.1 128.5 51.8 122.4 51.6 110.9 53.9 105.6 54.8 98.9 53.3 94.9 50.5 92.2 47.5 90.8 45.9 92.2 43.2 90.8 42.0 99.9 36.6 104.8 36.4 106.2 38.6 107.6 40.0 111.5 38.8 115.0 36.9 116.0 36.0 115.0 37.8 117.2 36.2 119.4 36.8 121.5 35.5 121.3 34.6 123.1 36.0 125.0 35.2 126.1 33.7 125.9 35.0 129.6 31.9 130.7 35.0 132.4 34.1 133.8 31.8 133.1 31.0 134.8 30.1 134.3 30.0 136.5 28.2 137.0 28.4 138.2 27.3 139.5 26.0 139.3 26.4 140.8 25.5 140.3 24.5 141.8 26.6 141.4 26.2 143.6 28.0 145.4 27.0 146.1 27.9 147.0 29.4 146.3 31.7 147.8 32.6 149.8 31.0 153.5 32.4 152.0 34.1 152.4 33.3 153.4 36.6 149.5 38.2 149.3 39.5 154.4 38.9 157.2 36.9 156.6 38.6 157.4 37.6 160.1 34.8 164.1 30.3 167.8 25.4 170.3 21.5 171.0 18.7 170.1 19.3 167.8 18.0 164.5 14.7 163.6 12.9 160.1 11.8 160.3 10.8 162.8 12.6 164.0 10.2 164.8 10.1 165.8 9.1 165.0 8.5 166.6 10.1 168.0 5.8 169.3 6.5 170.1 5.1 170.6 4.7 173.1 3.1 173.6 3.1 174.8 1.0 174.9 2.5 175.8 2.3 177.8 0.0 178.5ZM19.3 173.6 19.6 171.7 20.5 172.5 22.0 171.5 25.3 172.1 26.3 171.3 28.1 172.3 29.1 171.0 30.0 171.6 28.5 171.6 29.5 173.2 33.1 174.6 28.5 172.8 30.3 174.0 29.7 175.4 30.3 174.0 28.9 174.0 26.8 172.7 30.0 179.6 27.6 176.4 27.1 173.1 23.0 172.8 23.9 174.3 22.3 173.1 19.7 173.5 19.3 174.7 19.3 173.6ZM29.8 260.2 30.2 257.9 31.8 257.5 33.8 254.5 35.2 250.4 37.7 249.4 38.6 247.8 38.3 249.3 35.7 250.4 33.6 256.8 32.0 258.8 30.2 258.4 29.8 260.2ZM41.0 286.8 41.7 286.0 45.1 287.7 45.3 289.5 41.0 286.8ZM43.2 224.7 44.3 220.1 46.7 217.3 46.0 215.6 44.8 215.8 45.3 213.6 47.2 212.8 49.0 213.9 50.7 217.6 49.1 216.5 46.2 221.9 47.8 224.2 46.3 225.6 45.1 223.4 44.1 225.4 43.2 224.7ZM54.0 211.9 56.6 210.2 57.9 211.7 59.6 214.2 58.2 214.5 59.1 218.7 57.8 216.7 56.1 216.2 56.3 213.9 54.0 211.9ZM79.9 184.1 81.9 177.1 80.2 185.5 82.6 193.8 86.7 196.9 89.5 195.8 93.2 196.3 95.2 193.5 101.2 189.6 107.6 189.1 108.8 188.0 111.0 188.5 116.7 186.2 119.1 187.5 118.2 188.9 119.2 193.2 125.6 203.2 131.0 202.0 134.2 197.2 135.1 199.1 134.3 200.7 135.3 200.8 134.2 200.7 135.1 199.1 134.2 197.3 133.5 199.5 130.9 202.2 125.5 203.3 119.1 193.3 118.1 188.9 119.1 187.7 116.6 186.3 111.1 188.6 108.9 188.0 108.1 189.0 101.3 189.9 95.4 193.5 92.9 196.7 89.7 195.9 86.5 197.0 86.3 200.4 89.8 202.2 90.3 206.5 89.8 202.2 86.7 201.2 86.3 196.8 82.2 193.7 79.9 184.1ZM37.3 199.6 41.3 199.6 42.4 200.8 43.1 199.8 45.9 199.9 50.6 203.1 48.9 198.1 50.0 200.1 50.0 199.0 48.6 197.0 45.6 195.8 46.1 196.6 43.9 196.4 45.8 198.0 43.5 196.4 41.0 197.8 43.6 199.0 40.7 198.0 37.3 199.6ZM45.5 195.3 50.0 198.2 51.5 204.7 59.8 207.4 55.5 200.5 52.5 198.7 50.4 195.1 47.3 194.4 45.5 195.3Z" clip-rule="evenodd"/></clipPath></defs>
+      
+      <g clip-path="url(#gc-clip)"><circle class="gc__wave" cx="72.1" cy="202.7" r="420"/></g>
+      <path class="gc__edge" d="M0.0 178.5 1.6 181.1 3.2 181.5 7.1 178.8 11.3 178.7 11.4 181.5 13.9 181.5 15.4 185.1 17.6 186.8 16.5 188.3 17.6 189.8 16.6 190.5 19.2 192.7 19.5 194.7 18.5 195.1 24.9 198.4 27.7 204.6 28.6 232.2 27.0 251.5 21.8 272.3 13.4 290.9 12.7 294.8 16.3 301.5 17.2 309.0 17.9 309.4 21.0 307.2 24.1 308.0 26.3 306.9 28.9 308.5 33.2 322.9 29.8 332.0 23.8 332.6 23.5 335.7 21.3 336.2 19.2 340.9 20.0 344.2 21.8 343.3 25.1 345.2 25.7 347.8 24.1 350.5 27.7 351.0 28.5 353.4 27.6 356.5 24.2 357.1 19.9 361.2 18.7 365.0 20.3 369.8 16.3 374.5 14.5 374.3 16.5 377.5 20.2 378.3 25.3 375.4 28.2 375.5 30.5 374.1 34.2 375.5 39.4 374.5 44.1 375.1 48.0 379.7 50.9 379.5 53.1 383.3 54.8 395.4 59.9 400.0 61.4 397.8 65.0 398.1 65.4 391.9 68.7 378.5 71.8 372.3 71.5 370.3 68.7 368.6 68.8 367.4 70.0 367.6 73.6 364.9 73.7 363.5 71.6 361.6 75.7 356.9 73.8 353.4 71.8 352.6 73.9 351.4 75.1 348.5 80.8 345.6 84.1 341.7 84.7 338.9 82.5 335.9 84.1 331.9 92.3 331.8 95.4 329.6 97.4 329.9 102.2 316.3 99.4 298.2 110.4 287.3 111.9 283.6 109.3 279.9 100.7 283.1 88.4 282.2 76.0 272.8 72.6 265.8 71.0 248.1 61.3 210.7 48.8 202.5 43.3 201.6 41.4 199.8 27.7 201.7 23.9 197.1 24.3 194.4 19.8 193.5 24.9 189.9 34.7 191.4 40.8 190.7 43.7 191.5 41.7 190.9 42.6 190.7 56.6 195.3 69.9 213.1 73.4 224.4 76.2 229.0 78.4 241.0 77.0 248.9 77.7 255.4 80.3 263.8 83.9 270.2 93.0 277.0 102.1 278.5 110.8 276.5 114.6 278.2 116.0 277.7 114.7 278.2 116.5 283.3 114.7 288.2 105.4 297.2 104.4 301.1 105.0 308.0 107.1 312.8 107.2 319.4 109.4 320.8 107.4 320.1 107.3 335.9 106.2 341.0 107.3 350.4 110.5 358.5 122.7 372.9 125.0 377.0 129.5 380.4 136.5 384.0 146.1 386.8 153.9 394.8 159.3 397.6 164.3 397.8 169.0 396.3 168.6 394.9 169.6 394.1 168.4 392.9 171.1 390.7 170.6 387.9 172.7 387.4 173.1 385.2 175.5 385.8 177.5 381.6 181.9 381.4 181.3 379.5 182.3 377.6 186.3 375.9 186.0 374.1 187.7 374.0 187.4 372.8 190.2 371.8 189.0 368.6 193.0 368.2 192.7 364.4 188.4 363.0 190.4 362.0 189.2 361.6 187.1 356.6 187.6 351.9 189.0 350.5 187.5 346.3 188.4 344.7 187.8 342.6 189.7 337.3 188.3 334.8 191.3 333.5 194.4 335.2 198.7 332.2 199.6 328.7 204.1 325.2 205.2 320.8 206.6 319.5 206.0 318.0 210.3 315.3 210.8 308.4 209.1 303.7 204.5 303.2 202.9 301.3 201.6 301.7 199.9 298.4 194.9 298.0 195.7 294.0 192.5 294.0 191.4 293.0 190.3 293.9 191.4 294.8 189.4 295.2 188.9 293.9 190.0 292.7 189.5 291.8 194.8 288.9 196.4 285.7 201.9 280.5 204.6 272.2 194.5 272.6 191.8 270.2 187.1 269.6 185.0 263.4 183.2 263.8 182.0 262.3 180.6 264.9 178.0 264.7 176.1 267.5 176.8 271.7 174.3 273.2 174.0 274.6 171.9 271.6 169.7 273.6 166.8 269.3 165.9 264.8 168.3 261.3 163.8 258.6 161.2 249.4 158.2 248.9 158.4 244.7 156.1 242.1 157.8 240.0 154.6 238.2 154.9 235.8 152.3 231.0 152.1 227.0 148.6 221.0 159.4 208.1 158.3 194.6 155.0 194.6 154.7 193.6 157.4 189.8 158.6 184.4 151.3 185.5 150.5 183.8 149.4 183.8 149.7 180.0 148.1 175.5 149.1 174.6 149.0 172.3 151.4 171.2 150.3 169.6 151.2 166.1 153.1 166.1 154.9 161.4 156.7 161.2 159.4 162.7 164.5 161.6 166.7 157.7 170.1 155.8 174.8 155.8 177.7 157.7 180.4 155.2 183.4 155.2 186.8 157.7 189.4 155.5 194.0 154.9 198.5 150.8 201.2 152.0 205.1 150.8 206.8 146.6 213.3 140.7 218.7 138.2 215.4 133.9 216.3 126.6 213.9 123.2 214.1 117.1 212.7 112.7 206.0 104.2 206.6 92.1 202.6 94.2 194.8 95.9 188.0 95.6 190.7 93.3 193.4 87.5 192.0 84.7 178.8 86.0 178.0 68.6 179.3 67.6 179.1 64.6 169.9 54.7 167.1 53.1 168.4 49.7 166.5 44.1 170.2 37.0 172.5 38.7 174.8 36.4 177.8 35.9 175.0 33.6 178.2 28.5 172.6 20.9 174.2 9.0 169.9 6.0 167.2 9.9 164.4 10.3 156.3 8.7 155.5 9.8 149.3 6.6 146.9 7.6 145.3 6.6 145.7 3.3 140.6 0.0 137.8 2.0 136.7 1.4 134.2 6.4 135.0 7.7 132.5 12.4 133.1 13.7 130.4 16.8 131.2 18.6 128.3 19.8 132.6 22.7 132.6 25.2 131.0 27.5 132.7 28.1 132.7 29.2 130.6 33.2 125.5 36.8 123.7 42.1 121.7 41.4 121.9 44.8 119.6 47.1 122.2 52.9 118.9 55.0 114.9 55.1 112.1 61.0 112.2 53.9 110.8 50.1 111.1 45.5 113.0 45.0 112.9 43.4 110.9 44.2 110.0 42.5 107.8 41.7 105.4 44.5 103.6 43.9 102.2 48.2 103.4 56.7 102.6 61.7 101.6 63.3 100.5 62.9 100.6 64.3 96.6 69.9 92.4 71.8 94.9 73.6 96.5 72.7 100.8 75.9 103.1 81.7 101.6 87.8 103.2 89.4 107.6 89.5 108.8 93.2 109.9 92.6 111.0 93.7 111.9 97.1 108.4 108.6 102.8 116.4 102.6 118.5 99.8 120.5 103.0 125.5 104.6 134.5 102.8 137.1 103.2 140.6 101.2 142.3 100.3 139.6 101.2 142.3 99.0 142.8 97.4 138.7 100.1 145.9 96.6 148.5 97.2 150.5 95.9 154.0 87.0 157.0 58.2 151.6 52.1 149.7 53.4 148.0 51.5 149.5 49.6 148.6 50.4 146.8 49.4 148.0 47.8 147.2 47.3 141.3 46.4 143.0 45.2 142.0 45.1 140.7 46.3 140.5 45.1 139.2 49.4 131.6 50.4 131.9 50.3 133.8 50.7 132.8 50.8 133.8 52.9 132.6 49.1 128.5 51.8 122.4 51.6 110.9 53.9 105.6 54.8 98.9 53.3 94.9 50.5 92.2 47.5 90.8 45.9 92.2 43.2 90.8 42.0 99.9 36.6 104.8 36.4 106.2 38.6 107.6 40.0 111.5 38.8 115.0 36.9 116.0 36.0 115.0 37.8 117.2 36.2 119.4 36.8 121.5 35.5 121.3 34.6 123.1 36.0 125.0 35.2 126.1 33.7 125.9 35.0 129.6 31.9 130.7 35.0 132.4 34.1 133.8 31.8 133.1 31.0 134.8 30.1 134.3 30.0 136.5 28.2 137.0 28.4 138.2 27.3 139.5 26.0 139.3 26.4 140.8 25.5 140.3 24.5 141.8 26.6 141.4 26.2 143.6 28.0 145.4 27.0 146.1 27.9 147.0 29.4 146.3 31.7 147.8 32.6 149.8 31.0 153.5 32.4 152.0 34.1 152.4 33.3 153.4 36.6 149.5 38.2 149.3 39.5 154.4 38.9 157.2 36.9 156.6 38.6 157.4 37.6 160.1 34.8 164.1 30.3 167.8 25.4 170.3 21.5 171.0 18.7 170.1 19.3 167.8 18.0 164.5 14.7 163.6 12.9 160.1 11.8 160.3 10.8 162.8 12.6 164.0 10.2 164.8 10.1 165.8 9.1 165.0 8.5 166.6 10.1 168.0 5.8 169.3 6.5 170.1 5.1 170.6 4.7 173.1 3.1 173.6 3.1 174.8 1.0 174.9 2.5 175.8 2.3 177.8 0.0 178.5ZM19.3 173.6 19.6 171.7 20.5 172.5 22.0 171.5 25.3 172.1 26.3 171.3 28.1 172.3 29.1 171.0 30.0 171.6 28.5 171.6 29.5 173.2 33.1 174.6 28.5 172.8 30.3 174.0 29.7 175.4 30.3 174.0 28.9 174.0 26.8 172.7 30.0 179.6 27.6 176.4 27.1 173.1 23.0 172.8 23.9 174.3 22.3 173.1 19.7 173.5 19.3 174.7 19.3 173.6ZM29.8 260.2 30.2 257.9 31.8 257.5 33.8 254.5 35.2 250.4 37.7 249.4 38.6 247.8 38.3 249.3 35.7 250.4 33.6 256.8 32.0 258.8 30.2 258.4 29.8 260.2ZM41.0 286.8 41.7 286.0 45.1 287.7 45.3 289.5 41.0 286.8ZM43.2 224.7 44.3 220.1 46.7 217.3 46.0 215.6 44.8 215.8 45.3 213.6 47.2 212.8 49.0 213.9 50.7 217.6 49.1 216.5 46.2 221.9 47.8 224.2 46.3 225.6 45.1 223.4 44.1 225.4 43.2 224.7ZM54.0 211.9 56.6 210.2 57.9 211.7 59.6 214.2 58.2 214.5 59.1 218.7 57.8 216.7 56.1 216.2 56.3 213.9 54.0 211.9ZM79.9 184.1 81.9 177.1 80.2 185.5 82.6 193.8 86.7 196.9 89.5 195.8 93.2 196.3 95.2 193.5 101.2 189.6 107.6 189.1 108.8 188.0 111.0 188.5 116.7 186.2 119.1 187.5 118.2 188.9 119.2 193.2 125.6 203.2 131.0 202.0 134.2 197.2 135.1 199.1 134.3 200.7 135.3 200.8 134.2 200.7 135.1 199.1 134.2 197.3 133.5 199.5 130.9 202.2 125.5 203.3 119.1 193.3 118.1 188.9 119.1 187.7 116.6 186.3 111.1 188.6 108.9 188.0 108.1 189.0 101.3 189.9 95.4 193.5 92.9 196.7 89.7 195.9 86.5 197.0 86.3 200.4 89.8 202.2 90.3 206.5 89.8 202.2 86.7 201.2 86.3 196.8 82.2 193.7 79.9 184.1ZM37.3 199.6 41.3 199.6 42.4 200.8 43.1 199.8 45.9 199.9 50.6 203.1 48.9 198.1 50.0 200.1 50.0 199.0 48.6 197.0 45.6 195.8 46.1 196.6 43.9 196.4 45.8 198.0 43.5 196.4 41.0 197.8 43.6 199.0 40.7 198.0 37.3 199.6ZM45.5 195.3 50.0 198.2 51.5 204.7 59.8 207.4 55.5 200.5 52.5 198.7 50.4 195.1 47.3 194.4 45.5 195.3Z" fill-rule="evenodd"/>
+      <g class="gc__pin" style="--i:0"><path class="gc__lead" d="M112.0 92.0L329.9 92.0"/><circle cx="112.0" cy="92.0" r="2.6"/><text x="360.7" y="95.5" text-anchor="end">Tomé</text></g><g class="gc__pin" style="--i:1"><path class="gc__lead" d="M95.4 157.1L323.7 157.1"/><circle cx="95.4" cy="157.1" r="2.6"/><text x="360.7" y="160.6" text-anchor="end">Penco</text></g><g class="gc__pin" style="--i:2"><path class="gc__lead" d="M43.7 148.9L-74.0 142.9"/><circle cx="43.7" cy="148.9" r="2.6"/><text x="-142.0" y="146.4" text-anchor="start">Talcahuano</text></g><g class="gc__pin" style="--i:3"><path class="gc__lead" d="M53.7 179.8L-92.6 179.8"/><circle cx="53.7" cy="179.8" r="2.6"/><text x="-142.0" y="183.3" text-anchor="start">Hualpén</text></g><g class="gc__pin" style="--i:4"><path class="gc__lead" d="M47.4 211.2L-18.2 221.2"/><circle cx="47.4" cy="211.2" r="2.6"/><text x="-142.0" y="224.7" text-anchor="start">San Pedro de la Paz</text></g><g class="gc__pin" style="--i:5"><path class="gc__lead" d="M81.4 254.4L286.5 254.4"/><circle cx="81.4" cy="254.4" r="2.6"/><text x="360.7" y="257.9" text-anchor="end">Chiguayante</text></g><g class="gc__pin" style="--i:6"><path class="gc__lead" d="M119.6 281.5L311.3 281.5"/><circle cx="119.6" cy="281.5" r="2.6"/><text x="360.7" y="285.0" text-anchor="end">Hualqui</text></g><g class="gc__pin" style="--i:7"><path class="gc__lead" d="M32.5 302.9L-92.6 302.9"/><circle cx="32.5" cy="302.9" r="2.6"/><text x="-142.0" y="306.4" text-anchor="start">Coronel</text></g><g class="gc__pin" style="--i:8"><path class="gc__lead" d="M26.9 341.3L-111.2 341.3"/><circle cx="26.9" cy="341.3" r="2.6"/><text x="-142.0" y="344.8" text-anchor="start">Lota</text></g>
+      <g class="gc__hq" transform="translate(72.1 202.7)"><circle class="gc__ping" r="22"/><circle class="gc__ping gc__ping--2" r="22"/><circle class="gc__dot" r="5"/><text x="12" y="-12">Concepción</text><text class="gc__hq-sub" x="12" y="6">Central 24 h</text></g>
+      <g class="gc__scale" transform="translate(171.0 414)"><path d="M0 0v5h47.7v-5"/><text x="23.9" y="-4">10 km</text></g>
+    </svg>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Servicio: las cuatro etapas -->
+    <section class="ground services" id="servicio" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="services__intro">
+          <div class="services__copy">
+            <h2 class="big-word" id="services-title">El servicio</h2>
+            <p class="services__lead">Cada traslado sigue las mismas cuatro etapas, de la llamada a la entrega. Así sabes dónde está tu vehículo y qué pasó en cada servicio.</p>
+          </div>
+          <figure class="services__photo">
+            <img src="assets/img/central-1469.webp" srcset="assets/img/central-800.webp 800w, assets/img/central-1469.webp 1469w" sizes="(max-width: 900px) 100vw, 760px" width="1469" height="720" loading="lazy" alt="Tres operadores trabajan frente a una pared de pantallas con el mapa de monitoreo de la zona de Concepción en la central de TRANLOTEK.">
+            <figcaption>Central de operaciones 24 h</figcaption>
+          </figure>
+        </div>
+    </section>
+
+    <!-- Conversemos: la grúa levanta la ficha -->
+    <section class="crane contact" id="conversemos" aria-labelledby="contact-title">
+      <div class="wrap contact__grid">
+
+        <div class="contact__copy">
+          <h2 class="contact__title" id="contact-title" tabindex="-1">Conversemos.</h2>
+          <p class="contact__lead">Te contactamos para conocer tu operación y mostrarte cómo trabajamos. Déjanos tus datos y nuestro equipo comercial te llamará.</p>
+          <dl class="channels">
+            <div>
+              <dt>Teléfono</dt>
+              <!-- REEMPLAZAR: WhatsApp provisorio -->
+              <dd><a href="https://wa.me/56961234567" target="_blank" rel="noopener" data-placeholder="whatsapp">+56 9 6123 4567</a></dd>
+            </div>
+            <div>
+              <dt>Correo</dt>
+              <dd><a href="mailto:contacto@tranlotek.cl">contacto@tranlotek.cl</a></dd>
+            </div>
+            <div>
+              <dt>Ubicación</dt>
+              <dd>Concepción, Región del Biobío</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="contact__plate" data-hoist>
+          <svg class="boom" viewBox="0 0 1940 760" aria-hidden="true" focusable="false">
+            <g transform="translate(1920 40) rotate(-10.5)">
+              <path class="boom__lace" d="M-40.0 23.6 -67.1 -24.7 -95.5 25.8 -125.2 -27.0 -156.3 28.3 -188.8 -29.6 -222.8 30.9 -258.3 -32.3 -295.5 33.8 -334.4 -35.4 -375.1 37.0 -417.6 -38.7 -462.1 40.5 -508.7 -42.3 -557.4 44.3 -608.3 -46.3 -661.6 48.5 -717.3 -50.7 -775.6 53.0 -836.6 -55.5 -900.4 58.0 -967.1 -60.7 -1036.9 63.5 -1109.9 -66.4 -1186.3 69.5 -1266.1 -72.6 -1349.7 76.0 -1437.0 -79.5 -1528.4 83.1 -1624.1 -87.0 -1724.1 91.0 -1828.7 -95.1"/>
+              <path class="boom__strut" d="M-67.1 -24.7V24.7 M-125.2 -27.0V27.0 M-188.8 -29.6V29.6 M-258.3 -32.3V32.3 M-334.4 -35.4V35.4 M-417.6 -38.7V38.7 M-508.7 -42.3V42.3 M-608.3 -46.3V46.3 M-717.3 -50.7V50.7 M-836.6 -55.5V55.5 M-967.1 -60.7V60.7 M-1109.9 -66.4V66.4 M-1266.1 -72.6V72.6 M-1437.0 -79.5V79.5 M-1624.1 -87.0V87.0 M-1828.7 -95.1V95.1"/>
+              <path class="boom__chord" d="M-26.0 -23.0 -1900.0 -98.0 -1900.0 -90.0 -26.0 -20.0Z"/>
+              <path class="boom__chord boom__chord--low" d="M-26.0 23.0 -1900.0 98.0 -1900.0 90.0 -26.0 20.0Z"/>
+              <path class="boom__head" d="M-34 -30H8V24H-34Z"/>
+              <circle class="boom__sheave" cx="-12" cy="0" r="14"/>
+              <circle class="boom__pin" cx="-12" cy="0" r="4"/>
+            </g>
+          </svg>
+          <svg class="rigging" viewBox="0 0 460 300" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="steel" x1="0" x2="1">
+                <stop offset="0" stop-color="#4B5C70"/><stop offset=".35" stop-color="#C3CDD6"/><stop offset=".6" stop-color="#8D9DAE"/><stop offset="1" stop-color="#3E4E61"/>
+              </linearGradient>
+              <linearGradient id="block" x1="0" x2="1">
+                <stop offset="0" stop-color="#9AA6B1"/><stop offset=".45" stop-color="#E1E5E8"/><stop offset="1" stop-color="#8E98A2"/>
+              </linearGradient>
+            </defs>
+            <path class="rigging__sling" d="M18 296 207 246Q222 251 237 246L442 296"/>
+            <path class="rigging__cable" d="M224 0V70M236 0V70"/>
+            <rect class="rigging__block" x="190" y="66" width="80" height="84" rx="10"/>
+            <circle class="rigging__sheave" cx="230" cy="100" r="20"/>
+            <circle class="rigging__pin" cx="230" cy="100" r="6"/>
+            <rect class="rigging__shank" x="222" y="150" width="16" height="24" rx="3"/>
+            <path class="rigging__hook" d="M230 172V194C230 206 252 212 252 232C252 250 238 260 222 260C205 260 192 248 192 232"/>
+            <path class="rigging__latch" d="M192 228 226 198"/>
+            <circle class="rigging__shackle" cx="18" cy="296" r="7"/>
+            <circle class="rigging__shackle" cx="442" cy="296" r="7"/>
+          </svg>
+          <form class="plate contact-form" action="enviar.php" method="post" novalidate data-contact-form>
+            <span class="rivet rivet--tl" aria-hidden="true"></span><span class="rivet rivet--tr" aria-hidden="true"></span>
+            <span class="rivet rivet--bl" aria-hidden="true"></span><span class="rivet rivet--br" aria-hidden="true"></span>
+            <div class="plate__head">
+              <h3 class="plate__title">Solicita una reunión comercial</h3>
+            </div>
+            <div class="plate__body" data-form-body>
+              <div class="field">
+                <label for="f2-nombre">Nombre y apellido</label>
+                <input id="f2-nombre" name="nombre" type="text" autocomplete="name" required maxlength="80" aria-describedby="f2-nombre-err">
+                <p class="field__err" id="f2-nombre-err" hidden></p>
+              </div>
+              <div class="field">
+                <label for="f2-empresa">Empresa</label>
+                <input id="f2-empresa" name="empresa" type="text" autocomplete="organization" required maxlength="100" aria-describedby="f2-empresa-err">
+                <p class="field__err" id="f2-empresa-err" hidden></p>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="f2-telefono">Teléfono</label>
+                  <input id="f2-telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="+56 9 1234 5678" aria-describedby="f2-telefono-err">
+                  <p class="field__err" id="f2-telefono-err" hidden></p>
+                </div>
+                <div class="field">
+                  <label for="f2-correo">Correo <span class="field__opt">(opcional)</span></label>
+                  <input id="f2-correo" name="correo" type="email" autocomplete="email" maxlength="120" aria-describedby="f2-correo-err">
+                  <p class="field__err" id="f2-correo-err" hidden></p>
+                </div>
+              </div>
+              <div class="hp" aria-hidden="true"><label for="f2-web">No completar</label><input id="f2-web" name="web" type="text" tabindex="-1" autocomplete="off"></div>
+              <input type="hidden" name="origen" value="Formulario Conversemos">
+              <button class="seal" type="submit" data-seal>
+                <span class="seal__head" aria-hidden="true"></span>
+                <span class="seal__label" data-seal-label>Solicitar reunión</span>
+                <svg class="seal__arrow" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg>
+              </button>
+              <p class="plate__note">Usaremos tus datos solo para responder a esta solicitud.</p>
+              <p class="plate__status" role="alert" data-form-error hidden></p>
+            </div>
+            <div class="plate__done" data-form-done hidden tabindex="-1">
+              <p class="plate__done-title">Solicitud registrada</p>
+              <p class="plate__done-text">Un ejecutivo comercial te contactará al <strong data-done-phone></strong> para coordinar la reunión.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/tranlotek-logo.png" width="647" height="183" alt="TRANLOTEK" loading="lazy">
+        <p>Retiro y traslado de vehículos con grúa en la Región del Biobío.</p>
+      </div>
+      <nav class="footer__col" aria-label="Secciones">
+        <p class="footer__head">Secciones</p>
+        <ul>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+          <li><a href="#servicio">Servicio</a></li>
+          <li><a href="#conversemos">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="footer__col">
+        <p class="footer__head">Empresa</p>
+        <!-- REEMPLAZAR: RUT provisorio -->
+        <p>TRANLOTEK SpA<br>RUT <span data-placeholder="rut">77.123.456-7</span><br>Concepción, Región del Biobío</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__head">Contacto</p>
+        <p><a href="mailto:contacto@tranlotek.cl">contacto@tranlotek.cl</a><br><!-- REEMPLAZAR: teléfono provisorio --><a href="tel:+56412964800" data-placeholder="telefono">+56 41 296 4800</a></p>
+      </div>
+    </div>
+    <div class="wrap footer__base">
+      <p>© <span data-year>2026</span> TRANLOTEK SpA. Todos los derechos reservados.</p>
+      <p class="footer__tag">Transporte · Tecnología · Logística</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
