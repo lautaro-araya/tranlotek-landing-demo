@@ -119,40 +119,43 @@
     });
   });
 
-  /* ---------- Servicio: riel de etapas ---------- */
-  const custody = document.querySelector('[data-custody]');
-  if (custody) {
-    const steps = [...custody.querySelectorAll('[data-step]')];
-    const stages = steps.map((li) => document.getElementById(li.dataset.step));
-    const fill = custody.querySelector('[data-rail-fill]');
-    const labels = { done: 'Registrado', active: 'En curso', idle: '' };
-    let ticking = false;
-
-    const update = () => {
-      ticking = false;
-      const probe = window.innerHeight * 0.42;
-      let active = -1;
-      stages.forEach((stage, i) => { if (stage.getBoundingClientRect().top <= probe) active = i; });
-      steps.forEach((li, i) => {
-        const state = i < active ? 'done' : i === active ? 'active' : 'idle';
-        li.classList.toggle('is-done', state === 'done');
-        li.classList.toggle('is-active', state === 'active');
-        li.querySelector('[data-state]').textContent = labels[state];
-        const link = li.querySelector('a');
-        if (state === 'active') link.setAttribute('aria-current', 'step'); else link.removeAttribute('aria-current');
+  /* ---------- Servicio: etapas en slides ---------- */
+  const slider = document.querySelector('[data-slides]');
+  if (slider) {
+    const tabs = [...slider.querySelectorAll('[role="tab"]')];
+    const panels = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')));
+    const prev = slider.querySelector('[data-slides-prev]');
+    const next = slider.querySelector('[data-slides-next]');
+    const current = slider.querySelector('[data-slides-current]');
+    let index = 0;
+    const go = (i, focus) => {
+      i = Math.max(0, Math.min(tabs.length - 1, i));
+      slider.style.setProperty('--from', i >= index ? '24px' : '-24px');
+      index = i;
+      tabs.forEach((t, n) => {
+        const on = n === i;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        t.classList.toggle('is-done', n < i);
       });
-      if (fill) {
-        const first = stages[0].getBoundingClientRect();
-        const last = stages[stages.length - 1].getBoundingClientRect();
-        const span = last.top - first.top || 1;
-        const p = Math.min(1, Math.max(0, (probe - first.top) / span));
-        fill.style.setProperty('--p', p.toFixed(3));
-      }
+      panels.forEach((panel, n) => panel.classList.toggle('is-active', n === i));
+      current.textContent = String(i + 1).padStart(2, '0');
+      prev.disabled = i === 0;
+      next.disabled = i === tabs.length - 1;
+      if (focus) tabs[i].focus();
     };
-    const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-    update();
-    window.addEventListener('scroll', request, { passive: true });
-    window.addEventListener('resize', request);
+    tabs.forEach((t, n) => {
+      t.addEventListener('click', () => go(n));
+      t.addEventListener('keydown', (e) => {
+        const to = { ArrowRight: n + 1, ArrowLeft: n - 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (to === undefined) return;
+        e.preventDefault();
+        go(to, true);
+      });
+    });
+    prev.addEventListener('click', () => go(index - 1));
+    next.addEventListener('click', () => go(index + 1));
+    go(0);
   }
 
   /* ---------- Formularios de contacto ---------- */
