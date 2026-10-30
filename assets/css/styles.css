@@ -253,7 +253,7 @@ button,input{font:inherit;color:inherit}
 .services{padding-block:var(--section)}
 .services__intro{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s-7) clamp(32px,4vw,64px);align-items:end}
 .services__photo{margin-right:calc(-1 * var(--gutter));margin-bottom:calc(-1 * clamp(40px,5vw,72px))}
-.services__photo img{width:100%;height:auto;aspect-ratio:1584/672;object-fit:cover;border-radius:2px}
+.services__photo img{width:100%;height:auto;aspect-ratio:1024/502;object-fit:cover;border-radius:2px}
 .services__lead{margin-top:var(--s-6);max-width:44ch;font-size:1.1875rem;line-height:1.55;color:var(--ink-2)}
 .custody{margin-top:calc(clamp(48px,6vw,96px) + clamp(40px,5vw,72px));display:grid;grid-template-columns:minmax(220px,3fr) minmax(0,9fr);gap:clamp(32px,5vw,80px)}
 .rail{position:relative}
@@ -278,6 +278,11 @@ button,input{font:inherit;color:inherit}
 .stage__name{font:800 clamp(2.75rem,1.6rem + 3.6vw,5rem)/.9 var(--f-display);text-transform:uppercase;letter-spacing:.005em;overflow-wrap:anywhere}
 .stage__line{margin-top:var(--s-4);margin-left:calc(1.25rem * 1.25 + clamp(16px,2vw,28px));max-width:48ch;font-size:1.1875rem;line-height:1.5;color:var(--ink-2)}
 .services__photo figcaption{margin-top:var(--s-3);font:600 .875rem/1 var(--f-cond);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+@media (min-width:901px){
+  /* Desktop: misma proporción 5/7 y centrado que Cobertura; la foto queda dentro del ancho del sitio */
+  .services__intro{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:center}
+  .services__photo{margin:0}
+}
 .stage__services{margin-top:var(--s-7);display:grid;grid-template-columns:1fr 1fr;gap:var(--s-6) clamp(24px,4vw,56px)}
 .service{padding-top:var(--s-4);border-top:1px solid var(--rule)}
 .service h4{font:600 1.3125rem/1.25 var(--f-body);color:var(--ink);text-wrap:balance}
