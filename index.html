@@ -162,6 +162,95 @@
             <figcaption>Central de operaciones 24 h</figcaption>
           </figure>
         </div>
+
+        <!-- Etapas del traslado: solo en desktop (ocultas bajo 900px) -->
+        <div class="custody" data-custody>
+          <aside class="rail" aria-label="Etapas del traslado">
+            <div class="rail__inner">
+              <ol class="rail__steps">
+                <li data-step="etapa-solicitud"><a href="#etapa-solicitud"><span class="rail__dot" aria-hidden="true"></span><span class="num">01</span> Solicitud<span class="rail__state" data-state></span></a></li>
+                <li data-step="etapa-retiro"><a href="#etapa-retiro"><span class="rail__dot" aria-hidden="true"></span><span class="num">02</span> Retiro<span class="rail__state" data-state></span></a></li>
+                <li data-step="etapa-traslado"><a href="#etapa-traslado"><span class="rail__dot" aria-hidden="true"></span><span class="num">03</span> Traslado<span class="rail__state" data-state></span></a></li>
+                <li data-step="etapa-entrega"><a href="#etapa-entrega"><span class="rail__dot" aria-hidden="true"></span><span class="num">04</span> Entrega<span class="rail__state" data-state></span></a></li>
+              </ol>
+              <span class="rail__track" aria-hidden="true"><span class="rail__fill" data-rail-fill></span></span>
+            </div>
+          </aside>
+
+          <div class="stages">
+            <article class="stage" id="etapa-solicitud" aria-labelledby="st1">
+              <header class="stage__head">
+                <span class="stage__num">01</span>
+                <h3 class="stage__name" id="st1">Solicitud</h3>
+              </header>
+              <p class="stage__line">La central recibe tu pedido a cualquier hora, todos los días.</p>
+              <div class="stage__services">
+                <div class="service">
+                  <h4>Central telefónica 24 h</h4>
+                  <p>Una sola línea para pedir un retiro, sin importar el día ni la hora.</p>
+                </div>
+                <div class="service">
+                  <h4>Coordinación del retiro</h4>
+                  <p>La central define el punto de retiro, el destino y la grúa que hará el servicio.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="stage" id="etapa-retiro" aria-labelledby="st2">
+              <header class="stage__head">
+                <span class="stage__num">02</span>
+                <h3 class="stage__name" id="st2">Retiro</h3>
+              </header>
+              <p class="stage__line">Una grúa de la flota llega al punto de retiro y carga el vehículo.</p>
+              <div class="stage__services">
+                <div class="service">
+                  <h4>Grúas para todo tipo de vehículos</h4>
+                  <p>Una flota de 25 grúas para retirar vehículos livianos y pesados.</p>
+                </div>
+                <div class="service">
+                  <h4>Carga asegurada</h4>
+                  <p>El vehículo se sube a la plataforma y se asegura antes de salir a ruta.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="stage" id="etapa-traslado" aria-labelledby="st3">
+              <header class="stage__head">
+                <span class="stage__num">03</span>
+                <h3 class="stage__name" id="st3">Traslado</h3>
+              </header>
+              <p class="stage__line">El vehículo viaja en plataforma, con la grúa visible en el GPS.</p>
+              <div class="stage__services">
+                <div class="service">
+                  <h4>Control GPS de toda la flota</h4>
+                  <p>El 100 % de las grúas opera con control GPS durante todo el trayecto.</p>
+                </div>
+                <div class="service">
+                  <h4>Traslado punto a punto</h4>
+                  <p>Del punto de retiro directo al destino acordado.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="stage" id="etapa-entrega" aria-labelledby="st4">
+              <header class="stage__head">
+                <span class="stage__num">04</span>
+                <h3 class="stage__name" id="st4">Entrega</h3>
+              </header>
+              <p class="stage__line">El vehículo llega a destino y el servicio queda registrado.</p>
+              <div class="stage__services">
+                <div class="service">
+                  <h4>Entrega en destino</h4>
+                  <p>La grúa descarga el vehículo en el lugar acordado.</p>
+                </div>
+                <div class="service">
+                  <h4>Reporte diario</h4>
+                  <p>Cada servicio queda informado en un reporte diario.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
