@@ -233,7 +233,7 @@
         done.hidden = false;
         done.focus();
       } catch (err) {
-        errorBox.innerHTML = 'No pudimos enviar tu solicitud. Intenta otra vez o escríbenos a <a href="mailto:contacto@tranlotek.cl">contacto@tranlotek.cl</a>.';
+        errorBox.innerHTML = 'No pudimos enviar tu solicitud. Intenta otra vez o escríbenos a <a href="mailto:contacto@tranlotek.com">contacto@tranlotek.com</a>.';
         errorBox.hidden = false;
       } finally {
         seal.removeAttribute('aria-busy');
