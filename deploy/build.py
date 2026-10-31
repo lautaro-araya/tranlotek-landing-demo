@@ -22,7 +22,7 @@ def escribir(p, s):
     os.makedirs(os.path.dirname(p), exist_ok=True)
     io.open(p, 'w', encoding='utf-8', newline='\n').write(s)
 
-shutil.rmtree(SALIDA, ignore_errors=True)
+shutil.rmtree(WEB, ignore_errors=True)  # el resto de produccion-cpanel/ (instructivo) se conserva
 for d in CARPETAS:
     for f in sorted(os.listdir(os.path.join(SITIO, d))):
         if f.endswith(EXCLUIR) or f.startswith(EXCLUIR_PREFIJO):
