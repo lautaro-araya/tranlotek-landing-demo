@@ -16,7 +16,8 @@ AddDefaultCharset UTF-8
 </IfModule>
 
 # Archivos que no se sirven
-<FilesMatch "(^\.|\.(md|json|py|sh|log|bak)$)">
+# error_log: registro de errores de PHP (motivos de fallas del formulario)
+<FilesMatch "(^\.|^error_log$|\.(md|json|py|sh|log|bak)$)">
   Require all denied
 </FilesMatch>
 

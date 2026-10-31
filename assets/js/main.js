@@ -262,7 +262,7 @@
           throw new Error('No hubo conexión con el servidor. Revisa tu conexión a internet.');
         }
         const data = await res.json().catch(() => null);
-        if (!data) throw new Error(`El servidor respondió ${res.status} ${res.statusText} sin una respuesta válida (¿está ${form.getAttribute('action')} en el hosting y PHP activo?).`);
+        if (!data) throw new Error(`Hubo un problema en nuestro servidor (error ${res.status}).`);
         // Errores por campo: se marcan igual que la validación del navegador
         if (data.campos) {
           Object.entries(data.campos).forEach(([name, msg]) => { if (form[name]) setError(form[name], msg); });

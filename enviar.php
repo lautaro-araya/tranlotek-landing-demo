@@ -11,6 +11,10 @@ date_default_timezone_set('America/Santiago');
 const DESTINO = 'formulario@tranlotek.com';
 const REMITENTE = 'no-responder@tranlotek.com';
 
+// false en producción: el visitante ve un mensaje simple y el motivo exacto queda en el archivo
+// error_log de esta carpeta (cPanel > Administrador de archivos). true muestra el detalle en la página.
+const DEPURAR = false;
+
 header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
 
@@ -20,11 +24,17 @@ function responder(int $code, array $data): void {
     exit;
 }
 
-// Cada error responde con un código ('error'), un mensaje legible ('mensaje') y, si lo hay,
-// el detalle técnico del servidor ('detalle'), para saber exactamente qué falló.
+// Cada error responde con un código ('error') y un mensaje legible ('mensaje'). El motivo exacto
+// y el detalle técnico se registran siempre en error_log; solo se envían a la página con DEPURAR.
 function fallar(int $code, string $error, string $mensaje, string $detalle = ''): void {
-    $data = ['ok' => false, 'error' => $error, 'mensaje' => $mensaje];
-    if ($detalle !== '') $data['detalle'] = $detalle;
+    error_log('[formulario tranlotek] ' . $error . ': ' . $mensaje . ($detalle !== '' ? ' | ' . $detalle : ''));
+    $data = ['ok' => false, 'error' => $error];
+    if (DEPURAR) {
+        $data['mensaje'] = $mensaje;
+        if ($detalle !== '') $data['detalle'] = $detalle;
+    } else {
+        $data['mensaje'] = $code >= 500 ? 'Hubo un problema en nuestro servidor.' : 'La solicitud no es válida.';
+    }
     responder($code, $data);
 }
 
@@ -80,7 +90,7 @@ elseif (!preg_match('/^[2-9]\d{8}$/', $digitos)) $errores['telefono'] = 'Ingresa
 if ($correo !== '' && (!filter_var($correo, FILTER_VALIDATE_EMAIL) || !preg_match('/\.[A-Za-z]{2,}$/', $correo))) $errores['correo'] = 'Revisa el correo, por ejemplo nombre@empresa.cl.';
 
 if ($errores) {
-    responder(422, ['ok' => false, 'error' => 'validacion', 'mensaje' => 'Hay datos por corregir: ' . implode(', ', array_keys($errores)) . '.', 'campos' => $errores]);
+    responder(422, ['ok' => false, 'error' => 'validacion', 'mensaje' => 'Revisa los datos marcados en el formulario.', 'campos' => $errores]);
 }
 
 $asunto = 'Solicitud de reunión comercial · ' . $empresa;
