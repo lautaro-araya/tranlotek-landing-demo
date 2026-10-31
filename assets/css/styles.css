@@ -290,6 +290,9 @@ button,input{font:inherit;color:inherit}
 .slides__count{margin-left:auto;font:600 1rem/1 var(--f-cond);letter-spacing:.08em;color:var(--ink-3);font-variant-numeric:tabular-nums}
 .slides__count span{color:var(--ink)}
 @media (min-width:901px){
+  /* Desktop: placa de cifras más ancha que el contenido y columnas según el largo de cada cifra, para que "+ de 2 años" no choque con el divisor */
+  .hero__plate{max-width:calc(var(--wrap) + 2*var(--gutter) + 64px);padding-inline:max(16px,calc(var(--gutter) - 32px))}
+  .figplate__grid{grid-template-columns:repeat(6,auto)}
   /* Desktop: título, bajada e imagen a la izquierda; etapas en slides a la derecha */
   .services__intro{grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-areas:"copy slides" "photo slides";gap:var(--s-6) clamp(48px,6vw,96px);align-items:start}
   .services__copy{grid-area:copy}
