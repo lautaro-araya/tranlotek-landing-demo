@@ -9,3 +9,7 @@ https://lautaro-araya.github.io/tranlotek-landing-demo/
 - No indexable (`noindex` + `robots.txt`).
 
 La versión de producción, con el endpoint PHP del formulario, se despliega en el hosting cPanel.
+
+## Producción (cPanel · HostingPlus)
+
+`python -I deploy/build.py` genera `../produccion-cpanel/public_html/` y `tranlotek-public_html.zip`: quita el `noindex`, agrega `canonical`, `robots.txt` abierto, `sitemap.xml` y el `.htaccess` (`deploy/htaccess`: HTTPS sin www, caché, compresión y cabeceras de seguridad). Antes de generar, reemplazar los datos marcados `REEMPLAZAR` en `index.html` y `enviar.php`.

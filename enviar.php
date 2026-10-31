@@ -1,10 +1,13 @@
 <?php
 // Recibe la ficha de contacto y la envía por correo al equipo comercial.
-// Requiere PHP con mail() habilitado (incluido en Hostinger).
+// Requiere PHP con mail() habilitado (incluido en cPanel de HostingPlus).
 
 declare(strict_types=1);
 
+date_default_timezone_set('America/Santiago');
+
 // REEMPLAZAR: correo de ventas provisorio
+// REMITENTE debe ser una casilla creada en cPanel con el mismo dominio, o el correo puede caer en spam.
 const DESTINO = 'ventas@tranlotek.com';
 const REMITENTE = 'no-responder@tranlotek.com';
 
