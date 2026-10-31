@@ -251,13 +251,25 @@
       sealLabel.textContent = 'Enviando…';
 
       try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' },
-        });
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok || !data.ok) throw new Error(data.error || 'send');
+        let res;
+        try {
+          res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' },
+          });
+        } catch {
+          throw new Error('No hubo conexión con el servidor. Revisa tu conexión a internet.');
+        }
+        const data = await res.json().catch(() => null);
+        if (!data) throw new Error(`El servidor respondió ${res.status} ${res.statusText} sin una respuesta válida (¿está ${form.getAttribute('action')} en el hosting y PHP activo?).`);
+        // Errores por campo: se marcan igual que la validación del navegador
+        if (data.campos) {
+          Object.entries(data.campos).forEach(([name, msg]) => { if (form[name]) setError(form[name], msg); });
+          const first = Object.keys(data.campos).find((name) => form[name]);
+          if (first) form[first].focus();
+        }
+        if (!res.ok || !data.ok) throw new Error([data.mensaje || `Error ${res.status}.`, data.detalle && `Detalle: ${data.detalle}`].filter(Boolean).join(' '));
 
         form.querySelector('[data-done-phone]').textContent = form.telefono.value.trim();
         sealed = true;
@@ -268,7 +280,11 @@
         done.hidden = false;
         done.focus();
       } catch (err) {
-        errorBox.innerHTML = 'No pudimos enviar tu solicitud. Intenta otra vez o escríbenos a <a href="mailto:contacto@tranlotek.com">contacto@tranlotek.com</a>.';
+        // El motivo exacto va como texto (nunca como HTML) antes del contacto de respaldo
+        const mail = document.createElement('a');
+        mail.href = 'mailto:contacto@tranlotek.com';
+        mail.textContent = 'contacto@tranlotek.com';
+        errorBox.replaceChildren(`No pudimos enviar tu solicitud. ${err.message} Intenta otra vez o escríbenos a `, mail, '.');
         errorBox.hidden = false;
       } finally {
         seal.removeAttribute('aria-busy');
