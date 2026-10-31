@@ -159,17 +159,44 @@
   }
 
   /* ---------- Formularios de contacto ---------- */
-  const messages = {
-    nombre: 'Ingresa tu nombre.',
-    empresa: 'Indica el nombre de tu empresa.',
-    telefono: 'Ingresa al menos 8 dígitos.',
-    correo: 'Revisa el correo: falta el @ o el dominio.',
+  // Teléfono chileno: 9 dígitos, con o sin el 56 adelante
+  const phoneDigits = (v) => {
+    const d = v.replace(/\D/g, '');
+    return d.length === 11 && d.startsWith('56') ? d.slice(2) : d;
   };
+  const formatPhone = (v) => {
+    const d = phoneDigits(v);
+    if (!/^[2-9]\d{8}$/.test(d)) return v.trim();
+    if (d[0] === '9' || d[0] === '2') return `+56 ${d[0]} ${d.slice(1, 5)} ${d.slice(5)}`; // celular o Santiago
+    return `+56 ${d.slice(0, 2)} ${d.slice(2, 5)} ${d.slice(5)}`; // fijo regional, ej. 41
+  };
+
+  // Cada validador devuelve el mensaje de error, o '' si el valor es válido
   const validators = {
-    nombre: (v) => v.trim().length >= 2,
-    empresa: (v) => v.trim().length >= 2,
-    telefono: (v) => { const d = v.replace(/\D/g, ''); return d.length >= 8 && d.length <= 12; },
-    correo: (v) => v.trim() === '' || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+    nombre: (v) => {
+      v = v.trim();
+      if (!v) return 'Ingresa tu nombre.';
+      if (!/^\p{L}[\p{L}\s'.-]*$/u.test(v)) return 'Usa solo letras en tu nombre, sin números ni símbolos.';
+      return (v.match(/\p{L}/gu) || []).length >= 2 ? '' : 'Ingresa tu nombre.';
+    },
+    empresa: (v) => {
+      v = v.trim();
+      if (v.length < 2) return 'Indica el nombre de tu empresa.';
+      return /\p{L}/u.test(v) ? '' : 'El nombre de la empresa debe tener letras.';
+    },
+    telefono: (v) => {
+      const d = phoneDigits(v);
+      if (!d) return 'Ingresa un teléfono de contacto.';
+      if (/[^\d\s+()-]/.test(v)) return 'Usa solo números en el teléfono.';
+      return d.length === 9 && /^[2-9]/.test(d) ? '' : 'Ingresa un teléfono chileno de 9 dígitos, por ejemplo +56 9 1234 5678.';
+    },
+    correo: (v) => {
+      v = v.trim();
+      if (!v) return '';
+      const ok = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)*\.[A-Za-z]{2,}$/.test(v)
+        && !/\.\./.test(v) && !/^\.|\.@/.test(v);
+      return ok ? '' : 'Revisa el correo, por ejemplo nombre@empresa.cl.';
+    },
   };
 
   const setError = (input, msg) => {
@@ -185,9 +212,10 @@
   const check = (input) => {
     const fn = validators[input.name];
     if (!fn) return true;
-    const ok = fn(input.value);
-    setError(input, ok ? '' : messages[input.name]);
-    return ok;
+    if (input.name === 'telefono') input.value = formatPhone(input.value);
+    const msg = fn(input.value);
+    setError(input, msg);
+    return !msg;
   };
 
   document.querySelectorAll('[data-contact-form]').forEach((form) => {
@@ -200,7 +228,14 @@
 
     inputs.forEach((input) => {
       input.addEventListener('blur', () => { if (input.value) check(input); });
-      input.addEventListener('input', () => { if (input.getAttribute('aria-invalid') === 'true') check(input); });
+      input.addEventListener('input', () => {
+        // El teléfono solo admite números y separadores; el formato se aplica al salir del campo
+        if (input.name === 'telefono') {
+          const clean = input.value.replace(/[^\d\s+()-]/g, '');
+          if (clean !== input.value) input.value = clean;
+        }
+        if (input.getAttribute('aria-invalid') === 'true') setError(input, validators[input.name](input.value));
+      });
     });
 
     form.addEventListener('submit', async (e) => {

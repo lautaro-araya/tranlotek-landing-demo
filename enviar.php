@@ -41,12 +41,15 @@ $telefono   = campo('telefono', 20);
 $correo     = campo('correo', 120);
 $origen     = campo('origen', 40);
 
+// Mismas reglas que el formulario (assets/js/main.js)
 $errores = [];
-if (mb_strlen($nombre) < 2)  $errores[] = 'nombre';
-if (mb_strlen($empresa) < 2) $errores[] = 'empresa';
+if (!preg_match("/^\p{L}[\p{L}\s'.-]*$/u", $nombre) || preg_match_all('/\p{L}/u', $nombre) < 2) $errores[] = 'nombre';
+if (mb_strlen($empresa) < 2 || !preg_match('/\p{L}/u', $empresa)) $errores[] = 'empresa';
+// Teléfono chileno: 9 dígitos, con o sin el 56 adelante
 $digitos = preg_replace('/\D/', '', $telefono) ?? '';
-if (strlen($digitos) < 8 || strlen($digitos) > 12) $errores[] = 'telefono';
-if ($correo !== '' && !filter_var($correo, FILTER_VALIDATE_EMAIL)) $errores[] = 'correo';
+if (strlen($digitos) === 11 && substr($digitos, 0, 2) === '56') $digitos = substr($digitos, 2);
+if (preg_match('/[^\d\s+()-]/', $telefono) || !preg_match('/^[2-9]\d{8}$/', $digitos)) $errores[] = 'telefono';
+if ($correo !== '' && (!filter_var($correo, FILTER_VALIDATE_EMAIL) || !preg_match('/\.[A-Za-z]{2,}$/', $correo))) $errores[] = 'correo';
 
 if ($errores) {
     responder(422, ['ok' => false, 'error' => 'validacion', 'campos' => $errores]);
