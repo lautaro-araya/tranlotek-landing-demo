@@ -69,13 +69,16 @@ $cuerpo = implode("\n", [
 
 $cabeceras = [
     'From: TRANLOTEK Web <' . REMITENTE . '>',
+    'Sender: ' . REMITENTE,
     'Content-Type: text/plain; charset=UTF-8',
 ];
 if ($correo !== '') {
     $cabeceras[] = 'Reply-To: ' . $correo;
 }
 
-$enviado = mail(DESTINO, '=?UTF-8?B?' . base64_encode($asunto) . '?=', $cuerpo, implode("\r\n", $cabeceras));
+// -f fija el remitente real del envío (Return-Path); sin esto el servidor usa la cuenta de cPanel
+// (usuario@servidor.hostingplus.cl) en vez de REMITENTE.
+$enviado = mail(DESTINO, '=?UTF-8?B?' . base64_encode($asunto) . '?=', $cuerpo, implode("\r\n", $cabeceras), '-f' . REMITENTE);
 
 if (!$enviado) {
     responder(500, ['ok' => false, 'error' => 'mail']);
