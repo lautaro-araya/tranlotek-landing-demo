@@ -6,9 +6,9 @@ declare(strict_types=1);
 
 date_default_timezone_set('America/Santiago');
 
-// REEMPLAZAR: correo de ventas provisorio
+// Casilla que recibe las solicitudes del formulario
 // REMITENTE debe ser una casilla creada en cPanel con el mismo dominio, o el correo puede caer en spam.
-const DESTINO = 'ventas@tranlotek.com';
+const DESTINO = 'formulario@tranlotek.com';
 const REMITENTE = 'no-responder@tranlotek.com';
 
 header('Content-Type: application/json; charset=utf-8');
