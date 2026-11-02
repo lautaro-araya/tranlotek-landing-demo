@@ -3,7 +3,7 @@
 Uso, desde la carpeta sitio/:  python -I deploy/build.py
 Genera ../produccion-cpanel/public_html/ y ../produccion-cpanel/tranlotek-public_html.zip
 """
-import io, os, shutil, zipfile
+import hashlib, io, os, shutil, zipfile
 from datetime import date
 
 SITIO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -36,6 +36,12 @@ html = leer(os.path.join(SITIO, 'index.html'))
 noindex = '  <meta name="robots" content="noindex, nofollow">\n'
 assert noindex in html, 'no se encontró el meta noindex'
 html = html.replace(noindex, f'  <link rel="canonical" href="{DOMINIO}">\n')
+# CSS y JS con versión según su contenido: el .htaccess los guarda un mes en caché,
+# así cada subida con cambios obliga al navegador a descargar la versión nueva
+for ref in ('assets/css/styles.css', 'assets/js/main.js'):
+    v = hashlib.sha1(open(os.path.join(SITIO, ref), 'rb').read()).hexdigest()[:8]
+    assert html.count(f'"{ref}"') == 1, ref
+    html = html.replace(f'"{ref}"', f'"{ref}?v={v}"')
 escribir(os.path.join(WEB, 'index.html'), html)
 
 escribir(os.path.join(WEB, 'robots.txt'), f'User-agent: *\nAllow: /\n\nSitemap: {DOMINIO}sitemap.xml\n')
